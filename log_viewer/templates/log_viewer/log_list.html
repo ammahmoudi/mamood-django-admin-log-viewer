@@ -71,11 +71,16 @@
                     <ul class="rotational-file-list">
                         {% for rot_file in log_file.rotational_files %}
                         <li>
-                            <a href="{% url 'admin:log_viewer_detail' rot_file.name %}">
-                                {{ rot_file.name }}
-                                {% if rot_file.is_current %}<span class="current-file">(current)</span>{% endif %}
-                            </a>
-                            <span class="file-size">{{ rot_file.size|filesizeformat }}</span>
+                            <div class="rotational-file-item">
+                                <a href="{% url 'admin:log_viewer_detail' rot_file.name %}" class="rotational-file-link">
+                                    {{ rot_file.name }}
+                                    {% if rot_file.is_current %}<span class="current-file">(current)</span>{% endif %}
+                                </a>
+                                <div class="rotational-file-meta">
+                                    <span class="file-size">{{ rot_file.size|filesizeformat }}</span>
+                                    <a href="{% url 'admin:log_viewer_download' rot_file.name %}" class="download-link" title="Download {{ rot_file.name }}">⬇️</a>
+                                </div>
+                            </div>
                         </li>
                         {% endfor %}
                     </ul>
@@ -85,6 +90,9 @@
             <div class="log-file-actions">
                 <a href="{% url 'admin:log_viewer_detail' log_file.name %}" class="button default">
                     {% if log_file.type == 'rotational_group' %}View Current Log{% else %}View Log{% endif %}
+                </a>
+                <a href="{% url 'admin:log_viewer_download' log_file.name %}" class="button secondary" download>
+                    Download {% if log_file.type == 'rotational_group' %}Current{% endif %}
                 </a>
             </div>
         </div>

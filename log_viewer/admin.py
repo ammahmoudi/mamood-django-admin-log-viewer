@@ -16,6 +16,7 @@ class LogViewerAdminMixin:
             path('logs/', self.admin_view(self.log_list_view), name='log_viewer_list'),
             path('logs/<str:filename>/', self.admin_view(self.log_detail_view), name='log_viewer_detail'),
             path('logs/<str:filename>/ajax/', self.admin_view(self.log_ajax_view), name='log_viewer_ajax'),
+            path('logs/<str:filename>/download/', self.admin_view(self.log_download_view), name='log_viewer_download'),
         ]
         return log_urls + urls
     
@@ -151,10 +152,26 @@ class LogViewerAdminMixin:
         log_files = get_log_files()
         selected_file = None
         
+        # First, try to find exact match
         for log_file in log_files:
             if log_file['name'] == filename:
                 selected_file = log_file
                 break
+            # If it's a rotational group, check individual files
+            if log_file.get('type') == 'rotational_group':
+                for rot_file in log_file['rotational_files']:
+                    if rot_file['name'] == filename:
+                        selected_file = {
+                            'name': filename,
+                            'path': rot_file['path'],
+                            'size': rot_file['size'],
+                            'modified': rot_file['modified'],
+                            'is_rotational': True,
+                            'parent_group': log_file['name']
+                        }
+                        break
+                if selected_file:
+                    break
         
         if not selected_file:
             return JsonResponse({'error': 'Log file not found'}, status=404)
@@ -206,6 +223,61 @@ class LogViewerAdminMixin:
             'total_pages': total_pages,
             'live_mode': live_mode,
         })
+    
+    def log_download_view(self, request, filename):
+        """Download log file."""
+        import os
+        from django.http import HttpResponse, Http404
+        
+        log_files = get_log_files()
+        selected_file = None
+        
+        # First, try to find exact match
+        for log_file in log_files:
+            if log_file['name'] == filename:
+                selected_file = log_file
+                break
+            # If it's a rotational group, check individual files
+            if log_file.get('type') == 'rotational_group':
+                for rot_file in log_file['rotational_files']:
+                    if rot_file['name'] == filename:
+                        selected_file = {
+                            'name': filename,
+                            'path': rot_file['path'],
+                            'size': rot_file['size'],
+                            'modified': rot_file['modified'],
+                            'is_rotational': True,
+                            'parent_group': log_file['name']
+                        }
+                        break
+                if selected_file:
+                    break
+        
+        if not selected_file or not os.path.exists(selected_file['path']):
+            raise Http404("Log file not found")
+        
+        try:
+            # Handle compressed files
+            if selected_file['path'].endswith('.gz'):
+                import gzip
+                with gzip.open(selected_file['path'], 'rt', encoding='utf-8', errors='ignore') as f:
+                    content = f.read()
+                content_type = 'application/gzip'
+                filename_with_ext = filename
+            else:
+                with open(selected_file['path'], 'r', encoding='utf-8', errors='ignore') as f:
+                    content = f.read()
+                content_type = 'text/plain'
+                filename_with_ext = filename + '.log' if not filename.endswith('.log') else filename
+            
+            response = HttpResponse(content, content_type=content_type)
+            response['Content-Disposition'] = f'attachment; filename="{filename_with_ext}"'
+            response['Content-Length'] = len(content.encode('utf-8'))
+            
+            return response
+            
+        except Exception as e:
+            return HttpResponse(f'Error reading file: {str(e)}', status=500)
 
 
 # Create a custom admin site with log viewer functionality

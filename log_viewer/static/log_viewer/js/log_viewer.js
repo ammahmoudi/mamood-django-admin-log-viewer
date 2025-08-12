@@ -984,28 +984,49 @@ function collapseAllGroups() {
 }
 
 function downloadLog() {
-    const filename = window.location.pathname.split('/').pop();
-    if (filename && filename !== '') {
-        // Create a simple download by opening the log file URL
-        const downloadUrl = window.location.origin + window.location.pathname.replace('/logs/', '/static/logs/');
+    // Debug: Log the current URL to understand the structure
+    console.log('Current URL:', window.location.pathname);
+    
+    const pathParts = window.location.pathname.split('/').filter(part => part !== '');
+    console.log('URL parts:', pathParts);
+    
+    // URL structure: /admin/logs/filename/ or /admin/logs/filename
+    // So filename should be at index 2 (admin, logs, filename)
+    const filename = pathParts[2];
+    
+    console.log('Extracted filename:', filename);
+    
+    if (filename && filename !== 'logs' && filename !== 'admin') {
+        // Construct the download URL properly
+        const baseUrl = window.location.origin + '/admin/logs/' + filename + '/download/';
+        console.log('Download URL:', baseUrl);
         
-        // Alternative: Create a download link for the current view
-        const logContent = document.querySelector('.log-content');
-        if (logContent) {
-            const content = Array.from(logContent.querySelectorAll('.log-line'))
-                .map(line => line.textContent)
-                .join('\n');
+        // Show user feedback immediately
+        const button = document.getElementById('download-log');
+        if (button) {
+            const originalText = button.textContent;
+            button.textContent = 'Downloading...';
+            button.disabled = true;
             
-            const blob = new Blob([content], { type: 'text/plain' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = filename + '_page.txt';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
+            // Reset button after delay
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.disabled = false;
+            }, 3000);
         }
+        
+        // Create a temporary link to trigger download
+        const a = document.createElement('a');
+        a.href = baseUrl;
+        a.download = filename;
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        
+    } else {
+        console.error('Could not determine filename for download. URL parts:', pathParts);
+        alert('Error: Could not determine filename for download. Please check the browser console for details.');
     }
 }
 

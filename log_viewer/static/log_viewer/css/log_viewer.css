@@ -1445,6 +1445,64 @@
     border-color: #334155;
 }
 
+/* Download link styles */
+.download-link {
+    color: #6b7280;
+    text-decoration: none;
+    font-size: 14px;
+    margin-left: 8px;
+    padding: 2px 4px;
+    border-radius: 3px;
+    transition: all 0.2s;
+}
+
+.download-link:hover {
+    color: #007cba;
+    background-color: #f3f4f6;
+}
+
+.rotational-file-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.rotational-file-link {
+    flex-grow: 1;
+}
+
+.rotational-file-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Dark mode download link styles */
+[data-theme="dark"] .download-link,
+.theme-dark .download-link {
+    color: #9ca3af;
+}
+
+[data-theme="dark"] .download-link:hover,
+.theme-dark .download-link:hover {
+    color: #60a5fa;
+    background-color: #374151;
+}
+
+[data-theme="dark"] .log-file-actions a.button.secondary,
+.theme-dark .log-file-actions a.button.secondary {
+    background-color: #6b7280;
+    color: white;
+    border-color: #6b7280;
+}
+
+[data-theme="dark"] .log-file-actions a.button.secondary:hover,
+.theme-dark .log-file-actions a.button.secondary:hover {
+    background-color: #4b5563;
+    border-color: #4b5563;
+}
+
 /* Automatic dark mode support (fallback) */
 @media (prefers-color-scheme: dark) {
     body:not(.light-mode) .rotational-group {
