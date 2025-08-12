@@ -2066,3 +2066,45 @@ INFO 2025-08-13 00:48:44,072 basehttp: "GET /admin/ HTTP/1.1" 200 4556
 INFO 2025-08-13 00:48:51,512 basehttp: "GET /admin/ HTTP/1.1" 200 4556
 INFO 2025-08-13 00:49:17,320 basehttp: "GET /admin/ HTTP/1.1" 200 4556
 INFO 2025-08-13 00:50:08,582 basehttp: "GET /admin/logs/ HTTP/1.1" 200 11910
+INFO 2025-08-13 00:55:27,118 basehttp: "GET /admin/logs/ HTTP/1.1" 200 12005
+INFO 2025-08-13 00:58:01,055 basehttp: "GET /admin/logs/ HTTP/1.1" 200 11910
+INFO 2025-08-13 00:58:02,565 basehttp: "GET /admin/logs/ HTTP/1.1" 200 11910
+INFO 2025-08-13 00:58:03,233 basehttp: "GET /admin/logs/ HTTP/1.1" 200 11910
+INFO 2025-08-13 00:58:03,450 basehttp: "GET /admin/logs/ HTTP/1.1" 200 11910
+INFO 2025-08-13 00:58:10,411 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 30853
+INFO 2025-08-13 01:00:12,139 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 31603
+INFO 2025-08-13 01:00:14,077 basehttp: "GET /admin/logs/ HTTP/1.1" 200 11910
+INFO 2025-08-13 01:00:15,698 basehttp: "GET /admin/logs/ HTTP/1.1" 200 11910
+INFO 2025-08-13 01:00:17,117 basehttp: "GET /admin/logs/ HTTP/1.1" 200 11910
+INFO 2025-08-13 01:00:22,588 basehttp: "GET /admin/logs/ HTTP/1.1" 200 11910
+INFO 2025-08-13 01:00:22,724 basehttp: "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-08-13 01:00:22,725 basehttp: "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-08-13 01:00:22,727 basehttp: "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-08-13 01:00:22,728 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 200 29950
+INFO 2025-08-13 01:00:22,730 basehttp: "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-08-13 01:00:22,730 basehttp: "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-08-13 01:00:22,754 basehttp: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+WARNING 2025-08-13 01:00:22,797 log: Not Found: /favicon.ico
+WARNING 2025-08-13 01:00:22,797 basehttp: "GET /favicon.ico HTTP/1.1" 404 2211
+INFO 2025-08-13 01:00:23,320 basehttp: "GET /admin/logs/ HTTP/1.1" 200 11910
+INFO 2025-08-13 01:00:23,347 basehttp: "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-08-13 01:00:23,349 basehttp: "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-08-13 01:00:23,349 basehttp: "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-08-13 01:00:23,349 basehttp: "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-08-13 01:00:23,351 basehttp: "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-08-13 01:00:23,351 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 200 29950
+INFO 2025-08-13 01:00:23,354 basehttp: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+WARNING 2025-08-13 01:00:23,393 log: Not Found: /favicon.ico
+WARNING 2025-08-13 01:00:23,394 basehttp: "GET /favicon.ico HTTP/1.1" 404 2211
+INFO 2025-08-13 01:00:24,234 basehttp: "GET /admin/logs/ HTTP/1.1" 200 11910
+INFO 2025-08-13 01:00:24,257 basehttp: "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-08-13 01:00:24,260 basehttp: "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-08-13 01:00:24,262 basehttp: "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-08-13 01:00:24,262 basehttp: "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-08-13 01:00:24,264 basehttp: "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-08-13 01:00:24,264 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 200 29950
+INFO 2025-08-13 01:00:24,268 basehttp: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+WARNING 2025-08-13 01:00:24,306 log: Not Found: /favicon.ico
+WARNING 2025-08-13 01:00:24,307 basehttp: "GET /favicon.ico HTTP/1.1" 404 2211
+INFO 2025-08-13 01:00:37,680 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 19903
+INFO 2025-08-13 01:00:37,712 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 304 0
