@@ -885,3 +885,484 @@ INFO 2025-08-12 15:22:31,381 basehttp: "GET /admin/logs/django.log/?page=36 HTTP
 INFO 2025-08-12 15:22:31,413 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 304 0
 INFO 2025-08-12 15:22:31,413 basehttp: "GET /static/log_viewer/js/log_viewer.js HTTP/1.1" 304 0
 INFO 2025-08-12 15:22:33,386 basehttp: "GET /admin/logs/django.log/?page=36 HTTP/1.1" 200 21325
+ERROR 2025-08-12 15:23:37,024 log: Internal Server Error: /admin/logs/
+Traceback (most recent call last):
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'ex{%'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\response.py", line 74, in resolve_template
+    return get_template(template, using=self.using)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 577, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 1: 'ex{%'. Did you forget to register or load this tag?
+ERROR 2025-08-12 15:23:37,027 basehttp: "GET /admin/logs/ HTTP/1.1" 500 165037
+INFO 2025-08-12 15:23:44,491 autoreload: D:\projects\django-admin-log-viewer\log_viewer\admin.py changed, reloading.
+INFO 2025-08-12 15:23:45,018 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-12 15:24:06,455 autoreload: D:\projects\django-admin-log-viewer\log_viewer\admin.py changed, reloading.
+INFO 2025-08-12 15:24:06,968 autoreload: Watching for file changes with StatReloader
+ERROR 2025-08-12 15:26:45,368 log: Internal Server Error: /admin/logs/
+Traceback (most recent call last):
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'ex{%'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\response.py", line 74, in resolve_template
+    return get_template(template, using=self.using)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 577, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 1: 'ex{%'. Did you forget to register or load this tag?
+ERROR 2025-08-12 15:26:45,372 basehttp: "GET /admin/logs/ HTTP/1.1" 500 165174
+ERROR 2025-08-12 15:26:48,194 log: Internal Server Error: /admin/logs/
+Traceback (most recent call last):
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'ex{%'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\response.py", line 74, in resolve_template
+    return get_template(template, using=self.using)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 577, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 1: 'ex{%'. Did you forget to register or load this tag?
+ERROR 2025-08-12 15:26:48,196 basehttp: "GET /admin/logs/ HTTP/1.1" 500 164856
+ERROR 2025-08-12 15:27:12,999 log: Internal Server Error: /admin/logs/
+Traceback (most recent call last):
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'ex{%'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\response.py", line 74, in resolve_template
+    return get_template(template, using=self.using)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 577, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 1: 'ex{%'. Did you forget to register or load this tag?
+ERROR 2025-08-12 15:27:13,001 basehttp: "GET /admin/logs/ HTTP/1.1" 500 164993
+INFO 2025-08-12 15:27:49,909 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-12 15:28:49,063 autoreload: Watching for file changes with StatReloader
+ERROR 2025-08-12 15:28:53,944 log: Internal Server Error: /admin/logs/
+Traceback (most recent call last):
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'ex{%'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\response.py", line 74, in resolve_template
+    return get_template(template, using=self.using)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 577, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 1: 'ex{%'. Did you forget to register or load this tag?
+ERROR 2025-08-12 15:28:53,947 basehttp: "GET /admin/logs/ HTTP/1.1" 500 164993
+ERROR 2025-08-12 15:28:54,897 log: Internal Server Error: /admin/logs/
+Traceback (most recent call last):
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'ex{%'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\response.py", line 74, in resolve_template
+    return get_template(template, using=self.using)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 577, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 1: 'ex{%'. Did you forget to register or load this tag?
+ERROR 2025-08-12 15:28:54,899 basehttp: "GET /admin/logs/ HTTP/1.1" 500 164993
+INFO 2025-08-12 15:33:58,059 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-12 15:40:20,707 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-12 15:41:27,207 autoreload: D:\projects\django-admin-log-viewer\myproject\myproject\settings.py changed, reloading.
+INFO 2025-08-12 15:41:27,582 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-12 15:41:46,917 autoreload: D:\projects\django-admin-log-viewer\myproject\myproject\settings.py changed, reloading.
+INFO 2025-08-12 15:41:47,331 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-12 15:41:58,617 autoreload: D:\projects\django-admin-log-viewer\myproject\myproject\settings.py changed, reloading.
+INFO 2025-08-12 15:41:59,008 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-12 15:42:31,540 basehttp: "GET /admin/ HTTP/1.1" 200 4556
+INFO 2025-08-12 15:42:31,569 basehttp: "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-08-12 15:42:31,569 basehttp: "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-08-12 15:42:31,571 basehttp: "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2025-08-12 15:42:31,571 basehttp: "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+INFO 2025-08-12 15:42:31,573 basehttp: "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-08-12 15:42:31,573 basehttp: "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-08-12 15:42:31,575 basehttp: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+WARNING 2025-08-12 15:42:31,695 log: Not Found: /favicon.ico
+WARNING 2025-08-12 15:42:31,695 basehttp: "GET /favicon.ico HTTP/1.1" 404 2211
+INFO 2025-08-12 15:42:33,233 basehttp: "GET /admin/ HTTP/1.1" 200 4556
+ERROR 2025-08-12 15:42:38,379 log: Internal Server Error: /admin/logs/
+Traceback (most recent call last):
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'ex{%'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\template\response.py", line 74, in resolve_template
+    return get_template(template, using=self.using)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\template\base.py", line 577, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 1: 'ex{%'. Did you forget to register or load this tag?
+ERROR 2025-08-12 15:42:38,383 basehttp: "GET /admin/logs/ HTTP/1.1" 500 167098
+INFO 2025-08-12 15:43:18,873 autoreload: D:\projects\django-admin-log-viewer\myproject\myproject\settings.py changed, reloading.
+INFO 2025-08-12 15:43:19,227 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-12 15:43:42,630 autoreload: Watching for file changes with StatReloader
+ERROR 2025-08-12 15:43:47,145 log: Internal Server Error: /admin/logs/
+Traceback (most recent call last):
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'ex{%'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\response.py", line 74, in resolve_template
+    return get_template(template, using=self.using)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\ammah\AppData\Roaming\Python\Python312\site-packages\django\template\base.py", line 577, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 1: 'ex{%'. Did you forget to register or load this tag?
+ERROR 2025-08-12 15:43:47,148 basehttp: "GET /admin/logs/ HTTP/1.1" 500 164993
+INFO 2025-08-12 15:44:45,135 basehttp: "GET /admin/logs/ HTTP/1.1" 200 7079
+INFO 2025-08-12 15:44:45,212 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 200 12978
+INFO 2025-08-12 15:44:48,572 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 32346
+INFO 2025-08-12 15:44:48,624 basehttp: "GET /static/log_viewer/js/log_viewer.js HTTP/1.1" 200 26923
+INFO 2025-08-12 15:46:05,471 autoreload: D:\projects\django-admin-log-viewer\log_viewer\admin.py changed, reloading.
+INFO 2025-08-12 15:46:06,093 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-12 15:46:30,825 basehttp: "GET /admin/logs/django.log/?page=2 HTTP/1.1" 200 32383
+INFO 2025-08-12 15:46:30,863 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 304 0
+INFO 2025-08-12 15:46:30,865 basehttp: "GET /static/log_viewer/js/log_viewer.js HTTP/1.1" 304 0
+INFO 2025-08-12 15:46:33,905 autoreload: D:\projects\django-admin-log-viewer\log_viewer\admin.py changed, reloading.
+INFO 2025-08-12 15:46:34,423 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-12 15:46:35,678 autoreload: D:\projects\django-admin-log-viewer\myproject\myproject\settings.py changed, reloading.
+INFO 2025-08-12 15:46:36,166 autoreload: Watching for file changes with StatReloader
