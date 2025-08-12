@@ -640,18 +640,22 @@ class LogViewer {
     }
     
     scrollToBottom() {
-        // Scroll to the bottom of the log content smoothly
+        // Only scroll within the log content container, not the entire page
         const logContainer = document.querySelector('.log-content');
         if (logContainer) {
-            setTimeout(() => {
-                logContainer.scrollTop = logContainer.scrollHeight;
-            }, 100); // Small delay to ensure content is rendered
-        }
-        
-        // Alternative: scroll to the last log row if container scroll doesn't work
-        const lastRow = document.querySelector('#log-lines tr:last-child');
-        if (lastRow) {
-            lastRow.scrollIntoView({ behavior: 'smooth', block: 'end' });
+            // Check if user has manually scrolled up - if so, don't auto-scroll
+            const isNearBottom = logContainer.scrollTop + logContainer.clientHeight >= logContainer.scrollHeight - 50;
+            
+            // Only auto-scroll if user is already near the bottom or this is the initial load
+            if (isNearBottom || this.refreshCount <= 1) {
+                setTimeout(() => {
+                    // Smooth scroll to bottom of just the log content area
+                    logContainer.scrollTo({
+                        top: logContainer.scrollHeight,
+                        behavior: 'smooth'
+                    });
+                }, 100); // Small delay to ensure content is rendered
+            }
         }
     }
     
