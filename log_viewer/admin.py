@@ -3,7 +3,7 @@ from django.urls import path
 from django.http import JsonResponse
 from django.template.response import TemplateResponse
 from django.contrib.admin import AdminSite
-from .utils import get_log_files, read_log_file, format_log_line
+from .utils import get_log_files, read_log_file_multiline_aware
 
 
 class LogViewerAdminMixin:
@@ -89,32 +89,28 @@ class LogViewerAdminMixin:
         page_length = getattr(settings, 'LOG_VIEWER_PAGE_LENGTH', 25)
         
         if live_mode and not selected_file.get('is_rotational'):
-            # In live mode, always show the latest logs (last page)
-            # First get total lines to calculate the last page
-            temp_log_data = read_log_file(selected_file['path'], page_length, 0)
-            total_pages = max(1, (temp_log_data['total_lines'] + page_length - 1) // page_length)
+            # In live mode, always show the latest entries (last page)
+            # First get total entries to calculate the last page
+            temp_data = read_log_file_multiline_aware(selected_file['path'], page_length, 0, filename)
+            total_pages = max(1, (temp_data['total_entries'] + page_length - 1) // page_length)
             page = total_pages
-            start_line = (page - 1) * page_length
-            log_data = read_log_file(selected_file['path'], page_length, start_line)
+            start_entry = (page - 1) * page_length
+            log_data = read_log_file_multiline_aware(selected_file['path'], page_length, start_entry, filename)
         else:
             # In manual mode, show specific page
-            # First get total lines to validate page number
-            temp_log_data = read_log_file(selected_file['path'], page_length, 0)
-            total_pages = max(1, (temp_log_data['total_lines'] + page_length - 1) // page_length)
+            # First get total entries to validate page number
+            temp_data = read_log_file_multiline_aware(selected_file['path'], page_length, 0, filename)
+            total_pages = max(1, (temp_data['total_entries'] + page_length - 1) // page_length)
             # Ensure page is within valid range
             page = max(1, min(page, total_pages))
-            start_line = (page - 1) * page_length
-            log_data = read_log_file(selected_file['path'], page_length, start_line)
+            start_entry = (page - 1) * page_length
+            log_data = read_log_file_multiline_aware(selected_file['path'], page_length, start_entry, filename)
         
-        # Format log lines
-        formatted_lines = []
-        for i, line in enumerate(log_data['lines']):
-            formatted_line = format_log_line(line, start_line + i + 1)
-            formatted_lines.append(formatted_line)
+        # Get formatted entries (already processed with multi-line support)
+        formatted_lines = log_data['entries']
         
         # Calculate pagination info
-        # Use the actual total_lines from the final log_data, not temp_log_data
-        total_pages = max(1, (log_data['total_lines'] + page_length - 1) // page_length)
+        total_pages = max(1, (log_data['total_entries'] + page_length - 1) // page_length)
         
         context = {
             **self.each_context(request),
@@ -125,8 +121,9 @@ class LogViewerAdminMixin:
             'current_page': page,
             'total_pages': total_pages,
             'total_lines': log_data['total_lines'],
-            'start_line': log_data['start_line'] + 1,
-            'end_line': log_data['end_line'],
+            'total_entries': log_data['total_entries'],
+            'start_line': log_data['actual_start_line'],
+            'end_line': log_data['actual_end_line'],
             'page_length': page_length,
             'live_mode': live_mode,
             'is_rotational': selected_file.get('is_rotational', False),
@@ -188,37 +185,35 @@ class LogViewerAdminMixin:
             page = 1
         
         if live_mode:
-            # In live mode, always get the latest logs (last page)
-            # First get total lines to calculate the last page
-            temp_log_data = read_log_file(selected_file['path'], page_length, 0)
-            total_pages = max(1, (temp_log_data['total_lines'] + page_length - 1) // page_length)
+            # In live mode, always get the latest entries (last page)
+            # First get total entries to calculate the last page
+            temp_data = read_log_file_multiline_aware(selected_file['path'], page_length, 0, filename)
+            total_pages = max(1, (temp_data['total_entries'] + page_length - 1) // page_length)
             page = total_pages
-            start_line = (page - 1) * page_length
-            log_data = read_log_file(selected_file['path'], page_length, start_line)
+            start_entry = (page - 1) * page_length
+            log_data = read_log_file_multiline_aware(selected_file['path'], page_length, start_entry, filename)
         else:
             # In normal mode, get specific page
-            # First get total lines to validate page number
-            temp_log_data = read_log_file(selected_file['path'], page_length, 0)
-            total_pages = max(1, (temp_log_data['total_lines'] + page_length - 1) // page_length)
+            # First get total entries to validate page number
+            temp_data = read_log_file_multiline_aware(selected_file['path'], page_length, 0, filename)
+            total_pages = max(1, (temp_data['total_entries'] + page_length - 1) // page_length)
             # Ensure page is within valid range
             page = max(1, min(page, total_pages))
-            start_line = (page - 1) * page_length
-            log_data = read_log_file(selected_file['path'], page_length, start_line)
+            start_entry = (page - 1) * page_length
+            log_data = read_log_file_multiline_aware(selected_file['path'], page_length, start_entry, filename)
         
-        # Format log lines
-        formatted_lines = []
-        for i, line in enumerate(log_data['lines']):
-            formatted_line = format_log_line(line, start_line + i + 1)
-            formatted_lines.append(formatted_line)
+        # Get formatted entries (already processed with multi-line support)
+        formatted_lines = log_data['entries']
         
         # Calculate total pages
-        total_pages = max(1, (log_data['total_lines'] + page_length - 1) // page_length)
+        total_pages = max(1, (log_data['total_entries'] + page_length - 1) // page_length)
         
         return JsonResponse({
             'log_lines': formatted_lines,
             'total_lines': log_data['total_lines'],
-            'start_line': log_data['start_line'] + 1,
-            'end_line': log_data['end_line'],
+            'total_entries': log_data['total_entries'],
+            'start_line': log_data['actual_start_line'],
+            'end_line': log_data['actual_end_line'],
             'current_page': page,
             'total_pages': total_pages,
             'live_mode': live_mode,

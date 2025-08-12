@@ -202,17 +202,20 @@
     letter-spacing: 0.5px;
 }
 
+/* Log level colors - base styles that can be extended */
+.level,
 .level-debug {
     background: #6c757d;
     color: white;
 }
 
 .level-info {
-    background: #17a2b8;
+    background: #0dcaf0;
     color: white;
 }
 
-.level-warning {
+.level-warning,
+.level-warn {
     background: #ffc107;
     color: #212529;
 }
@@ -222,8 +225,24 @@
     color: white;
 }
 
-.level-critical {
+.level-critical,
+.level-fatal {
     background: #6f42c1;
+    color: white;
+}
+
+.level-notice {
+    background: #198754;
+    color: white;
+}
+
+.level-alert {
+    background: #fd7e14;
+    color: white;
+}
+
+.level-emergency {
+    background: #d63384;
     color: white;
 }
 
@@ -233,20 +252,79 @@
     border-left: 3px solid #dc3545;
 }
 
-.log-level-critical {
+.log-level-critical,
+.log-level-fatal {
     background: rgba(111, 66, 193, 0.05);
     border-left: 3px solid #6f42c1;
 }
 
-.log-level-warning {
+.log-level-warning,
+.log-level-warn {
     background: rgba(255, 193, 7, 0.05);
     border-left: 3px solid #ffc107;
 }
+
+.log-level-notice {
+    background: rgba(25, 135, 84, 0.05);
+    border-left: 3px solid #198754;
+}
+
+.log-level-alert {
+    background: rgba(253, 126, 20, 0.05);
+    border-left: 3px solid #fd7e14;
+}
+
+.log-level-emergency {
+    background: rgba(214, 51, 132, 0.05);
+    border-left: 3px solid #d63384;
+}
+
+/* Level text in log lines */
+.log-line .level-text {
+    font-weight: 600;
+    padding: 1px 4px;
+    border-radius: 2px;
+}
+
+.log-line .level-text.debug { color: #6c757d; }
+.log-line .level-text.info { color: #0dcaf0; }
+.log-line .level-text.warning,
+.log-line .level-text.warn { color: #ffc107; }
+.log-line .level-text.error { color: #dc3545; }
+.log-line .level-text.critical,
+.log-line .level-text.fatal { color: #6f42c1; }
+.log-line .level-text.notice { color: #198754; }
+.log-line .level-text.alert { color: #fd7e14; }
+.log-line .level-text.emergency { color: #d63384; }
 
 /* Message column */
 .message {
     word-break: break-word;
     line-height: 1.4;
+}
+
+/* Module column styling */
+.module {
+    font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+    font-size: 12px;
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
+}
+
+.module-name {
+    background: rgba(0, 123, 255, 0.1);
+    padding: 2px 6px;
+    border-radius: 3px;
+    color: #007bff;
+    font-weight: 500;
+}
+
+.no-module {
+    color: #ccc;
+    font-style: italic;
 }
 
 /* Timestamp */
@@ -1108,7 +1186,10 @@
     background-color: rgba(241, 76, 76, 0.1);
 }
 
+/* Dark mode level badge colors */
+[data-theme="dark"] .level,
 [data-theme="dark"] .level-debug,
+.theme-dark .level,
 .theme-dark .level-debug {
     background: #4a90e2;
     color: white;
@@ -1121,7 +1202,9 @@
 }
 
 [data-theme="dark"] .level-warning,
-.theme-dark .level-warning {
+[data-theme="dark"] .level-warn,
+.theme-dark .level-warning,
+.theme-dark .level-warn {
     background: #f0ad4e;
     color: #212529;
 }
@@ -1133,15 +1216,116 @@
 }
 
 [data-theme="dark"] .level-critical,
-.theme-dark .level-critical {
+[data-theme="dark"] .level-fatal,
+.theme-dark .level-critical,
+.theme-dark .level-fatal {
     background: #8b5cf6;
     color: white;
 }
 
+[data-theme="dark"] .level-notice,
+.theme-dark .level-notice {
+    background: #28a745;
+    color: white;
+}
+
+[data-theme="dark"] .level-alert,
+.theme-dark .level-alert {
+    background: #fd7e14;
+    color: white;
+}
+
+[data-theme="dark"] .level-emergency,
+.theme-dark .level-emergency {
+    background: #e83e8c;
+    color: white;
+}
+
+/* Dark mode log line highlighting */
 [data-theme="dark"] .log-level-error,
 .theme-dark .log-level-error {
     background: rgba(217, 83, 79, 0.1);
     border-left-color: #d9534f;
+}
+
+[data-theme="dark"] .log-level-critical,
+[data-theme="dark"] .log-level-fatal,
+.theme-dark .log-level-critical,
+.theme-dark .log-level-fatal {
+    background: rgba(139, 92, 246, 0.1);
+    border-left-color: #8b5cf6;
+}
+
+[data-theme="dark"] .log-level-warning,
+[data-theme="dark"] .log-level-warn,
+.theme-dark .log-level-warning,
+.theme-dark .log-level-warn {
+    background: rgba(240, 173, 78, 0.1);
+    border-left-color: #f0ad4e;
+}
+
+[data-theme="dark"] .log-level-notice,
+.theme-dark .log-level-notice {
+    background: rgba(40, 167, 69, 0.1);
+    border-left-color: #28a745;
+}
+
+[data-theme="dark"] .log-level-alert,
+.theme-dark .log-level-alert {
+    background: rgba(253, 126, 20, 0.1);
+    border-left-color: #fd7e14;
+}
+
+[data-theme="dark"] .log-level-emergency,
+.theme-dark .log-level-emergency {
+    background: rgba(232, 62, 140, 0.1);
+    border-left-color: #e83e8c;
+}
+
+/* Dark mode level text in log lines */
+[data-theme="dark"] .log-line .level-text.debug,
+.theme-dark .log-line .level-text.debug { color: #9cdcfe; }
+
+[data-theme="dark"] .log-line .level-text.info,
+.theme-dark .log-line .level-text.info { color: #4fc1ff; }
+
+[data-theme="dark"] .log-line .level-text.warning,
+[data-theme="dark"] .log-line .level-text.warn,
+.theme-dark .log-line .level-text.warning,
+.theme-dark .log-line .level-text.warn { color: #ffcc02; }
+
+[data-theme="dark"] .log-line .level-text.error,
+.theme-dark .log-line .level-text.error { color: #f48771; }
+
+[data-theme="dark"] .log-line .level-text.critical,
+[data-theme="dark"] .log-line .level-text.fatal,
+.theme-dark .log-line .level-text.critical,
+.theme-dark .log-line .level-text.fatal { color: #f14c4c; }
+
+[data-theme="dark"] .log-line .level-text.notice,
+.theme-dark .log-line .level-text.notice { color: #28a745; }
+
+[data-theme="dark"] .log-line .level-text.alert,
+.theme-dark .log-line .level-text.alert { color: #fd7e14; }
+
+[data-theme="dark"] .log-line .level-text.emergency,
+.theme-dark .log-line .level-text.emergency { color: #e83e8c; }
+
+/* Dark mode module column styles */
+[data-theme="dark"] .module,
+.theme-dark .module {
+    color: #94a3b8;
+}
+
+[data-theme="dark"] .module-name,
+.theme-dark .module-name {
+    background: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+}
+
+[data-theme="dark"] .no-module,
+.theme-dark .no-module {
+    color: #64748b;
 }
 
 [data-theme="dark"] .log-level-critical,

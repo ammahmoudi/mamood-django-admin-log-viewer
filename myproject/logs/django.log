@@ -2807,3 +2807,132 @@ tz
 ERROR 2025-08-13 01:27:40,681 basehttp: "GET /admin/logs/celery_beat.log/ HTTP/1.1" 500 241444
 INFO 2025-08-13 01:27:51,793 autoreload: D:\projects\django-admin-log-viewer\log_viewer\admin.py changed, reloading.
 INFO 2025-08-13 01:27:52,478 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 01:30:36,858 basehttp: "GET /admin/logs/celery_beat.log/ HTTP/1.1" 200 16344
+INFO 2025-08-13 01:30:36,964 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 200 31174
+INFO 2025-08-13 01:30:36,970 basehttp: "GET /static/log_viewer/js/log_viewer.js HTTP/1.1" 200 42272
+INFO 2025-08-13 01:30:38,997 basehttp: "GET /admin/logs/ HTTP/1.1" 200 15207
+INFO 2025-08-13 01:30:46,818 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 23202
+INFO 2025-08-13 01:31:34,527 autoreload: D:\projects\django-admin-log-viewer\myproject\myproject\settings.py changed, reloading.
+INFO 2025-08-13 01:31:34,964 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 01:32:24,554 autoreload: D:\projects\django-admin-log-viewer\log_viewer\utils.py changed, reloading.
+INFO 2025-08-13 01:32:25,019 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 01:32:51,237 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 26968
+INFO 2025-08-13 01:32:51,274 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 304 0
+INFO 2025-08-13 01:32:51,275 basehttp: "GET /static/log_viewer/js/log_viewer.js HTTP/1.1" 304 0
+INFO 2025-08-13 01:32:52,555 autoreload: D:\projects\django-admin-log-viewer\log_viewer\admin.py changed, reloading.
+INFO 2025-08-13 01:32:53,004 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 01:33:07,498 autoreload: D:\projects\django-admin-log-viewer\log_viewer\admin.py changed, reloading.
+INFO 2025-08-13 01:33:07,952 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 01:33:50,465 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 32240
+INFO 2025-08-13 01:33:50,500 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 304 0
+INFO 2025-08-13 01:33:50,501 basehttp: "GET /static/log_viewer/js/log_viewer.js HTTP/1.1" 304 0
+INFO 2025-08-13 01:34:23,676 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 16150
+INFO 2025-08-13 01:36:04,145 basehttp: "GET /admin/logs/ HTTP/1.1" 200 15207
+INFO 2025-08-13 01:36:04,278 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 200 35077
+INFO 2025-08-13 01:36:06,458 basehttp: "GET /admin/logs/celery_beat.log/ HTTP/1.1" 200 16401
+INFO 2025-08-13 01:36:06,491 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 304 0
+INFO 2025-08-13 01:36:06,494 basehttp: "GET /static/log_viewer/js/log_viewer.js HTTP/1.1" 304 0
+INFO 2025-08-13 01:37:02,776 basehttp: "GET /admin/logs/ HTTP/1.1" 200 15207
+INFO 2025-08-13 01:37:02,813 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 304 0
+INFO 2025-08-13 01:37:04,520 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 22175
+INFO 2025-08-13 01:37:04,553 basehttp: "GET /static/log_viewer/js/log_viewer.js HTTP/1.1" 304 0
+INFO 2025-08-13 01:37:34,049 basehttp: "GET /admin/logs/ HTTP/1.1" 200 15207
+INFO 2025-08-13 01:37:34,081 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 304 0
+INFO 2025-08-13 01:37:38,124 basehttp: "GET /admin/logs/celery_beat.log/ HTTP/1.1" 200 16401
+INFO 2025-08-13 01:40:58,163 autoreload: D:\projects\django-admin-log-viewer\myproject\myproject\settings.py changed, reloading.
+INFO 2025-08-13 01:40:58,664 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 01:41:04,932 autoreload: D:\projects\django-admin-log-viewer\myproject\myproject\settings.py changed, reloading.
+INFO 2025-08-13 01:41:05,405 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 01:41:21,363 basehttp: "GET /admin/logs/celery_beat.log/?page=1 HTTP/1.1" 200 33719
+INFO 2025-08-13 01:41:21,397 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 304 0
+INFO 2025-08-13 01:41:21,397 basehttp: "GET /static/log_viewer/js/log_viewer.js HTTP/1.1" 304 0
+INFO 2025-08-13 01:45:54,985 basehttp: "GET /admin/logs/celery_beat.log/?page=152 HTTP/1.1" 200 36910
+INFO 2025-08-13 01:45:55,031 basehttp: "GET /static/log_viewer/js/log_viewer.js HTTP/1.1" 304 0
+INFO 2025-08-13 01:45:55,093 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 200 35873
+INFO 2025-08-13 01:46:00,336 basehttp: "GET /admin/logs/ HTTP/1.1" 200 15207
+INFO 2025-08-13 01:46:00,370 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 304 0
+INFO 2025-08-13 01:46:02,042 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 16751
+INFO 2025-08-13 01:46:02,073 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 304 0
+INFO 2025-08-13 01:46:11,023 basehttp: "GET /admin/logs/ HTTP/1.1" 200 15207
+INFO 2025-08-13 01:46:11,058 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 304 0
+INFO 2025-08-13 01:46:12,505 basehttp: "GET /admin/logs/application.log/ HTTP/1.1" 200 23027
+INFO 2025-08-13 01:46:14,256 basehttp: "GET /admin/logs/ HTTP/1.1" 200 15207
+INFO 2025-08-13 01:46:16,209 basehttp: "GET /admin/logs/celery_beat.log/ HTTP/1.1" 200 16959
+INFO 2025-08-13 01:46:16,244 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 304 0
+INFO 2025-08-13 01:47:06,866 basehttp: "GET /admin/logs/celery_beat.log/?page=1 HTTP/1.1" 200 38492
+INFO 2025-08-13 01:47:06,903 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 304 0
+INFO 2025-08-13 01:47:16,683 basehttp: "GET /admin/logs/celery_beat.log/?page=2 HTTP/1.1" 200 39242
+INFO 2025-08-13 01:47:16,708 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 304 0
+INFO 2025-08-13 01:47:29,096 basehttp: "GET /admin/logs/celery_beat.log/?page=2 HTTP/1.1" 200 39242
+INFO 2025-08-13 01:47:29,120 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 304 0
+INFO 2025-08-13 01:47:34,048 basehttp: "GET /admin/logs/celery_beat.log/?live=true HTTP/1.1" 200 16959
+INFO 2025-08-13 01:49:23,308 basehttp: "GET /admin/logs/celery_beat.log/?live=true HTTP/1.1" 200 16959
+INFO 2025-08-13 01:49:23,345 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 304 0
+INFO 2025-08-13 01:49:23,366 basehttp: "GET /static/log_viewer/js/log_viewer.js HTTP/1.1" 200 42462
+INFO 2025-08-13 01:49:33,204 basehttp: "GET /admin/logs/ HTTP/1.1" 200 15207
+INFO 2025-08-13 01:49:34,839 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 34660
+INFO 2025-08-13 01:49:34,868 basehttp: "GET /static/log_viewer/js/log_viewer.js HTTP/1.1" 304 0
+INFO 2025-08-13 01:49:46,278 basehttp: "GET /admin/logs/ HTTP/1.1" 200 15207
+INFO 2025-08-13 01:49:46,302 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 304 0
+INFO 2025-08-13 01:49:49,647 basehttp: "GET /admin/logs/celery_beat.log/ HTTP/1.1" 200 16959
+INFO 2025-08-13 01:49:49,679 basehttp: "GET /static/log_viewer/js/log_viewer.js HTTP/1.1" 304 0
+INFO 2025-08-13 01:50:49,630 autoreload: D:\projects\django-admin-log-viewer\log_viewer\utils.py changed, reloading.
+INFO 2025-08-13 01:50:50,074 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 01:51:47,739 autoreload: D:\projects\django-admin-log-viewer\log_viewer\utils.py changed, reloading.
+INFO 2025-08-13 01:51:48,244 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 01:52:36,728 autoreload: D:\projects\django-admin-log-viewer\log_viewer\utils.py changed, reloading.
+INFO 2025-08-13 01:52:37,181 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 01:53:08,559 autoreload: D:\projects\django-admin-log-viewer\log_viewer\utils.py changed, reloading.
+INFO 2025-08-13 01:53:08,982 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 01:53:16,255 autoreload: D:\projects\django-admin-log-viewer\log_viewer\admin.py changed, reloading.
+INFO 2025-08-13 01:53:16,688 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 01:53:36,178 autoreload: D:\projects\django-admin-log-viewer\log_viewer\admin.py changed, reloading.
+INFO 2025-08-13 01:53:36,601 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 01:55:04,556 autoreload: D:\projects\django-admin-log-viewer\log_viewer\admin.py changed, reloading.
+INFO 2025-08-13 01:55:05,034 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 01:55:11,426 autoreload: D:\projects\django-admin-log-viewer\log_viewer\admin.py changed, reloading.
+INFO 2025-08-13 01:55:11,859 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 01:55:31,701 basehttp: "GET /admin/logs/celery_beat.log/?page=48 HTTP/1.1" 200 19520
+INFO 2025-08-13 01:55:31,742 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 304 0
+INFO 2025-08-13 01:55:31,742 basehttp: "GET /static/log_viewer/js/log_viewer.js HTTP/1.1" 304 0
+INFO 2025-08-13 01:56:10,771 basehttp: "GET /admin/logs/celery_beat.log/?page=48 HTTP/1.1" 200 19520
+INFO 2025-08-13 02:25:04,816 basehttp: "GET /admin/logs/celery_beat.log/?page=2 HTTP/1.1" 200 38698
+INFO 2025-08-13 02:25:04,853 basehttp: "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-08-13 02:25:04,853 basehttp: "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-08-13 02:25:04,855 basehttp: "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2025-08-13 02:25:04,855 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 304 0
+INFO 2025-08-13 02:25:04,857 basehttp: "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-08-13 02:25:04,857 basehttp: "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-08-13 02:25:04,857 basehttp: "GET /static/log_viewer/js/log_viewer.js HTTP/1.1" 304 0
+INFO 2025-08-13 02:25:04,859 basehttp: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2025-08-13 02:25:05,357 basehttp: "GET /admin/logs/celery_beat.log/?page=2 HTTP/1.1" 200 38698
+INFO 2025-08-13 02:27:34,436 autoreload: D:\projects\django-admin-log-viewer\log_viewer\utils.py changed, reloading.
+INFO 2025-08-13 02:27:34,882 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 02:27:43,175 autoreload: D:\projects\django-admin-log-viewer\log_viewer\utils.py changed, reloading.
+INFO 2025-08-13 02:27:43,599 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 02:27:56,927 autoreload: D:\projects\django-admin-log-viewer\log_viewer\utils.py changed, reloading.
+INFO 2025-08-13 02:27:57,445 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 02:28:45,287 basehttp: "GET /admin/logs/celery_beat.log/?page=2 HTTP/1.1" 200 38698
+INFO 2025-08-13 02:28:45,323 basehttp: "GET /static/log_viewer/js/log_viewer.js HTTP/1.1" 304 0
+INFO 2025-08-13 02:31:14,321 autoreload: D:\projects\django-admin-log-viewer\log_viewer\utils.py changed, reloading.
+INFO 2025-08-13 02:31:14,770 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 02:31:21,049 autoreload: D:\projects\django-admin-log-viewer\log_viewer\admin.py changed, reloading.
+INFO 2025-08-13 02:31:21,502 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 02:31:27,771 autoreload: D:\projects\django-admin-log-viewer\log_viewer\admin.py changed, reloading.
+INFO 2025-08-13 02:31:28,209 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 02:31:47,666 autoreload: D:\projects\django-admin-log-viewer\log_viewer\admin.py changed, reloading.
+INFO 2025-08-13 02:31:48,098 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 02:32:03,536 autoreload: D:\projects\django-admin-log-viewer\log_viewer\admin.py changed, reloading.
+INFO 2025-08-13 02:32:03,972 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 02:32:27,487 autoreload: D:\projects\django-admin-log-viewer\log_viewer\admin.py changed, reloading.
+INFO 2025-08-13 02:32:27,941 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 02:32:35,477 autoreload: D:\projects\django-admin-log-viewer\log_viewer\admin.py changed, reloading.
+INFO 2025-08-13 02:32:35,930 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 02:34:06,132 autoreload: D:\projects\django-admin-log-viewer\log_viewer\utils.py changed, reloading.
+INFO 2025-08-13 02:34:06,573 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 02:36:11,464 basehttp: "GET /admin/logs/celery_beat.log/?page=2 HTTP/1.1" 200 53705
+INFO 2025-08-13 02:36:11,506 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 304 0
+INFO 2025-08-13 02:36:11,507 basehttp: "GET /static/log_viewer/js/log_viewer.js HTTP/1.1" 304 0
+INFO 2025-08-13 02:38:18,619 basehttp: "GET /admin/logs/ HTTP/1.1" 200 15207
+INFO 2025-08-13 02:38:22,141 basehttp: "GET /admin/ HTTP/1.1" 200 4556
+INFO 2025-08-13 02:38:22,173 basehttp: "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0

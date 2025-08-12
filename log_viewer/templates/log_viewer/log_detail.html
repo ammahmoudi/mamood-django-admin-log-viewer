@@ -127,7 +127,8 @@
         <p><strong>Size:</strong> {{ log_file.size|filesizeformat }}</p>
         <p><strong>Modified:</strong> {{ log_file.modified|date:"Y-m-d H:i:s" }}</p>
         <p><strong>Total Lines:</strong> {{ total_lines }}</p>
-        <p><strong>Showing:</strong> Lines {{ start_line }} - {{ end_line }}</p>
+        <p><strong>Total Entries:</strong> {{ total_entries }}</p>
+        <p><strong>Showing:</strong> Lines {{ start_line }} - {{ end_line }} ({{ log_lines|length }} entries)</p>
         {% if is_rotational %}
         <p><strong>Type:</strong> Historical log file (no live updates)</p>
         {% endif %}
@@ -141,6 +142,7 @@
                     <th width="100">Line(s)</th>
                     <th width="80">Level</th>
                     <th width="180">Timestamp</th>
+                    <th width="120">Module</th>
                     <th>Message</th>
                     <th width="60">Action</th>
                 </tr>
@@ -158,6 +160,13 @@
                         <span class="level-badge level-{{ line.level|lower }}">{{ line.level }}</span>
                     </td>
                     <td class="timestamp">{{ line.timestamp }}</td>
+                    <td class="module">
+                        {% if line.logger %}
+                            <span class="module-name">{{ line.logger }}</span>
+                        {% else %}
+                            <span class="no-module">-</span>
+                        {% endif %}
+                    </td>
                     <td class="message">
                         <div class="message-preview">{{ line.content }}</div>
                         {% if line.is_long %}

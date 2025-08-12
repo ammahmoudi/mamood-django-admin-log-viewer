@@ -742,6 +742,9 @@ class LogViewer {
                 <span class="level-badge level-${line.level.toLowerCase()}">${line.level}</span>
             </td>
             <td class="timestamp">${line.timestamp}</td>
+            <td class="module">
+                ${line.logger ? `<span class="module-name">${this.escapeHtml(line.logger)}</span>` : '<span class="no-module">-</span>'}
+            </td>
             <td class="message">
                 <div class="message-preview">${this.escapeHtml(line.content)}</div>
                 ${line.is_long ? '<div class="message-truncated-indicator">Content truncated...</div>' : ''}

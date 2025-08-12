@@ -147,6 +147,46 @@ LOGVIEWER_AUTO_SCROLL_TO_BOTTOM = True  # Automatically scroll to latest logs fo
 # Construct proper log file paths
 LOGVIEWER_LOGS = [os.path.join(LOG_DIR, file) for file in LOG_VIEWER_FILES]
 
+# Log format parsing configuration
+LOG_VIEWER_FORMATS = {
+    'django_default': {
+        'pattern': r'(?P<level>\w+)\s+(?P<timestamp>\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}:\d{2},\d+)\s+(?P<module>[\w\.]+):\s*(?P<message>.*)',
+        'timestamp_format': '%Y-%m-%d %H:%M:%S,%f',
+        'description': 'Django default format: LEVEL YYYY-MM-DD HH:MM:SS,mmm module: message'
+    },
+    'simple': {
+        'pattern': r'(?P<level>\w+):\s*(?P<message>.*)',
+        'timestamp_format': None,
+        'description': 'Simple format: LEVEL: message'
+    },
+    'celery_beat': {
+        'pattern': r'(?P<level>\w+)\s+(?P<timestamp>\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}:\d{2},\d+)\s+(?P<module>[\w\.]+):\s*(?P<message>.*)',
+        'timestamp_format': '%Y-%m-%d %H:%M:%S,%f',
+        'description': 'Celery Beat format: INFO YYYY-MM-DD HH:MM:SS,mmm celery.beat: message'
+    }
+}
+
+# Default log format to use
+LOG_VIEWER_DEFAULT_FORMAT = 'django_default'
+
+# Per-file format overrides
+LOG_VIEWER_FILE_FORMATS = {
+    'django.log': 'django_default',
+    'application.log': 'simple',
+    'celery_beat.log': 'celery_beat',
+}
+
+# Custom log level colors
+LOG_VIEWER_LEVEL_COLORS = {
+    'DEBUG': '#6c757d',    # Gray
+    'INFO': '#0dcaf0',     # Cyan
+    'WARNING': '#ffc107',  # Yellow
+    'WARN': '#ffc107',     # Yellow (alias)
+    'ERROR': '#dc3545',    # Red
+    'CRITICAL': '#6f42c1', # Purple
+    'FATAL': '#6f42c1',    # Purple (alias)
+}
+
 # Configure Django logging to write to our log files
 LOGGING = {
     'version': 1,
