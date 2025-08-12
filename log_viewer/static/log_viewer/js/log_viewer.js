@@ -18,6 +18,18 @@ class LogViewer {
         this.isVisible = true;
         this.lastLogContent = '';
         
+        // Filter state
+        this.filters = {
+            search: '',
+            level: '',
+            timeFrom: '',
+            timeTo: '',
+            regex: '',
+            multilineOnly: ''
+        };
+        this.filteredRows = [];
+        this.originalRows = [];
+        
         this.init();
     }
     
@@ -54,11 +66,57 @@ class LogViewer {
             autoScrollBtn.addEventListener('click', () => this.toggleAutoScroll());
         }
         
+        // Toggle filters panel
+        const toggleFiltersBtn = document.getElementById('toggle-filters');
+        if (toggleFiltersBtn) {
+            toggleFiltersBtn.addEventListener('click', () => this.toggleFiltersPanel());
+        }
+        
+        // Filter controls
+        this.setupFilterControls();
+    }
+    
+    setupFilterControls() {
+        // Search input
+        const searchInput = document.getElementById('search-input');
+        if (searchInput) {
+            searchInput.addEventListener('input', this.debounce(() => this.applyFilters(), 300));
+        }
+        
         // Log level filter
         const levelFilter = document.getElementById('log-level-filter');
         if (levelFilter) {
-            levelFilter.addEventListener('change', (e) => this.filterByLevel(e.target.value));
+            levelFilter.addEventListener('change', () => this.applyFilters());
         }
+        
+        // Time filters
+        const timeFrom = document.getElementById('time-from');
+        const timeTo = document.getElementById('time-to');
+        if (timeFrom) timeFrom.addEventListener('change', () => this.applyFilters());
+        if (timeTo) timeTo.addEventListener('change', () => this.applyFilters());
+        
+        // Regex search
+        const regexSearch = document.getElementById('regex-search');
+        if (regexSearch) {
+            regexSearch.addEventListener('input', this.debounce(() => this.applyFilters(), 500));
+        }
+        
+        // Multiline filter
+        const multilineOnly = document.getElementById('multiline-only');
+        if (multilineOnly) {
+            multilineOnly.addEventListener('change', () => this.applyFilters());
+        }
+        
+        // Quick time filter buttons
+        document.querySelectorAll('.quick-time-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => this.setQuickTimeFilter(e.target.dataset.hours));
+        });
+        
+        // Filter action buttons
+        const applyFiltersBtn = document.getElementById('apply-filters');
+        const clearFiltersBtn = document.getElementById('clear-filters');
+        if (applyFiltersBtn) applyFiltersBtn.addEventListener('click', () => this.applyFilters());
+        if (clearFiltersBtn) clearFiltersBtn.addEventListener('click', () => this.clearFilters());
     }
     
     setupVisibilityDetection() {
@@ -76,6 +134,236 @@ class LogViewer {
             });
         }
     }
+    
+    // Filter and Search Methods
+    toggleFiltersPanel() {
+        const panel = document.getElementById('filters-panel');
+        const btn = document.getElementById('toggle-filters');
+        
+        if (panel.style.display === 'none') {
+            panel.style.display = 'block';
+            btn.textContent = 'Hide Filters';
+        } else {
+            panel.style.display = 'none';
+            btn.textContent = 'Show Filters';
+        }
+    }
+    
+    setQuickTimeFilter(hours) {
+        const now = new Date();
+        const fromTime = new Date(now.getTime() - (hours * 60 * 60 * 1000));
+        
+        const timeFrom = document.getElementById('time-from');
+        const timeTo = document.getElementById('time-to');
+        
+        if (timeFrom) timeFrom.value = this.formatDateTimeLocal(fromTime);
+        if (timeTo) timeTo.value = this.formatDateTimeLocal(now);
+        
+        // Update active button
+        document.querySelectorAll('.quick-time-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        event.target.classList.add('active');
+        
+        this.applyFilters();
+    }
+    
+    formatDateTimeLocal(date) {
+        // Format date for datetime-local input
+        const year = date.getFullYear();
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const day = date.getDate().toString().padStart(2, '0');
+        const hours = date.getHours().toString().padStart(2, '0');
+        const minutes = date.getMinutes().toString().padStart(2, '0');
+        
+        return `${year}-${month}-${day}T${hours}:${minutes}`;
+    }
+    
+    applyFilters() {
+        // Get current filter values
+        this.filters.search = document.getElementById('search-input')?.value || '';
+        this.filters.level = document.getElementById('log-level-filter')?.value || '';
+        this.filters.timeFrom = document.getElementById('time-from')?.value || '';
+        this.filters.timeTo = document.getElementById('time-to')?.value || '';
+        this.filters.regex = document.getElementById('regex-search')?.value || '';
+        this.filters.multilineOnly = document.getElementById('multiline-only')?.value || '';
+        
+        const tbody = document.getElementById('log-lines');
+        if (!tbody) return;
+        
+        const rows = Array.from(tbody.querySelectorAll('tr'));
+        this.originalRows = rows.slice(); // Keep original for clearing filters
+        
+        let visibleCount = 0;
+        
+        rows.forEach(row => {
+            const shouldShow = this.shouldShowRow(row);
+            row.style.display = shouldShow ? '' : 'none';
+            if (shouldShow) visibleCount++;
+        });
+        
+        this.updateFilterStatus(visibleCount, rows.length);
+    }
+    
+    shouldShowRow(row) {
+        // Level filter
+        if (this.filters.level && row.getAttribute('data-level') !== this.filters.level) {
+            return false;
+        }
+        
+        // Multiline filter
+        if (this.filters.multilineOnly === 'multiline' && !row.classList.contains('multiline-entry')) {
+            return false;
+        }
+        if (this.filters.multilineOnly === 'single' && row.classList.contains('multiline-entry')) {
+            return false;
+        }
+        
+        // Get row text content for searching
+        const messageCell = row.querySelector('.message');
+        const timestampCell = row.querySelector('.timestamp');
+        const messageText = messageCell ? messageCell.textContent : '';
+        const timestamp = timestampCell ? timestampCell.textContent : '';
+        
+        // Text search
+        if (this.filters.search) {
+            if (!messageText.toLowerCase().includes(this.filters.search.toLowerCase())) {
+                return false;
+            }
+        }
+        
+        // Regex search
+        if (this.filters.regex) {
+            try {
+                const regex = new RegExp(this.filters.regex, 'i');
+                if (!regex.test(messageText)) {
+                    return false;
+                }
+            } catch (e) {
+                // Invalid regex, ignore this filter
+                console.warn('Invalid regex pattern:', this.filters.regex);
+            }
+        }
+        
+        // Time range filter
+        if ((this.filters.timeFrom || this.filters.timeTo) && timestamp) {
+            const logTime = this.parseLogTimestamp(timestamp);
+            if (logTime) {
+                if (this.filters.timeFrom) {
+                    const fromTime = new Date(this.filters.timeFrom);
+                    if (logTime < fromTime) return false;
+                }
+                if (this.filters.timeTo) {
+                    const toTime = new Date(this.filters.timeTo);
+                    if (logTime > toTime) return false;
+                }
+            }
+        }
+        
+        return true;
+    }
+    
+    parseLogTimestamp(timestampStr) {
+        // Parse timestamp in format "YYYY-MM-DD HH:MM:SS"
+        const match = timestampStr.match(/(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}:\d{2})/);
+        if (match) {
+            return new Date(`${match[1]}T${match[2]}`);
+        }
+        return null;
+    }
+    
+    updateFilterStatus(visibleCount, totalCount) {
+        // Show filter status
+        let statusEl = document.getElementById('filter-status');
+        if (!statusEl) {
+            statusEl = document.createElement('div');
+            statusEl.id = 'filter-status';
+            statusEl.className = 'active-filters';
+            const filtersPanel = document.getElementById('filters-panel');
+            filtersPanel.parentNode.insertBefore(statusEl, filtersPanel.nextSibling);
+        }
+        
+        const hasActiveFilters = Object.values(this.filters).some(value => value !== '');
+        
+        if (hasActiveFilters) {
+            statusEl.style.display = 'block';
+            statusEl.innerHTML = `
+                <strong>Filters Active:</strong> Showing ${visibleCount} of ${totalCount} entries
+                ${this.getActiveFilterTags()}
+            `;
+        } else {
+            statusEl.style.display = 'none';
+        }
+    }
+    
+    getActiveFilterTags() {
+        const tags = [];
+        
+        if (this.filters.search) {
+            tags.push(`<span class="filter-tag">Search: "${this.filters.search}" <span class="remove-filter" onclick="clearSearchFilter()">×</span></span>`);
+        }
+        if (this.filters.level) {
+            tags.push(`<span class="filter-tag">Level: ${this.filters.level} <span class="remove-filter" onclick="clearLevelFilter()">×</span></span>`);
+        }
+        if (this.filters.timeFrom || this.filters.timeTo) {
+            const timeRange = `${this.filters.timeFrom || 'start'} to ${this.filters.timeTo || 'end'}`;
+            tags.push(`<span class="filter-tag">Time: ${timeRange} <span class="remove-filter" onclick="clearTimeFilter()">×</span></span>`);
+        }
+        if (this.filters.regex) {
+            tags.push(`<span class="filter-tag">Regex: ${this.filters.regex} <span class="remove-filter" onclick="clearRegexFilter()">×</span></span>`);
+        }
+        if (this.filters.multilineOnly) {
+            tags.push(`<span class="filter-tag">Type: ${this.filters.multilineOnly} <span class="remove-filter" onclick="clearMultilineFilter()">×</span></span>`);
+        }
+        
+        return tags.length > 0 ? '<br>' + tags.join(' ') : '';
+    }
+    
+    clearFilters() {
+        // Clear all filter inputs
+        document.getElementById('search-input').value = '';
+        document.getElementById('log-level-filter').value = '';
+        document.getElementById('time-from').value = '';
+        document.getElementById('time-to').value = '';
+        document.getElementById('regex-search').value = '';
+        document.getElementById('multiline-only').value = '';
+        
+        // Remove active state from quick time buttons
+        document.querySelectorAll('.quick-time-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        
+        // Clear filters object
+        Object.keys(this.filters).forEach(key => {
+            this.filters[key] = '';
+        });
+        
+        // Show all rows
+        const tbody = document.getElementById('log-lines');
+        if (tbody) {
+            const rows = tbody.querySelectorAll('tr');
+            rows.forEach(row => {
+                row.style.display = '';
+            });
+        }
+        
+        // Update status
+        this.updateFilterStatus(this.originalRows.length, this.originalRows.length);
+    }
+    
+    debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+    
+    // Remove the old filterByLevel method since it's now handled by applyFilters
     
     startAutoRefresh() {
         const shouldRefresh = this.autoRefresh && this.refreshInterval > 0 && 
@@ -253,11 +541,8 @@ class LogViewer {
         // Update info display
         this.updateLogInfo(data);
         
-        // Reapply current filter
-        const currentFilter = document.getElementById('log-level-filter').value;
-        if (currentFilter) {
-            this.filterByLevel(currentFilter);
-        }
+        // Reapply all current filters
+        this.applyFilters();
         
         // Auto-scroll to bottom if enabled
         if (this.autoScrollToBottom) {
@@ -379,6 +664,34 @@ class LogViewer {
     destroy() {
         this.stopAutoRefresh();
     }
+}
+
+// Global functions for filter tag removal
+function clearSearchFilter() {
+    document.getElementById('search-input').value = '';
+    if (window.logViewer) window.logViewer.applyFilters();
+}
+
+function clearLevelFilter() {
+    document.getElementById('log-level-filter').value = '';
+    if (window.logViewer) window.logViewer.applyFilters();
+}
+
+function clearTimeFilter() {
+    document.getElementById('time-from').value = '';
+    document.getElementById('time-to').value = '';
+    document.querySelectorAll('.quick-time-btn').forEach(btn => btn.classList.remove('active'));
+    if (window.logViewer) window.logViewer.applyFilters();
+}
+
+function clearRegexFilter() {
+    document.getElementById('regex-search').value = '';
+    if (window.logViewer) window.logViewer.applyFilters();
+}
+
+function clearMultilineFilter() {
+    document.getElementById('multiline-only').value = '';
+    if (window.logViewer) window.logViewer.applyFilters();
 }
 
 // Export for use in templates

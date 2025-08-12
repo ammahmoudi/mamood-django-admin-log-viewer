@@ -24,15 +24,75 @@
             <button id="refresh-log" class="button default">Refresh</button>
             <button id="auto-refresh-toggle" class="button default">Auto-refresh: OFF</button>
             <button id="auto-scroll-toggle" class="button default">Auto-scroll: ON</button>
-            <select id="log-level-filter" class="form-control">
-                <option value="">All Levels</option>
-                <option value="DEBUG">DEBUG</option>
-                <option value="INFO">INFO</option>
-                <option value="WARNING">WARNING</option>
-                <option value="ERROR">ERROR</option>
-                <option value="CRITICAL">CRITICAL</option>
-            </select>
+            <button id="toggle-filters" class="button default">Show Filters</button>
         </div>
+    </div>
+    
+    <!-- Advanced Filters Panel -->
+    <div id="filters-panel" class="filters-panel" style="display: none;">
+        <div class="filters-row">
+            <div class="filter-group">
+                <label for="search-input">Search Text:</label>
+                <input type="text" id="search-input" class="form-control" placeholder="Search in log messages...">
+            </div>
+            
+            <div class="filter-group">
+                <label for="log-level-filter">Log Level:</label>
+                <select id="log-level-filter" class="form-control">
+                    <option value="">All Levels</option>
+                    <option value="DEBUG">DEBUG</option>
+                    <option value="INFO">INFO</option>
+                    <option value="WARNING">WARNING</option>
+                    <option value="ERROR">ERROR</option>
+                    <option value="CRITICAL">CRITICAL</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="filters-row">
+            <div class="filter-group">
+                <label for="time-from">From Time:</label>
+                <input type="datetime-local" id="time-from" class="form-control">
+            </div>
+            
+            <div class="filter-group">
+                <label for="time-to">To Time:</label>
+                <input type="datetime-local" id="time-to" class="form-control">
+            </div>
+            
+            <div class="filter-group">
+                <label>Quick Time Filters:</label>
+                <div class="quick-time-filters">
+                    <button class="quick-time-btn" data-hours="1">Last Hour</button>
+                    <button class="quick-time-btn" data-hours="6">Last 6 Hours</button>
+                    <button class="quick-time-btn" data-hours="24">Last 24 Hours</button>
+                    <button class="quick-time-btn" data-hours="168">Last Week</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="filters-row">
+            <div class="filter-group">
+                <label for="regex-search">Regex Pattern:</label>
+                <input type="text" id="regex-search" class="form-control" placeholder="Regular expression pattern...">
+                <small class="help-text">Advanced pattern matching (leave empty for text search)</small>
+            </div>
+            
+            <div class="filter-group">
+                <label for="multiline-only">Entry Type:</label>
+                <select id="multiline-only" class="form-control">
+                    <option value="">All Entries</option>
+                    <option value="multiline">Multi-line Only</option>
+                    <option value="single">Single-line Only</option>
+                </select>
+            </div>
+            
+            <div class="filter-group filter-actions">
+                <button id="apply-filters" class="button default">Apply Filters</button>
+                <button id="clear-filters" class="button secondary">Clear All</button>
+            </div>
+        </div>
+    </div>
     </div>
     
     <div class="log-file-info">
@@ -181,7 +241,7 @@ window.onclick = function(event) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    const logViewer = new LogViewer({
+    window.logViewer = new LogViewer({
         filename: '{{ filename }}',
         currentPage: {{ current_page }},
         refreshInterval: {{ refresh_interval }},
