@@ -8,12 +8,12 @@ with open("README.md", "r", encoding="utf-8") as fh:
 setup(
     name="django-admin-log-viewer",
     version="1.0.0",
-    author="Your Name",
-    author_email="your.email@example.com",
+    author="Amirhossein Mahmoudi",
+    author_email="am.mahmoudi@outlook.com",
     description="A Django app to view log files in the admin panel",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/django-admin-log-viewer",
+    url="https://github.com/ammahmoudi/django-admin-log-viewer",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 4 - Beta",
