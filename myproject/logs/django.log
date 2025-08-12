@@ -870,3 +870,18 @@ INFO 2025-08-12 15:17:07,251 basehttp: "GET /admin/logs/django.log/ajax/?page=35
 INFO 2025-08-12 15:17:17,250 basehttp: "GET /admin/logs/django.log/ajax/?page=35&t=1754999237221 HTTP/1.1" 200 9163
 INFO 2025-08-12 15:17:27,245 basehttp: "GET /admin/logs/django.log/ajax/?page=35&t=1754999247217 HTTP/1.1" 200 9711
 INFO 2025-08-12 15:17:37,237 basehttp: "GET /admin/logs/django.log/ajax/?page=35&t=1754999257210 HTTP/1.1" 200 10259
+INFO 2025-08-12 15:18:43,462 basehttp: "GET /admin/logs/django.log/ajax/?page=35&t=1754999323432 HTTP/1.1" 200 10810
+INFO 2025-08-12 15:18:48,035 autoreload: D:\projects\django-admin-log-viewer\log_viewer\middleware.py changed, reloading.
+INFO 2025-08-12 15:18:48,515 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-12 15:19:08,895 autoreload: D:\projects\django-admin-log-viewer\log_viewer\middleware.py changed, reloading.
+INFO 2025-08-12 15:19:09,310 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-12 15:19:24,686 autoreload: D:\projects\django-admin-log-viewer\log_viewer\middleware.py changed, reloading.
+INFO 2025-08-12 15:19:25,139 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-12 15:20:29,601 basehttp: "GET /admin/logs/django.log/?page=35 HTTP/1.1" 200 32610
+INFO 2025-08-12 15:20:29,635 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 304 0
+INFO 2025-08-12 15:20:29,635 basehttp: "GET /static/log_viewer/js/log_viewer.js HTTP/1.1" 304 0
+INFO 2025-08-12 15:20:49,536 basehttp: "GET /admin/logs/django.log/?page=36 HTTP/1.1" 200 18155
+INFO 2025-08-12 15:22:31,381 basehttp: "GET /admin/logs/django.log/?page=36 HTTP/1.1" 200 18947
+INFO 2025-08-12 15:22:31,413 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 304 0
+INFO 2025-08-12 15:22:31,413 basehttp: "GET /static/log_viewer/js/log_viewer.js HTTP/1.1" 304 0
+INFO 2025-08-12 15:22:33,386 basehttp: "GET /admin/logs/django.log/?page=36 HTTP/1.1" 200 21325
