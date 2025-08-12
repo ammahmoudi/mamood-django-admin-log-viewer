@@ -267,16 +267,39 @@ class LogViewer {
     
     createLogRow(line) {
         const row = document.createElement('tr');
-        row.className = `log-line log-level-${line.level.toLowerCase()}`;
+        let className = `log-line log-level-${line.level.toLowerCase()}`;
+        if (line.is_multiline) {
+            className += ' multiline-entry';
+        }
+        row.className = className;
         row.setAttribute('data-level', line.level);
         
+        // Create the view full button if needed
+        let actionCell = '<td class="action"></td>';
+        if (line.is_long || line.is_multiline) {
+            const escapedContent = this.escapeHtml(line.full_content).replace(/'/g, "&#39;");
+            actionCell = `<td class="action">
+                <button class="view-full-btn" onclick="showLogModal('${escapedContent}', '${line.level}', '${line.timestamp}', '${line.line_range}')">View Full</button>
+            </td>`;
+        }
+        
+        // Add multiline indicator
+        let lineNumberCell = line.line_range || line.number;
+        if (line.is_multiline) {
+            lineNumberCell += ' <span class="multiline-indicator" title="Multi-line entry (' + line.line_count + ' lines)">📄</span>';
+        }
+        
         row.innerHTML = `
-            <td class="line-number">${line.number}</td>
+            <td class="line-number">${lineNumberCell}</td>
             <td class="log-level">
                 <span class="level-badge level-${line.level.toLowerCase()}">${line.level}</span>
             </td>
             <td class="timestamp">${line.timestamp}</td>
-            <td class="message">${this.escapeHtml(line.content)}</td>
+            <td class="message">
+                <div class="message-preview">${this.escapeHtml(line.content)}</div>
+                ${line.is_long ? '<div class="message-truncated-indicator">Content truncated...</div>' : ''}
+            </td>
+            ${actionCell}
         `;
         
         return row;

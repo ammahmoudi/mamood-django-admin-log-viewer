@@ -685,3 +685,26 @@ INFO 2025-08-12 14:46:55,687 basehttp: "GET /admin/logs/celery_beat.log/?page=2 
 INFO 2025-08-12 14:47:05,717 basehttp: "GET /admin/logs/celery_beat.log/ajax/?page=2&t=1754997425711 HTTP/1.1" 200 9609
 INFO 2025-08-12 14:47:38,556 autoreload: D:\projects\django-admin-log-viewer\log_viewer\admin.py changed, reloading.
 INFO 2025-08-12 14:47:39,059 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-12 14:51:19,802 autoreload: D:\projects\django-admin-log-viewer\log_viewer\utils.py changed, reloading.
+INFO 2025-08-12 14:51:20,264 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-12 14:51:48,691 autoreload: D:\projects\django-admin-log-viewer\log_viewer\utils.py changed, reloading.
+INFO 2025-08-12 14:51:49,172 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-12 14:52:15,595 autoreload: D:\projects\django-admin-log-viewer\log_viewer\utils.py changed, reloading.
+INFO 2025-08-12 14:52:16,087 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-12 14:54:51,224 basehttp: "GET /admin/logs/celery_beat.log/?page=2 HTTP/1.1" 200 45090
+INFO 2025-08-12 14:54:51,257 basehttp: "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-08-12 14:54:51,259 basehttp: "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-08-12 14:54:51,260 basehttp: "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-08-12 14:54:51,261 basehttp: "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2025-08-12 14:54:51,262 basehttp: "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-08-12 14:54:51,375 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 200 9145
+INFO 2025-08-12 14:54:51,377 basehttp: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2025-08-12 14:54:51,399 basehttp: "GET /static/log_viewer/js/log_viewer.js HTTP/1.1" 200 14292
+INFO 2025-08-12 14:55:01,434 basehttp: "GET /admin/logs/celery_beat.log/ajax/?page=2&t=1754997901421 HTTP/1.1" 200 37873
+INFO 2025-08-12 14:55:11,426 basehttp: "GET /admin/logs/celery_beat.log/ajax/?page=2&t=1754997911418 HTTP/1.1" 200 37873
+INFO 2025-08-12 14:55:21,426 basehttp: "GET /admin/logs/celery_beat.log/ajax/?page=2&t=1754997921418 HTTP/1.1" 200 37873
+INFO 2025-08-12 14:55:36,819 basehttp: "GET /admin/logs/celery_beat.log/ajax/?page=2&t=1754997936813 HTTP/1.1" 200 37873
+INFO 2025-08-12 14:55:41,587 basehttp: "GET /admin/logs/celery_beat.log/?page=2 HTTP/1.1" 200 45090
+INFO 2025-08-12 14:55:41,623 basehttp: "GET /static/log_viewer/css/log_viewer.css HTTP/1.1" 304 0
+INFO 2025-08-12 14:55:41,624 basehttp: "GET /static/log_viewer/js/log_viewer.js HTTP/1.1" 304 0
+INFO 2025-08-12 14:55:51,639 basehttp: "GET /admin/logs/celery_beat.log/ajax/?page=2&t=1754997951632 HTTP/1.1" 200 37873

@@ -48,21 +48,37 @@
         <table class="log-table">
             <thead>
                 <tr>
-                    <th width="80">Line</th>
+                    <th width="100">Line(s)</th>
                     <th width="80">Level</th>
                     <th width="180">Timestamp</th>
                     <th>Message</th>
+                    <th width="60">Action</th>
                 </tr>
             </thead>
             <tbody id="log-lines">
                 {% for line in log_lines %}
-                <tr class="log-line log-level-{{ line.level|lower }}" data-level="{{ line.level }}">
-                    <td class="line-number">{{ line.number }}</td>
+                <tr class="log-line log-level-{{ line.level|lower }} {% if line.is_multiline %}multiline-entry{% endif %}" data-level="{{ line.level }}">
+                    <td class="line-number">
+                        {{ line.line_range }}
+                        {% if line.is_multiline %}
+                            <span class="multiline-indicator" title="Multi-line entry ({{ line.line_count }} lines)">📄</span>
+                        {% endif %}
+                    </td>
                     <td class="log-level">
                         <span class="level-badge level-{{ line.level|lower }}">{{ line.level }}</span>
                     </td>
                     <td class="timestamp">{{ line.timestamp }}</td>
-                    <td class="message">{{ line.content }}</td>
+                    <td class="message">
+                        <div class="message-preview">{{ line.content }}</div>
+                        {% if line.is_long %}
+                            <div class="message-truncated-indicator">Content truncated...</div>
+                        {% endif %}
+                    </td>
+                    <td class="action">
+                        {% if line.is_long or line.is_multiline %}
+                            <button class="view-full-btn" onclick="showLogModal('{{ line.full_content|escapejs }}', '{{ line.level }}', '{{ line.timestamp }}', '{{ line.line_range }}')">View Full</button>
+                        {% endif %}
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -95,7 +111,75 @@
     {% endif %}
 </div>
 
+<!-- Log Entry Modal -->
+<div id="logModal" class="log-modal" style="display: none;">
+    <div class="log-modal-content">
+        <div class="log-modal-header">
+            <h3 id="modalTitle">Log Entry Details</h3>
+            <button class="log-modal-close" onclick="closeLogModal()">&times;</button>
+        </div>
+        <div class="log-modal-info">
+            <span class="modal-level-badge" id="modalLevelBadge"></span>
+            <span class="modal-timestamp" id="modalTimestamp"></span>
+            <span class="modal-line-range" id="modalLineRange"></span>
+        </div>
+        <div class="log-modal-body">
+            <pre id="modalContent"></pre>
+        </div>
+        <div class="log-modal-footer">
+            <button onclick="copyToClipboard()" class="button default">Copy to Clipboard</button>
+            <button onclick="closeLogModal()" class="button default">Close</button>
+        </div>
+    </div>
+</div>
+
 <script>
+function showLogModal(content, level, timestamp, lineRange) {
+    const modal = document.getElementById('logModal');
+    const modalContent = document.getElementById('modalContent');
+    const modalLevelBadge = document.getElementById('modalLevelBadge');
+    const modalTimestamp = document.getElementById('modalTimestamp');
+    const modalLineRange = document.getElementById('modalLineRange');
+    
+    modalContent.textContent = content;
+    modalLevelBadge.textContent = level;
+    modalLevelBadge.className = `modal-level-badge level-${level.toLowerCase()}`;
+    modalTimestamp.textContent = timestamp;
+    modalLineRange.textContent = `Lines: ${lineRange}`;
+    
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLogModal() {
+    const modal = document.getElementById('logModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+function copyToClipboard() {
+    const content = document.getElementById('modalContent').textContent;
+    navigator.clipboard.writeText(content).then(() => {
+        // Show a brief success message
+        const btn = event.target;
+        const originalText = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => {
+            btn.textContent = originalText;
+        }, 2000);
+    }).catch(err => {
+        console.error('Failed to copy: ', err);
+    });
+}
+
+// Close modal when clicking outside of it
+window.onclick = function(event) {
+    const modal = document.getElementById('logModal');
+    if (event.target == modal) {
+        closeLogModal();
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const logViewer = new LogViewer({
         filename: '{{ filename }}',
