@@ -47,10 +47,26 @@ class LogViewerAdminMixin:
         log_files = get_log_files()
         selected_file = None
         
+        # First, try to find exact match
         for log_file in log_files:
             if log_file['name'] == filename:
                 selected_file = log_file
                 break
+            # If it's a rotational group, check individual files
+            if log_file.get('type') == 'rotational_group':
+                for rot_file in log_file['rotational_files']:
+                    if rot_file['name'] == filename:
+                        selected_file = {
+                            'name': filename,
+                            'path': rot_file['path'],
+                            'size': rot_file['size'],
+                            'modified': rot_file['modified'],
+                            'is_rotational': True,
+                            'parent_group': log_file['name']
+                        }
+                        break
+                if selected_file:
+                    break
         
         if not selected_file:
             from django.http import Http404
@@ -65,9 +81,13 @@ class LogViewerAdminMixin:
             live_mode = request.GET.get('live', 'true').lower() == 'true'
             page = 1
         
+        # Disable live mode for rotational files (they don't change)
+        if selected_file.get('is_rotational'):
+            live_mode = False
+        
         page_length = getattr(settings, 'LOG_VIEWER_PAGE_LENGTH', 25)
         
-        if live_mode:
+        if live_mode and not selected_file.get('is_rotational'):
             # In live mode, always show the latest logs (last page)
             # First get total lines to calculate the last page
             temp_log_data = read_log_file(selected_file['path'], page_length, 0)
@@ -108,6 +128,7 @@ class LogViewerAdminMixin:
             'end_line': log_data['end_line'],
             'page_length': page_length,
             'live_mode': live_mode,
+            'is_rotational': selected_file.get('is_rotational', False),
             'refresh_interval': getattr(settings, 'LOGVIEWER_REFRESH_INTERVAL', 10000),
             'only_refresh_when_active': getattr(settings, 'LOGVIEWER_ONLY_REFRESH_WHEN_ACTIVE', True),
             'auto_refresh_default': getattr(settings, 'LOGVIEWER_AUTO_REFRESH_DEFAULT', True),

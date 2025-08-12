@@ -789,3 +789,190 @@
     color: #6c757d !important;
     border-color: #dee2e6 !important;
 }
+
+/* Rotational File Styles */
+.rotational-group {
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.rotational-group-header {
+    background-color: #f8f9fa;
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+.rotational-group-header:hover {
+    background-color: #e9ecef;
+}
+
+.rotational-group-info {
+    flex-grow: 1;
+}
+
+.rotational-group-name {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 2px;
+}
+
+.rotational-toggle {
+    color: #6c757d;
+    font-size: 14px;
+    transition: transform 0.2s;
+}
+
+.rotational-group.expanded .rotational-toggle {
+    transform: rotate(90deg);
+}
+
+.rotational-files {
+    display: none;
+    background-color: white;
+}
+
+.rotational-group.expanded .rotational-files {
+    display: block;
+}
+
+.rotational-file {
+    padding: 8px 15px;
+    border-top: 1px solid #f1f3f4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+.rotational-file:hover {
+    background-color: #f8f9fa;
+}
+
+.rotational-file-name {
+    font-weight: 500;
+    color: #007cba;
+    text-decoration: none;
+}
+
+.rotational-file-name:hover {
+    text-decoration: underline;
+}
+
+.file-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-left: 8px;
+}
+
+.file-badge.current {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.file-badge.rotational {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #b8daff;
+}
+
+.file-badge.compressed {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.file-meta {
+    font-size: 12px;
+    color: #6c757d;
+    margin-top: 2px;
+}
+
+.file-count {
+    background-color: #6c757d;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 11px;
+    font-weight: 600;
+    min-width: 18px;
+    text-align: center;
+    display: inline-block;
+}
+
+/* Single file styles */
+.single-file {
+    display: block;
+    padding: 12px 15px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #495057;
+    transition: all 0.2s;
+    margin-bottom: 1rem;
+}
+
+.single-file:hover {
+    background-color: #f8f9fa;
+    border-color: #007cba;
+    text-decoration: none;
+    color: #495057;
+}
+
+.single-file-name {
+    font-weight: 600;
+    color: #007cba;
+    margin-bottom: 4px;
+    display: block;
+}
+
+/* Dark mode support for rotational files */
+@media (prefers-color-scheme: dark) {
+    .rotational-group {
+        border-color: #444;
+        background-color: #2d3748;
+    }
+    
+    .rotational-group-header {
+        background-color: #4a5568;
+        border-bottom-color: #444;
+        color: #e2e8f0;
+    }
+    
+    .rotational-group-header:hover {
+        background-color: #5a6578;
+    }
+    
+    .rotational-file {
+        background-color: #2d3748;
+        border-top-color: #444;
+        color: #e2e8f0;
+    }
+    
+    .rotational-file:hover {
+        background-color: #4a5568;
+    }
+    
+    .single-file {
+        background-color: #2d3748;
+        border-color: #444;
+        color: #e2e8f0;
+    }
+    
+    .single-file:hover {
+        background-color: #4a5568;
+        border-color: #63b3ed;
+    }
+}

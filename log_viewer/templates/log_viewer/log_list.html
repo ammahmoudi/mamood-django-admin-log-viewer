@@ -36,14 +36,40 @@
         <div class="log-file-card">
             <div class="log-file-header">
                 <h3><a href="{% url 'admin:log_viewer_detail' log_file.name %}">{{ log_file.name }}</a></h3>
+                {% if log_file.type == 'rotational_group' %}
+                <span class="rotational-badge">{{ log_file.file_count }} file{{ log_file.file_count|pluralize }}</span>
+                {% endif %}
             </div>
             <div class="log-file-info">
                 <p><strong>Size:</strong> {{ log_file.size|filesizeformat }}</p>
                 <p><strong>Modified:</strong> {{ log_file.modified|date:"Y-m-d H:i:s" }}</p>
                 <p><strong>Path:</strong> <code>{{ log_file.path }}</code></p>
+                {% if log_file.type == 'rotational_group' %}
+                <p><strong>Type:</strong> Rotational log group</p>
+                {% endif %}
             </div>
+            {% if log_file.type == 'rotational_group' %}
+            <div class="rotational-files">
+                <details>
+                    <summary>View all {{ log_file.file_count }} file{{ log_file.file_count|pluralize }}</summary>
+                    <ul class="rotational-file-list">
+                        {% for rot_file in log_file.rotational_files %}
+                        <li>
+                            <a href="{% url 'admin:log_viewer_detail' rot_file.name %}">
+                                {{ rot_file.name }}
+                                {% if rot_file.is_current %}<span class="current-file">(current)</span>{% endif %}
+                            </a>
+                            <span class="file-size">{{ rot_file.size|filesizeformat }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </details>
+            </div>
+            {% endif %}
             <div class="log-file-actions">
-                <a href="{% url 'admin:log_viewer_detail' log_file.name %}" class="button default">View Log</a>
+                <a href="{% url 'admin:log_viewer_detail' log_file.name %}" class="button default">
+                    {% if log_file.type == 'rotational_group' %}View Current Log{% else %}View Log{% endif %}
+                </a>
             </div>
         </div>
         {% endfor %}

@@ -2027,3 +2027,17 @@ INFO 2025-08-13 00:23:55,530 basehttp: "GET /static/admin/css/responsive.css HTT
 INFO 2025-08-13 00:23:55,530 basehttp: "GET /static/admin/js/theme.js HTTP/1.1" 304 0
 INFO 2025-08-13 00:23:55,530 basehttp: "GET /static/log_viewer/js/log_viewer.js HTTP/1.1" 304 0
 INFO 2025-08-13 00:23:55,532 basehttp: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2025-08-13 00:26:31,024 autoreload: D:\projects\django-admin-log-viewer\log_viewer\utils.py changed, reloading.
+INFO 2025-08-13 00:26:31,532 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 00:26:58,980 autoreload: D:\projects\django-admin-log-viewer\log_viewer\utils.py changed, reloading.
+INFO 2025-08-13 00:26:59,440 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 00:29:41,202 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 00:29:56,477 autoreload: D:\projects\django-admin-log-viewer\log_viewer\utils.py changed, reloading.
+INFO 2025-08-13 00:29:57,010 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 00:30:02,169 basehttp: "GET /admin/logs/ HTTP/1.1" 200 7079
+INFO 2025-08-13 00:31:09,899 autoreload: D:\projects\django-admin-log-viewer\log_viewer\admin.py changed, reloading.
+INFO 2025-08-13 00:31:10,423 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 00:39:12,728 basehttp: "GET /admin/logs/ HTTP/1.1" 200 11169
+INFO 2025-08-13 00:39:20,072 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 24672
+INFO 2025-08-13 00:39:25,635 basehttp: "GET /admin/logs/ HTTP/1.1" 200 11169
+INFO 2025-08-13 00:39:27,833 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 26161

@@ -98,11 +98,23 @@
     </div>
     
     <div class="log-file-info">
-        <p><strong>File:</strong> {{ log_file.name }}</p>
+        <p><strong>File:</strong> {{ log_file.name }}
+            {% if is_rotational %}
+                <span class="file-badge rotational">rotational</span>
+            {% endif %}
+        </p>
+        {% if is_rotational and log_file.parent_group %}
+        <p><strong>Parent Group:</strong> 
+            <a href="{% url 'admin:log_viewer_list' %}">{{ log_file.parent_group }}</a>
+        </p>
+        {% endif %}
         <p><strong>Size:</strong> {{ log_file.size|filesizeformat }}</p>
         <p><strong>Modified:</strong> {{ log_file.modified|date:"Y-m-d H:i:s" }}</p>
         <p><strong>Total Lines:</strong> {{ total_lines }}</p>
         <p><strong>Showing:</strong> Lines {{ start_line }} - {{ end_line }}</p>
+        {% if is_rotational %}
+        <p><strong>Type:</strong> Historical log file (no live updates)</p>
+        {% endif %}
     </div>
     
     {% if log_lines %}

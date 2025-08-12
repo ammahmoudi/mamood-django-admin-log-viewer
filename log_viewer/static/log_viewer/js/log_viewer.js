@@ -953,3 +953,70 @@ function clearMultilineFilter() {
 
 // Export for use in templates
 window.LogViewer = LogViewer;
+
+/**
+ * Rotational File List Management
+ */
+class RotationalFileManager {
+    constructor() {
+        this.init();
+    }
+    
+    init() {
+        // Add click handlers for rotational group headers
+        document.querySelectorAll('.rotational-group-header').forEach(header => {
+            header.addEventListener('click', this.toggleGroup.bind(this));
+        });
+        
+        // Check localStorage for expanded state
+        this.restoreExpandedState();
+    }
+    
+    toggleGroup(event) {
+        event.preventDefault();
+        const header = event.currentTarget;
+        const group = header.closest('.rotational-group');
+        const groupName = group.dataset.groupName;
+        
+        // Toggle expanded class
+        group.classList.toggle('expanded');
+        
+        // Save state to localStorage
+        this.saveExpandedState(groupName, group.classList.contains('expanded'));
+    }
+    
+    saveExpandedState(groupName, isExpanded) {
+        const key = 'logviewer_rotational_expanded';
+        let expandedGroups = JSON.parse(localStorage.getItem(key) || '{}');
+        
+        if (isExpanded) {
+            expandedGroups[groupName] = true;
+        } else {
+            delete expandedGroups[groupName];
+        }
+        
+        localStorage.setItem(key, JSON.stringify(expandedGroups));
+    }
+    
+    restoreExpandedState() {
+        const key = 'logviewer_rotational_expanded';
+        const expandedGroups = JSON.parse(localStorage.getItem(key) || '{}');
+        
+        document.querySelectorAll('.rotational-group').forEach(group => {
+            const groupName = group.dataset.groupName;
+            if (expandedGroups[groupName]) {
+                group.classList.add('expanded');
+            }
+        });
+    }
+}
+
+// Initialize rotational file manager when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    if (document.querySelector('.rotational-group')) {
+        new RotationalFileManager();
+    }
+});
+
+// Export for use in templates
+window.RotationalFileManager = RotationalFileManager;
