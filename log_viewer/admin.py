@@ -56,13 +56,34 @@ class LogViewerAdminMixin:
             from django.http import Http404
             raise Http404("Log file not found")
         
-        # Get pagination parameters
-        page = int(request.GET.get('page', 1))
-        page_length = getattr(settings, 'LOG_VIEWER_PAGE_LENGTH', 25)
-        start_line = (page - 1) * page_length
+        # Check if we're in live mode or specific page mode
+        # If page parameter exists, it should override live mode to false
+        if 'page' in request.GET:
+            live_mode = False
+            page = int(request.GET.get('page', 1))
+        else:
+            live_mode = request.GET.get('live', 'true').lower() == 'true'
+            page = 1
         
-        # Read log content
-        log_data = read_log_file(selected_file['path'], page_length, start_line)
+        page_length = getattr(settings, 'LOG_VIEWER_PAGE_LENGTH', 25)
+        
+        if live_mode:
+            # In live mode, always show the latest logs (last page)
+            # First get total lines to calculate the last page
+            temp_log_data = read_log_file(selected_file['path'], page_length, 0)
+            total_pages = max(1, (temp_log_data['total_lines'] + page_length - 1) // page_length)
+            page = total_pages
+            start_line = (page - 1) * page_length
+            log_data = read_log_file(selected_file['path'], page_length, start_line)
+        else:
+            # In manual mode, show specific page
+            # First get total lines to validate page number
+            temp_log_data = read_log_file(selected_file['path'], page_length, 0)
+            total_pages = max(1, (temp_log_data['total_lines'] + page_length - 1) // page_length)
+            # Ensure page is within valid range
+            page = max(1, min(page, total_pages))
+            start_line = (page - 1) * page_length
+            log_data = read_log_file(selected_file['path'], page_length, start_line)
         
         # Format log lines
         formatted_lines = []
@@ -71,7 +92,8 @@ class LogViewerAdminMixin:
             formatted_lines.append(formatted_line)
         
         # Calculate pagination info
-        total_pages = (log_data['total_lines'] + page_length - 1) // page_length
+        # Use the actual total_lines from the final log_data, not temp_log_data
+        total_pages = max(1, (log_data['total_lines'] + page_length - 1) // page_length)
         
         context = {
             **self.each_context(request),
@@ -85,7 +107,8 @@ class LogViewerAdminMixin:
             'start_line': log_data['start_line'] + 1,
             'end_line': log_data['end_line'],
             'page_length': page_length,
-            'refresh_interval': getattr(settings, 'LOGVIEWER_REFRESH_INTERVAL', 1000),
+            'live_mode': live_mode,
+            'refresh_interval': getattr(settings, 'LOGVIEWER_REFRESH_INTERVAL', 10000),
             'only_refresh_when_active': getattr(settings, 'LOGVIEWER_ONLY_REFRESH_WHEN_ACTIVE', True),
             'auto_refresh_default': getattr(settings, 'LOGVIEWER_AUTO_REFRESH_DEFAULT', True),
             'auto_scroll_to_bottom': getattr(settings, 'LOGVIEWER_AUTO_SCROLL_TO_BOTTOM', True),
@@ -115,13 +138,34 @@ class LogViewerAdminMixin:
         if not selected_file:
             return JsonResponse({'error': 'Log file not found'}, status=404)
         
-        # Get pagination parameters
-        page = int(request.GET.get('page', 1))
         page_length = getattr(settings, 'LOG_VIEWER_PAGE_LENGTH', 25)
-        start_line = (page - 1) * page_length
         
-        # Read log content
-        log_data = read_log_file(selected_file['path'], page_length, start_line)
+        # Check if we're in live mode or specific page mode
+        # If page parameter exists, it should override live mode to false
+        if 'page' in request.GET:
+            live_mode = False
+            page = int(request.GET.get('page', 1))
+        else:
+            live_mode = request.GET.get('live', 'true').lower() == 'true'
+            page = 1
+        
+        if live_mode:
+            # In live mode, always get the latest logs (last page)
+            # First get total lines to calculate the last page
+            temp_log_data = read_log_file(selected_file['path'], page_length, 0)
+            total_pages = max(1, (temp_log_data['total_lines'] + page_length - 1) // page_length)
+            page = total_pages
+            start_line = (page - 1) * page_length
+            log_data = read_log_file(selected_file['path'], page_length, start_line)
+        else:
+            # In normal mode, get specific page
+            # First get total lines to validate page number
+            temp_log_data = read_log_file(selected_file['path'], page_length, 0)
+            total_pages = max(1, (temp_log_data['total_lines'] + page_length - 1) // page_length)
+            # Ensure page is within valid range
+            page = max(1, min(page, total_pages))
+            start_line = (page - 1) * page_length
+            log_data = read_log_file(selected_file['path'], page_length, start_line)
         
         # Format log lines
         formatted_lines = []
@@ -129,11 +173,17 @@ class LogViewerAdminMixin:
             formatted_line = format_log_line(line, start_line + i + 1)
             formatted_lines.append(formatted_line)
         
+        # Calculate total pages
+        total_pages = max(1, (log_data['total_lines'] + page_length - 1) // page_length)
+        
         return JsonResponse({
             'log_lines': formatted_lines,
             'total_lines': log_data['total_lines'],
             'start_line': log_data['start_line'] + 1,
             'end_line': log_data['end_line'],
+            'current_page': page,
+            'total_pages': total_pages,
+            'live_mode': live_mode,
         })
 
 

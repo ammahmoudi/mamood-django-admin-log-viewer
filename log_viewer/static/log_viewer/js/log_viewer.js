@@ -1,11 +1,12 @@
 /**
- * Log Viewer JavaScript with Smart Auto-Refresh
+ * Log Viewer JavaScript with Live Mode Support
  */
 
 class LogViewer {
     constructor(options) {
         this.filename = options.filename;
         this.currentPage = options.currentPage;
+        this.liveMode = options.liveMode !== undefined ? options.liveMode : true; // Use passed value or default to true
         this.refreshInterval = Math.max(options.refreshInterval, 10000); // Minimum 10 seconds
         this.onlyRefreshWhenActive = options.onlyRefreshWhenActive !== false; // Default true
         this.autoRefreshDefault = options.autoRefreshDefault !== false; // Default true
@@ -36,15 +37,58 @@ class LogViewer {
     init() {
         this.setupEventListeners();
         this.setupVisibilityDetection();
-        // Start auto-refresh if enabled by default
-        if (this.autoRefresh) {
+        this.initializeLiveModeUI();
+        
+        // Start auto-refresh if enabled by default and in live mode
+        if (this.autoRefresh && this.liveMode) {
             this.startAutoRefresh();
         }
         this.updateRefreshButton();
+        
         // Auto-scroll to bottom on initial load if enabled
-        if (this.autoScrollToBottom) {
+        if (this.autoScrollToBottom && this.liveMode) {
             this.scrollToBottom();
         }
+    }
+    
+    initializeLiveModeUI() {
+        const liveModeToggle = document.getElementById('live-mode-toggle');
+        const liveModeIndicator = document.getElementById('live-mode-indicator');
+        const paginationControls = document.querySelector('.pagination-controls');
+        
+        if (this.liveMode) {
+            if (liveModeToggle) liveModeToggle.textContent = 'Live Mode: ON';
+            if (liveModeIndicator) {
+                liveModeIndicator.style.display = 'inline-block';
+                liveModeIndicator.textContent = '🔴 LIVE';
+            }
+            // In live mode, show pagination info but disable manual navigation
+            if (paginationControls) {
+                this.updatePaginationForLiveMode(true);
+            }
+        } else {
+            if (liveModeToggle) liveModeToggle.textContent = 'Live Mode: OFF';
+            if (liveModeIndicator) liveModeIndicator.style.display = 'none';
+            // In manual mode, enable full pagination controls
+            if (paginationControls) {
+                this.updatePaginationForLiveMode(false);
+            }
+        }
+    }
+    
+    updatePaginationForLiveMode(isLive) {
+        // Hide/show navigation buttons based on live mode
+        const navButtons = document.querySelectorAll('.pagination-controls a');
+        const pageJump = document.getElementById('page-jump');
+        const jumpButton = document.querySelector('button[onclick="jumpToPage()"]');
+        
+        navButtons.forEach(btn => {
+            btn.style.display = isLive ? 'none' : 'inline-block';
+        });
+        
+        // In live mode, show page input for manual navigation (which switches to manual mode)
+        if (pageJump) pageJump.style.display = 'inline-block';
+        if (jumpButton) jumpButton.style.display = 'inline-block';
     }
     
     setupEventListeners() {
@@ -53,25 +97,68 @@ class LogViewer {
         if (refreshBtn) {
             refreshBtn.addEventListener('click', () => this.refreshLog(true)); // Manual refresh
         }
-        
+
         // Auto-refresh toggle
         const autoRefreshBtn = document.getElementById('auto-refresh-toggle');
         if (autoRefreshBtn) {
             autoRefreshBtn.addEventListener('click', () => this.toggleAutoRefresh());
         }
-        
+
         // Auto-scroll toggle
         const autoScrollBtn = document.getElementById('auto-scroll-toggle');
         if (autoScrollBtn) {
             autoScrollBtn.addEventListener('click', () => this.toggleAutoScroll());
         }
-        
+
+        // Live mode toggle
+        const liveModeToggle = document.getElementById('live-mode-toggle');
+        if (liveModeToggle) {
+            liveModeToggle.addEventListener('click', () => this.toggleLiveMode());
+        }
+
+        // Page jump functionality (works in both modes)
+        const pageJump = document.getElementById('page-jump');
+        const jumpButton = document.querySelector('button[onclick="jumpToPage()"]');
+        if (pageJump && jumpButton) {
+            // Override the global jumpToPage function
+            window.jumpToPage = () => this.jumpToPage();
+            
+            // Also allow Enter key in input field
+            pageJump.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    this.jumpToPage();
+                }
+            });
+        }
+
+        // Intercept pagination link clicks to handle live mode properly
+        document.querySelectorAll('.pagination-buttons a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent default link behavior
+                const url = new URL(link.href);
+                const pageParam = url.searchParams.get('page');
+                if (pageParam) {
+                    // Switch to manual mode and go to that page
+                    this.liveMode = false;
+                    this.currentPage = parseInt(pageParam);
+                    this.initializeLiveModeUI();
+                    this.refreshLog(true);
+                    
+                    // Update URL
+                    const newUrl = new URL(window.location.href);
+                    newUrl.searchParams.delete('live');
+                    newUrl.searchParams.set('page', pageParam);
+                    history.pushState(null, '', newUrl.toString());
+                }
+            });
+        });
+
         // Toggle filters panel
         const toggleFiltersBtn = document.getElementById('toggle-filters');
         if (toggleFiltersBtn) {
             toggleFiltersBtn.addEventListener('click', () => this.toggleFiltersPanel());
         }
-        
+
         // Filter controls
         this.setupFilterControls();
     }
@@ -411,6 +498,58 @@ class LogViewer {
         }
     }
     
+    toggleLiveMode() {
+        this.liveMode = !this.liveMode;
+        
+        if (this.liveMode) {
+            // Switch to live mode
+            this.stopAutoRefresh(); // Stop current refresh
+            this.initializeLiveModeUI();
+            this.refreshLog(true); // Get latest logs
+            if (this.autoRefresh) {
+                this.startAutoRefresh();
+            }
+            
+            // Update URL
+            const url = new URL(window.location.href);
+            url.searchParams.set('live', 'true');
+            url.searchParams.delete('page');
+            history.pushState(null, '', url.toString());
+        } else {
+            // Switch to manual mode
+            this.stopAutoRefresh();
+            this.initializeLiveModeUI();
+            
+            // Update URL to page 1
+            const url = new URL(window.location.href);
+            url.searchParams.delete('live');
+            url.searchParams.set('page', '1');
+            this.currentPage = 1;
+            history.pushState(null, '', url.toString());
+            this.refreshLog(true); // Get page 1
+        }
+    }
+    
+    jumpToPage() {
+        const pageInput = document.getElementById('page-jump');
+        if (!pageInput) return;
+        
+        const pageNumber = parseInt(pageInput.value);
+        if (pageNumber && pageNumber > 0) {
+            // Always switch to manual mode when jumping to a specific page
+            this.liveMode = false;
+            this.currentPage = pageNumber;
+            this.initializeLiveModeUI();
+            this.refreshLog(true);
+            
+            // Update URL
+            const url = new URL(window.location.href);
+            url.searchParams.delete('live');
+            url.searchParams.set('page', pageNumber.toString());
+            history.pushState(null, '', url.toString());
+        }
+    }
+    
     updateRefreshButton() {
         const autoRefreshBtn = document.getElementById('auto-refresh-toggle');
         if (autoRefreshBtn) {
@@ -446,7 +585,14 @@ class LogViewer {
         }
         
         const url = new URL(this.ajaxUrl, window.location.origin);
-        url.searchParams.set('page', this.currentPage);
+        
+        if (this.liveMode) {
+            // In live mode, always get latest logs
+            url.searchParams.set('live', 'true');
+        } else {
+            // In manual mode, get specific page
+            url.searchParams.set('page', this.currentPage);
+        }
         
         // Add a timestamp to prevent caching
         url.searchParams.set('t', now);
@@ -457,6 +603,11 @@ class LogViewer {
                 if (data.error) {
                     console.error('Error refreshing log:', data.error);
                     return;
+                }
+                
+                // Update current page info from response
+                if (data.current_page) {
+                    this.currentPage = data.current_page;
                 }
                 
                 // Check if content actually changed
@@ -541,11 +692,22 @@ class LogViewer {
         // Update info display
         this.updateLogInfo(data);
         
+        // Update pagination info (both live and manual modes)
+        this.updatePaginationInfo(data);
+        
+        // Update live mode indicator if in live mode
+        if (this.liveMode) {
+            const liveModeIndicator = document.getElementById('live-mode-indicator');
+            if (liveModeIndicator) {
+                liveModeIndicator.textContent = `🔴 LIVE - Page ${data.current_page} of ${data.total_pages}`;
+            }
+        }
+        
         // Reapply all current filters
         this.applyFilters();
         
-        // Auto-scroll to bottom if enabled
-        if (this.autoScrollToBottom) {
+        // Auto-scroll to bottom if enabled and in live mode
+        if (this.autoScrollToBottom && this.liveMode) {
             this.scrollToBottom();
         }
     }
@@ -606,6 +768,97 @@ class LogViewer {
         // Update last refresh time
         const refreshInfo = document.querySelector('.refresh-info') || this.createRefreshInfo();
         refreshInfo.textContent = `Last updated: ${new Date().toLocaleTimeString()}`;
+    }
+    
+    updatePaginationInfo(data) {
+        // Update pagination info display (both live and manual modes)
+        const paginationInfo = document.querySelector('.pagination-info span');
+        if (paginationInfo && data.current_page && data.total_pages) {
+            paginationInfo.textContent = `Page ${data.current_page} of ${data.total_pages}`;
+        }
+        
+        // Update page input max value and placeholder
+        const pageInput = document.getElementById('page-jump');
+        if (pageInput && data.total_pages) {
+            pageInput.max = data.total_pages;
+            pageInput.placeholder = `1-${data.total_pages}`;
+            // In manual mode, update the input value to current page
+            if (!this.liveMode) {
+                pageInput.value = data.current_page;
+            }
+        }
+        
+        // Update navigation button states and links
+        this.updateNavigationButtons(data.current_page, data.total_pages);
+    }
+    
+    updateNavigationButtons(currentPage, totalPages) {
+        // Update First and Previous buttons
+        const firstBtn = document.querySelector('a[href*="page=1"]');
+        const prevBtn = document.querySelector('a[href*="page="]:not([href*="page=1"]):not([href*="page=' + totalPages + '"])');
+        
+        // Find Previous button more specifically
+        const allPrevBtns = document.querySelectorAll('.pagination-buttons a');
+        let actualPrevBtn = null;
+        allPrevBtns.forEach(btn => {
+            if (btn.textContent.trim() === 'Previous') {
+                actualPrevBtn = btn;
+            }
+        });
+        
+        if (currentPage <= 1) {
+            if (firstBtn) {
+                firstBtn.style.opacity = '0.5';
+                firstBtn.style.pointerEvents = 'none';
+            }
+            if (actualPrevBtn) {
+                actualPrevBtn.style.opacity = '0.5';
+                actualPrevBtn.style.pointerEvents = 'none';
+            }
+        } else {
+            if (firstBtn) {
+                firstBtn.style.opacity = '1';
+                firstBtn.style.pointerEvents = 'auto';
+            }
+            if (actualPrevBtn) {
+                actualPrevBtn.style.opacity = '1';
+                actualPrevBtn.style.pointerEvents = 'auto';
+                actualPrevBtn.href = `?page=${currentPage - 1}`;
+            }
+        }
+        
+        // Update Next and Last buttons
+        let nextBtn = null;
+        let lastBtn = null;
+        allPrevBtns.forEach(btn => {
+            if (btn.textContent.trim() === 'Next') {
+                nextBtn = btn;
+            } else if (btn.textContent.trim() === 'Last') {
+                lastBtn = btn;
+            }
+        });
+        
+        if (currentPage >= totalPages) {
+            if (nextBtn) {
+                nextBtn.style.opacity = '0.5';
+                nextBtn.style.pointerEvents = 'none';
+            }
+            if (lastBtn) {
+                lastBtn.style.opacity = '0.5';
+                lastBtn.style.pointerEvents = 'none';
+            }
+        } else {
+            if (nextBtn) {
+                nextBtn.style.opacity = '1';
+                nextBtn.style.pointerEvents = 'auto';
+                nextBtn.href = `?page=${currentPage + 1}`;
+            }
+            if (lastBtn) {
+                lastBtn.style.opacity = '1';
+                lastBtn.style.pointerEvents = 'auto';
+                lastBtn.href = `?page=${totalPages}`;
+            }
+        }
     }
     
     createRefreshInfo() {

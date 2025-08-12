@@ -32,6 +32,24 @@
     background: white;
 }
 
+/* Live Mode Indicator */
+.live-indicator {
+    display: inline-block;
+    background: #dc3545;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
 /* Log Files Grid */
 .log-files-grid {
     display: grid;
@@ -705,4 +723,69 @@
         width: 95%;
         margin: 10px;
     }
+}
+
+/* Additional Live Mode and Pagination Styles */
+#live-mode-toggle.primary {
+    background-color: #007cba;
+    color: white;
+    border-color: #007cba;
+}
+
+#live-mode-toggle.primary:hover {
+    background-color: #005a87;
+    border-color: #005a87;
+}
+
+.pagination-controls {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.pagination-info {
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+.pagination-buttons {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.page-jump-input {
+    width: 80px;
+    padding: 4px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.button.secondary {
+    background-color: #6c757d;
+    color: white;
+    border-color: #6c757d;
+}
+
+.button.secondary:hover {
+    background-color: #545b62;
+    border-color: #4e555b;
+}
+
+/* Disabled button styles */
+.pagination-buttons a[style*="opacity: 0.5"] {
+    cursor: not-allowed !important;
+    background-color: #e9ecef !important;
+    color: #6c757d !important;
+    border-color: #dee2e6 !important;
+}
+
+.pagination-buttons a[style*="opacity: 0.5"]:hover {
+    background-color: #e9ecef !important;
+    color: #6c757d !important;
+    border-color: #dee2e6 !important;
 }

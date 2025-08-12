@@ -21,6 +21,8 @@
     <div class="log-viewer-header">
         <h1>{{ title }}</h1>
         <div class="log-viewer-controls">
+            <span id="live-mode-indicator" class="live-indicator">🔴 LIVE</span>
+            <button id="live-mode-toggle" class="button primary">Live Mode: ON</button>
             <button id="refresh-log" class="button default">Refresh</button>
             <button id="auto-refresh-toggle" class="button default">Auto-refresh: OFF</button>
             <button id="auto-scroll-toggle" class="button default">Auto-scroll: ON</button>
@@ -146,20 +148,22 @@
     </div>
     
     <!-- Pagination -->
-    <div class="pagination-container">
-        <div class="pagination">
+    <div class="pagination-controls">
+        <div class="pagination-info">
+            <span>Page {{ current_page }} of {{ total_pages }}</span>
+        </div>
+        <div class="pagination-buttons">
             {% if current_page > 1 %}
-                <a href="?page=1" class="page-link">&laquo; First</a>
-                <a href="?page={{ current_page|add:'-1' }}" class="page-link">&lsaquo; Previous</a>
+                <a href="?page=1" class="button secondary">First</a>
+                <a href="?page={{ current_page|add:'-1' }}" class="button secondary">Previous</a>
             {% endif %}
             
-            <span class="page-info">
-                Page {{ current_page }} of {{ total_pages }}
-            </span>
+            <input type="number" id="page-jump" min="1" max="{{ total_pages }}" value="{{ current_page }}" class="page-jump-input">
+            <button onclick="jumpToPage()" class="button default">Go</button>
             
             {% if current_page < total_pages %}
-                <a href="?page={{ current_page|add:'1' }}" class="page-link">Next &rsaquo;</a>
-                <a href="?page={{ total_pages }}" class="page-link">Last &raquo;</a>
+                <a href="?page={{ current_page|add:'1' }}" class="button secondary">Next</a>
+                <a href="?page={{ total_pages }}" class="button secondary">Last</a>
             {% endif %}
         </div>
     </div>
@@ -240,10 +244,24 @@ window.onclick = function(event) {
     }
 }
 
+function jumpToPage() {
+    if (window.logViewer) {
+        window.logViewer.jumpToPage();
+    } else {
+        // Fallback if LogViewer not loaded yet
+        const pageInput = document.getElementById('page-jump');
+        const pageNumber = parseInt(pageInput.value);
+        if (pageNumber && pageNumber > 0) {
+            window.location.href = `?page=${pageNumber}`;
+        }
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     window.logViewer = new LogViewer({
         filename: '{{ filename }}',
         currentPage: {{ current_page }},
+        liveMode: {{ live_mode|yesno:"true,false" }},
         refreshInterval: {{ refresh_interval }},
         onlyRefreshWhenActive: {{ only_refresh_when_active|yesno:"true,false" }},
         autoRefreshDefault: {{ auto_refresh_default|yesno:"true,false" }},
