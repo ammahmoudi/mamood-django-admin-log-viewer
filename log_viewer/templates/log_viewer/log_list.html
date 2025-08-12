@@ -28,6 +28,22 @@
 
 {% block content %}
 <div class="log-viewer-container">
+    <div class="log-viewer-header">
+        <div class="header-left">
+            <div class="navigation-buttons">
+                <a href="{% url 'admin:index' %}" class="button secondary">
+                    ← Back to Admin
+                </a>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="log-viewer-controls">
+                <button id="refresh-list" class="button default" onclick="location.reload()">Refresh List</button>
+                <button id="expand-all" class="button secondary" onclick="expandAllGroups()">Expand All</button>
+                <button id="collapse-all" class="button secondary" onclick="collapseAllGroups()">Collapse All</button>
+            </div>
+        </div>
+    </div>
     <h1>{{ title }}</h1>
     
     {% if log_files %}

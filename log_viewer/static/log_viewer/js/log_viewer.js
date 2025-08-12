@@ -955,6 +955,61 @@ function clearMultilineFilter() {
 window.LogViewer = LogViewer;
 
 /**
+ * Utility functions for log list management
+ */
+function expandAllGroups() {
+    document.querySelectorAll('.rotational-group').forEach(group => {
+        group.classList.add('expanded');
+        const groupName = group.dataset.groupName;
+        if (groupName) {
+            const key = 'logviewer_rotational_expanded';
+            let expandedGroups = JSON.parse(localStorage.getItem(key) || '{}');
+            expandedGroups[groupName] = true;
+            localStorage.setItem(key, JSON.stringify(expandedGroups));
+        }
+    });
+}
+
+function collapseAllGroups() {
+    document.querySelectorAll('.rotational-group').forEach(group => {
+        group.classList.remove('expanded');
+        const groupName = group.dataset.groupName;
+        if (groupName) {
+            const key = 'logviewer_rotational_expanded';
+            let expandedGroups = JSON.parse(localStorage.getItem(key) || '{}');
+            delete expandedGroups[groupName];
+            localStorage.setItem(key, JSON.stringify(expandedGroups));
+        }
+    });
+}
+
+function downloadLog() {
+    const filename = window.location.pathname.split('/').pop();
+    if (filename && filename !== '') {
+        // Create a simple download by opening the log file URL
+        const downloadUrl = window.location.origin + window.location.pathname.replace('/logs/', '/static/logs/');
+        
+        // Alternative: Create a download link for the current view
+        const logContent = document.querySelector('.log-content');
+        if (logContent) {
+            const content = Array.from(logContent.querySelectorAll('.log-line'))
+                .map(line => line.textContent)
+                .join('\n');
+            
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename + '_page.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    }
+}
+
+/**
  * Rotational File List Management
  */
 class RotationalFileManager {

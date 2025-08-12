@@ -19,14 +19,30 @@
 {% block content %}
 <div class="log-viewer-container">
     <div class="log-viewer-header">
-        <h1>{{ title }}</h1>
-        <div class="log-viewer-controls">
-            <span id="live-mode-indicator" class="live-indicator">🔴 LIVE</span>
-            <button id="live-mode-toggle" class="button primary">Live Mode: ON</button>
-            <button id="refresh-log" class="button default">Refresh</button>
-            <button id="auto-refresh-toggle" class="button default">Auto-refresh: OFF</button>
-            <button id="auto-scroll-toggle" class="button default">Auto-scroll: ON</button>
-            <button id="toggle-filters" class="button default">Show Filters</button>
+        <div class="header-left">
+            <div class="navigation-buttons">
+                <a href="{% url 'admin:log_viewer_list' %}" class="button secondary">
+                    ← Back to Log Files
+                </a>
+                {% if is_rotational and log_file.parent_group %}
+                <a href="{% url 'admin:log_viewer_detail' log_file.parent_group %}" class="button secondary">
+                    View Current Log
+                </a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="log-viewer-controls">
+                {% if not is_rotational %}
+                <span id="live-mode-indicator" class="live-indicator">🔴 LIVE</span>
+                <button id="live-mode-toggle" class="button primary">Live Mode: ON</button>
+                <button id="refresh-log" class="button default">Refresh</button>
+                <button id="auto-refresh-toggle" class="button default">Auto-refresh: OFF</button>
+                <button id="auto-scroll-toggle" class="button default">Auto-scroll: ON</button>
+                {% endif %}
+                <button id="toggle-filters" class="button default">Show Filters</button>
+                <button id="download-log" class="button secondary" onclick="downloadLog()">Download</button>
+            </div>
         </div>
     </div>
     

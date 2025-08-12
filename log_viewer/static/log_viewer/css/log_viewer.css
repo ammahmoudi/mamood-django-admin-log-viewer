@@ -8,14 +8,29 @@
 }
 
 .log-viewer-header {
+    background: white;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 20px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ddd;
     flex-wrap: wrap;
+    gap: 15px;
+}
+
+.header-left {
+    flex-shrink: 0;
+}
+
+.header-right {
+    flex-shrink: 0;
+}
+
+.navigation-buttons {
+    display: flex;
     gap: 10px;
+    align-items: center;
 }
 
 .log-viewer-controls {
@@ -498,12 +513,27 @@
     font-style: italic;
 }
 
+/* Navigation button styles */
+.navigation-buttons .button {
+    white-space: nowrap;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
     .log-viewer-header {
         flex-direction: column;
         align-items: stretch;
-        gap: 15px;
+        padding: 10px 15px;
+    }
+    
+    .header-left,
+    .header-right {
+        width: 100%;
+    }
+    
+    .navigation-buttons {
+        justify-content: center;
+        margin-bottom: 10px;
     }
     
     .log-viewer-controls {
