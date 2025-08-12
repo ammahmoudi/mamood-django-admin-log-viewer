@@ -1,0 +1,10 @@
+INFO 2025-08-12 09:00:01,000 myproject.views: Application started successfully
+DEBUG 2025-08-12 09:00:02,100 myproject.models: Loading user preferences
+INFO 2025-08-12 09:00:03,200 myproject.auth: User authentication successful
+WARNING 2025-08-12 09:00:04,300 myproject.cache: Cache miss for key: user_settings_123
+ERROR 2025-08-12 09:00:05,400 myproject.api: API rate limit exceeded for user 456
+INFO 2025-08-12 09:00:06,500 myproject.tasks: Background job completed: send_emails
+DEBUG 2025-08-12 09:00:07,600 myproject.db: Query executed in 0.025s
+WARNING 2025-08-12 09:00:08,700 myproject.security: Failed login attempt from IP 192.168.1.100
+CRITICAL 2025-08-12 09:00:09,800 myproject.core: Database connection pool exhausted
+INFO 2025-08-12 09:00:10,900 myproject.views: Page rendered successfully: dashboard

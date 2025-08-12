@@ -1,0 +1,46 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'log_viewer/css/log_viewer.css' %}">
+{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+    <a href="{% url 'admin:index' %}">Home</a>
+    &rsaquo; {{ title }}
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="log-viewer-container">
+    <h1>{{ title }}</h1>
+    
+    {% if log_files %}
+    <div class="log-files-grid">
+        {% for log_file in log_files %}
+        <div class="log-file-card">
+            <div class="log-file-header">
+                <h3><a href="{% url 'admin:log_viewer_detail' log_file.name %}">{{ log_file.name }}</a></h3>
+            </div>
+            <div class="log-file-info">
+                <p><strong>Size:</strong> {{ log_file.size|filesizeformat }}</p>
+                <p><strong>Modified:</strong> {{ log_file.modified|date:"Y-m-d H:i:s" }}</p>
+                <p><strong>Path:</strong> <code>{{ log_file.path }}</code></p>
+            </div>
+            <div class="log-file-actions">
+                <a href="{% url 'admin:log_viewer_detail' log_file.name %}" class="button default">View Log</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="no-logs-message">
+        <h2>No log files found</h2>
+        <p>Please check your LOG_VIEWER_FILES and LOG_VIEWER_FILES_DIR settings.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

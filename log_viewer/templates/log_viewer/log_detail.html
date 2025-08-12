@@ -1,0 +1,111 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'log_viewer/css/log_viewer.css' %}">
+<script src="{% static 'log_viewer/js/log_viewer.js' %}"></script>
+{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+    <a href="{% url 'admin:index' %}">Home</a>
+    &rsaquo; <a href="{% url 'admin:log_viewer_list' %}">Log Files</a>
+    &rsaquo; {{ filename }}
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="log-viewer-container">
+    <div class="log-viewer-header">
+        <h1>{{ title }}</h1>
+        <div class="log-viewer-controls">
+            <button id="refresh-log" class="button default">Refresh</button>
+            <button id="auto-refresh-toggle" class="button default">Auto-refresh: OFF</button>
+            <button id="auto-scroll-toggle" class="button default">Auto-scroll: ON</button>
+            <select id="log-level-filter" class="form-control">
+                <option value="">All Levels</option>
+                <option value="DEBUG">DEBUG</option>
+                <option value="INFO">INFO</option>
+                <option value="WARNING">WARNING</option>
+                <option value="ERROR">ERROR</option>
+                <option value="CRITICAL">CRITICAL</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="log-file-info">
+        <p><strong>File:</strong> {{ log_file.name }}</p>
+        <p><strong>Size:</strong> {{ log_file.size|filesizeformat }}</p>
+        <p><strong>Modified:</strong> {{ log_file.modified|date:"Y-m-d H:i:s" }}</p>
+        <p><strong>Total Lines:</strong> {{ total_lines }}</p>
+        <p><strong>Showing:</strong> Lines {{ start_line }} - {{ end_line }}</p>
+    </div>
+    
+    {% if log_lines %}
+    <div class="log-content">
+        <table class="log-table">
+            <thead>
+                <tr>
+                    <th width="80">Line</th>
+                    <th width="80">Level</th>
+                    <th width="180">Timestamp</th>
+                    <th>Message</th>
+                </tr>
+            </thead>
+            <tbody id="log-lines">
+                {% for line in log_lines %}
+                <tr class="log-line log-level-{{ line.level|lower }}" data-level="{{ line.level }}">
+                    <td class="line-number">{{ line.number }}</td>
+                    <td class="log-level">
+                        <span class="level-badge level-{{ line.level|lower }}">{{ line.level }}</span>
+                    </td>
+                    <td class="timestamp">{{ line.timestamp }}</td>
+                    <td class="message">{{ line.content }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- Pagination -->
+    <div class="pagination-container">
+        <div class="pagination">
+            {% if current_page > 1 %}
+                <a href="?page=1" class="page-link">&laquo; First</a>
+                <a href="?page={{ current_page|add:'-1' }}" class="page-link">&lsaquo; Previous</a>
+            {% endif %}
+            
+            <span class="page-info">
+                Page {{ current_page }} of {{ total_pages }}
+            </span>
+            
+            {% if current_page < total_pages %}
+                <a href="?page={{ current_page|add:'1' }}" class="page-link">Next &rsaquo;</a>
+                <a href="?page={{ total_pages }}" class="page-link">Last &raquo;</a>
+            {% endif %}
+        </div>
+    </div>
+    {% else %}
+    <div class="no-logs-message">
+        <h2>No log entries found</h2>
+        <p>The log file appears to be empty or could not be read.</p>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const logViewer = new LogViewer({
+        filename: '{{ filename }}',
+        currentPage: {{ current_page }},
+        refreshInterval: {{ refresh_interval }},
+        onlyRefreshWhenActive: {{ only_refresh_when_active|yesno:"true,false" }},
+        autoRefreshDefault: {{ auto_refresh_default|yesno:"true,false" }},
+        autoScrollToBottom: {{ auto_scroll_to_bottom|yesno:"true,false" }},
+        ajaxUrl: '{% url "admin:log_viewer_ajax" filename %}'
+    });
+});
+</script>
+{% endblock %}

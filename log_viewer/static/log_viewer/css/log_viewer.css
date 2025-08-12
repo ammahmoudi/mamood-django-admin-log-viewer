@@ -1,0 +1,354 @@
+/* Log Viewer CSS */
+
+.log-viewer-container {
+    margin: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.log-viewer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.log-viewer-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.log-viewer-controls select {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: white;
+}
+
+/* Log Files Grid */
+.log-files-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.log-file-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: box-shadow 0.2s;
+}
+
+.log-file-card:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.log-file-header h3 {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.log-file-header a {
+    text-decoration: none;
+    color: #0066cc;
+}
+
+.log-file-header a:hover {
+    text-decoration: underline;
+}
+
+.log-file-info {
+    margin: 15px 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.log-file-info p {
+    margin: 5px 0;
+}
+
+.log-file-info code {
+    background: #f5f5f5;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 12px;
+}
+
+.log-file-actions {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+/* Log File Info */
+.log-file-info {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 6px;
+    margin: 20px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.log-file-info p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+/* Log Content */
+.log-content {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    overflow: auto;
+    max-height: 70vh;
+}
+
+.log-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+    font-size: 13px;
+}
+
+.log-table thead {
+    background: #f8f9fa;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.log-table th {
+    padding: 12px 8px;
+    text-align: left;
+    border-bottom: 2px solid #dee2e6;
+    font-weight: 600;
+    color: #495057;
+}
+
+.log-table td {
+    padding: 8px;
+    border-bottom: 1px solid #f1f3f4;
+    vertical-align: top;
+}
+
+.log-line:hover {
+    background: #f8f9fa;
+}
+
+.line-number {
+    color: #6c757d;
+    font-weight: 500;
+    text-align: right;
+    user-select: none;
+    border-right: 1px solid #e9ecef;
+}
+
+/* Log Level Styling */
+.level-badge {
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.level-debug {
+    background: #6c757d;
+    color: white;
+}
+
+.level-info {
+    background: #17a2b8;
+    color: white;
+}
+
+.level-warning {
+    background: #ffc107;
+    color: #212529;
+}
+
+.level-error {
+    background: #dc3545;
+    color: white;
+}
+
+.level-critical {
+    background: #6f42c1;
+    color: white;
+}
+
+/* Log line highlighting by level */
+.log-level-error {
+    background: rgba(220, 53, 69, 0.05);
+    border-left: 3px solid #dc3545;
+}
+
+.log-level-critical {
+    background: rgba(111, 66, 193, 0.05);
+    border-left: 3px solid #6f42c1;
+}
+
+.log-level-warning {
+    background: rgba(255, 193, 7, 0.05);
+    border-left: 3px solid #ffc107;
+}
+
+/* Message column */
+.message {
+    word-break: break-word;
+    line-height: 1.4;
+}
+
+/* Timestamp */
+.timestamp {
+    color: #6c757d;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+/* Pagination */
+.pagination-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.page-link {
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #0066cc;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.page-link:hover {
+    background: #f8f9fa;
+    border-color: #0066cc;
+}
+
+.page-info {
+    padding: 8px 16px;
+    color: #666;
+    font-weight: 500;
+}
+
+/* No logs message */
+.no-logs-message {
+    text-align: center;
+    padding: 60px 20px;
+    color: #666;
+}
+
+.no-logs-message h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Button styles */
+.button.default {
+    background: #0066cc;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.button.default:hover {
+    background: #0052a3;
+}
+
+#auto-refresh-toggle.active,
+#auto-scroll-toggle.active {
+    background: #28a745;
+}
+
+#auto-refresh-toggle.active:hover,
+#auto-scroll-toggle.active:hover {
+    background: #218838;
+}
+
+#auto-refresh-toggle.inactive,
+#auto-scroll-toggle.inactive {
+    background: #6c757d;
+}
+
+#auto-refresh-toggle.inactive:hover,
+#auto-scroll-toggle.inactive:hover {
+    background: #5a6268;
+}
+
+/* Update indicator */
+.update-indicator {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #28a745;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 12px;
+    z-index: 1000;
+    opacity: 0.9;
+    transition: opacity 0.3s;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Refresh info styling */
+.refresh-info {
+    font-size: 12px;
+    color: #666;
+    margin: 5px 0;
+    font-style: italic;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .log-viewer-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+    
+    .log-viewer-controls {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .log-files-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .log-file-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .log-table {
+        font-size: 12px;
+    }
+    
+    .log-table th,
+    .log-table td {
+        padding: 6px;
+    }
+}

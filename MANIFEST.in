@@ -1,0 +1,6 @@
+include README.md
+include LICENSE
+recursive-include log_viewer/static *
+recursive-include log_viewer/templates *
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
