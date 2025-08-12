@@ -4,20 +4,24 @@
 import os
 import sys
 import django
-from django.conf import settings
+from pathlib import Path
 
-# Add the log_viewer app to the path
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+# Get the project root directory
+PROJECT_ROOT = Path(__file__).parent.parent
+
+# Add the project root to the path
+sys.path.insert(0, str(PROJECT_ROOT))
 
 # Configure Django settings
-if not settings.configured:
-    settings.configure(
+if not django.conf.settings.configured:
+    django.conf.settings.configure(
         DEBUG=True,
         SECRET_KEY='test-key-for-debugging',
         INSTALLED_APPS=[
             'log_viewer',
         ],
-        LOG_VIEWER_FILES_PATTERN='myproject/logs/*.log*',
+        LOG_VIEWER_FILES=['celery_beat.log'],
+        LOG_VIEWER_FILES_DIR=PROJECT_ROOT / 'myproject' / 'logs',
         LOG_VIEWER_FORMATS={
             'celery_beat': {
                 'pattern': r'(?P<level>\w+)\s+(?P<timestamp>\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}:\d{2},\d+)\s+(?P<module>[\w\.]+):\s*(?P<message>.*)',
@@ -25,6 +29,9 @@ if not settings.configured:
                 'description': 'Celery Beat format'
             },
         },
+        LOG_VIEWER_FILE_FORMATS={
+            'celery_beat.log': 'celery_beat',
+        }
     )
 
 django.setup()
@@ -34,11 +41,18 @@ from log_viewer.utils import process_log_lines_with_multiline, read_log_file
 
 def test_multiline_processing():
     """Test the multi-line processing with the celery_beat.log file."""
-    log_file_path = 'myproject/logs/celery_beat.log'
+    log_file_path = PROJECT_ROOT / 'myproject' / 'logs' / 'celery_beat.log'
+    
+    print(f"Testing multi-line processing with: {log_file_path}")
+    print(f"File exists: {log_file_path.exists()}")
+    
+    if not log_file_path.exists():
+        print("ERROR: Test log file not found!")
+        return
     
     # Read lines 40-140 to capture the multi-line entry
-    log_data = read_log_file(log_file_path, 100, 40)
-    print(f"Read {len(log_data['lines'])} lines from {log_file_path}")
+    log_data = read_log_file(str(log_file_path), 100, 40)
+    print(f"Read {len(log_data['lines'])} lines from log file")
     
     # Process with multi-line support
     formatted_lines = process_log_lines_with_multiline(

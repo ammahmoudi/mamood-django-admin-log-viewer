@@ -1,6 +1,29 @@
 include README.md
 include LICENSE
+include CHANGELOG.md
+include DEVELOPMENT.md
+include example_settings.py
+
+# Include log_viewer package files
+recursive-include log_viewer *.py
 recursive-include log_viewer/static *
 recursive-include log_viewer/templates *
+recursive-include log_viewer/templatetags *.py
+
+# Include tests for distribution
+recursive-include tests *.py
+
+# Exclude sample project and development files
+prune myproject
+prune .vscode
+prune .git
+exclude .gitignore
+exclude requirements.txt
+
+# Exclude unnecessary files
 recursive-exclude * __pycache__
 recursive-exclude * *.py[co]
+global-exclude *.DS_Store
+global-exclude .pytest_cache
+global-exclude .coverage
+global-exclude htmlcov
