@@ -10,7 +10,7 @@ authors = [
     {name = "A. Mahmoudi", email = "a.mahmoudi@example.com"},
 ]
 readme = "README.md"
-license = {text = "MIT"}
+license = {file = "LICENSE"}
 keywords = ["django", "admin", "log", "viewer", "monitoring", "tail", "real-time"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
