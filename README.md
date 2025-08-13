@@ -174,9 +174,11 @@ LOG_VIEWER_LEVEL_COLORS = {
 ### Accessing the Log Viewer
 
 1. Login to Django Admin as a staff user
-2. Look for **"Log Files"** in the admin interface
+2. Look for **"Log Files"** in the admin interface, or navigate directly to `admin/logs/`
 3. Click to view the list of available log files
 4. Select any log file to view its contents
+
+**Direct URL Access**: You can also access logs directly at `http://your-domain.com/admin/logs/` after logging in as a staff user.
 
 ### Features in Action
 
