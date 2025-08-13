@@ -4,18 +4,17 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "django-admin-log-viewer"
-dynamic = ["version"]
+version = "2.0.0"
 description = "A Django app for viewing log files in the admin interface"
 authors = [
     {name = "A. Mahmoudi", email = "a.mahmoudi@example.com"},
 ]
 readme = "README.md"
-license = {file = "LICENSE"}
+license = {text = "MIT"}
 keywords = ["django", "admin", "log", "viewer", "monitoring", "tail", "real-time"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.8",
@@ -56,9 +55,6 @@ Documentation = "https://github.com/ammahmoudi/django-admin-log-viewer#readme"
 Repository = "https://github.com/ammahmoudi/django-admin-log-viewer"
 "Bug Reports" = "https://github.com/ammahmoudi/django-admin-log-viewer/issues"
 Changelog = "https://github.com/ammahmoudi/django-admin-log-viewer/blob/main/CHANGELOG.md"
-
-[tool.setuptools.dynamic]
-version = {attr = "django_admin_log_viewer.__version__"}
 
 [tool.setuptools.packages.find]
 include = ["django_admin_log_viewer*"]

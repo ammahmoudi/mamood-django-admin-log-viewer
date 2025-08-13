@@ -17,6 +17,10 @@ recursive-include tests *.py
 prune myproject
 prune .vscode
 prune .git
+prune venv
+prune django_admin_log_viewer.egg-info
+prune build
+prune dist
 exclude .gitignore
 exclude requirements.txt
 
