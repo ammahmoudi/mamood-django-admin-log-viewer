@@ -64,9 +64,9 @@ Documentation = "https://github.com/ammahmoudi/django-admin-log-viewer#readme"
 exclude = ["tests*", "myproject*"]
 
 [tool.setuptools.package-data]
-log_viewer = [
-    "static/log_viewer/css/*.css",
-    "static/log_viewer/js/*.js", 
-    "templates/log_viewer/*.html",
+django_admin_log_viewer = [
+    "static/django_admin_log_viewer/css/*.css",
+    "static/django_admin_log_viewer/js/*.js", 
+    "templates/django_admin_log_viewer/*.html",
     "templatetags/*.py",
 ]

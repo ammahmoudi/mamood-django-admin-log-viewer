@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This is a major release with significant new features and improvements.
 
+### 🔄 Breaking Changes
+
+#### App Name Change
+- **BREAKING**: Changed app name from `log_viewer` to `django_admin_log_viewer`
+- **Migration Required**: Update `INSTALLED_APPS` in settings.py
+- **Template Paths**: Updated template and static file paths
+- **URL Namespaces**: Updated URL patterns and namespaces
+
 ### ✨ Added
 
 #### Multi-line Log Processing

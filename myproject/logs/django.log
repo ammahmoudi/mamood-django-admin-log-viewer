@@ -2949,3 +2949,199 @@ INFO 2025-08-13 03:02:48,806 basehttp: "GET /static/log_viewer/js/log_viewer.js 
 INFO 2025-08-13 03:02:55,074 basehttp: "GET /admin/logs/ HTTP/1.1" 200 15207
 INFO 2025-08-13 03:07:55,080 autoreload: D:\projects\django-admin-log-viewer\myproject\myproject\wsgi.py changed, reloading.
 INFO 2025-08-13 03:07:55,692 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 14:48:11,820 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 14:54:55,058 autoreload: Watching for file changes with StatReloader
+ERROR 2025-08-13 14:55:02,659 log: Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 244, in _get_session
+    return self._session_cache
+           ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: django_session
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\contrib\admin\sites.py", line 265, in wrapper
+    return self.admin_view(view, cacheable)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\utils\decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\utils\decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\contrib\admin\sites.py", line 234, in inner
+    if not self.has_permission(request):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\contrib\admin\sites.py", line 207, in has_permission
+    return request.user.is_active and request.user.is_staff
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\utils\functional.py", line 251, in inner
+    self._setup()
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\utils\functional.py", line 404, in _setup
+    self._wrapped = self._setupfunc()
+                    ^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\contrib\auth\middleware.py", line 40, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+                                            ^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\contrib\auth\middleware.py", line 20, in get_user
+    request._cached_user = auth.get_user(request)
+                           ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\contrib\auth\__init__.py", line 304, in get_user
+    user_id = _get_user_session_key(request)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\contrib\auth\__init__.py", line 95, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+                                               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 55, in __getitem__
+    return self._session[key]
+           ^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 249, in _get_session
+    self._session_cache = self.load()
+                          ^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\contrib\sessions\backends\db.py", line 55, in load
+    s = self._get_session_from_db()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\contrib\sessions\backends\db.py", line 34, in _get_session_from_db
+    return self.model.objects.get(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\db\models\query.py", line 629, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\db\models\query.py", line 366, in __len__
+    self._fetch_all()
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\db\models\query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: django_session
+ERROR 2025-08-13 14:55:02,666 basehttp: "GET /admin/ HTTP/1.1" 500 223630
+INFO 2025-08-13 14:55:29,928 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 14:55:33,305 basehttp: "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-08-13 14:55:33,394 basehttp: "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4184
+INFO 2025-08-13 14:55:33,517 basehttp: "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-08-13 14:55:33,519 basehttp: "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-08-13 14:55:33,520 basehttp: "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-08-13 14:55:33,520 basehttp: "GET /static/admin/css/login.css HTTP/1.1" 200 951
+INFO 2025-08-13 14:55:33,522 basehttp: "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-08-13 14:55:33,523 basehttp: "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-08-13 14:55:33,527 basehttp: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-08-13 14:55:35,502 basehttp: "POST /admin/login/?next=/admin/ HTTP/1.1" 200 4352
+INFO 2025-08-13 14:55:52,504 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 14:55:56,558 basehttp: "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-08-13 14:55:56,604 basehttp: "GET /admin/ HTTP/1.1" 200 4556
+INFO 2025-08-13 14:55:56,688 basehttp: "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-08-13 14:56:01,872 basehttp: "GET /admin/logs/django.log HTTP/1.1" 301 0
+ERROR 2025-08-13 14:56:02,041 log: Internal Server Error: /admin/logs/django.log/
+Traceback (most recent call last):
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\template\response.py", line 74, in resolve_template
+    return get_template(template, using=self.using)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: log_viewer/log_detail.html
+ERROR 2025-08-13 14:56:02,043 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 500 97861
+ERROR 2025-08-13 14:56:29,964 log: Internal Server Error: /admin/logs/
+Traceback (most recent call last):
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\template\response.py", line 74, in resolve_template
+    return get_template(template, using=self.using)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: log_viewer/log_list.html
+ERROR 2025-08-13 14:56:29,966 basehttp: "GET /admin/logs/ HTTP/1.1" 500 97686
+INFO 2025-08-13 14:58:13,894 autoreload: D:\projects\django-admin-log-viewer\django_admin_log_viewer\admin.py changed, reloading.
+INFO 2025-08-13 14:58:14,449 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 14:58:20,715 autoreload: D:\projects\django-admin-log-viewer\django_admin_log_viewer\admin.py changed, reloading.
+INFO 2025-08-13 14:58:21,212 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 15:01:10,608 autoreload: D:\projects\django-admin-log-viewer\venv\Lib\site-packages\sqlparse\tokens.py changed, reloading.
+INFO 2025-08-13 15:01:11,080 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 15:01:12,281 autoreload: D:\projects\django-admin-log-viewer\venv\Lib\site-packages\django\contrib\admin\checks.py changed, reloading.
+INFO 2025-08-13 15:02:15,000 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 15:02:21,520 basehttp: "GET /admin/logs/ HTTP/1.1" 200 15220
+INFO 2025-08-13 15:02:21,619 basehttp: "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-08-13 15:02:21,633 basehttp: "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-08-13 15:02:21,635 basehttp: "GET /static/django_admin_log_viewer/css/log_viewer.css HTTP/1.1" 200 35873
+INFO 2025-08-13 15:02:21,638 basehttp: "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-08-13 15:02:21,638 basehttp: "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-08-13 15:02:21,641 basehttp: "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-08-13 15:02:21,641 basehttp: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-08-13 15:02:24,273 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 41694
+INFO 2025-08-13 15:02:24,312 basehttp: "GET /static/django_admin_log_viewer/js/log_viewer.js HTTP/1.1" 200 42462
+INFO 2025-08-13 15:02:35,681 basehttp: "GET /admin/logs/ HTTP/1.1" 200 15220
+INFO 2025-08-13 15:02:35,712 basehttp: "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-08-13 15:02:35,714 basehttp: "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-08-13 15:02:35,715 basehttp: "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-08-13 15:02:35,716 basehttp: "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2025-08-13 15:02:35,717 basehttp: "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-08-13 15:02:35,719 basehttp: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0

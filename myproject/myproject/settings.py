@@ -38,12 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'log_viewer',  # Add the log viewer app
+    'django_admin_log_viewer',  # Add the log viewer app
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'log_viewer.middleware.LogViewerLoggingMiddleware',  # Add this to suppress log viewer AJAX logging
+    'django_admin_log_viewer.middleware.LogViewerLoggingMiddleware',  # Add this to suppress log viewer AJAX logging
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

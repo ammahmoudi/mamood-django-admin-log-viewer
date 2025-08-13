@@ -4,11 +4,11 @@ include CHANGELOG.md
 include DEVELOPMENT.md
 include example_settings.py
 
-# Include log_viewer package files
-recursive-include log_viewer *.py
-recursive-include log_viewer/static *
-recursive-include log_viewer/templates *
-recursive-include log_viewer/templatetags *.py
+# Include django_admin_log_viewer package files
+recursive-include django_admin_log_viewer *.py
+recursive-include django_admin_log_viewer/static *
+recursive-include django_admin_log_viewer/templates *
+recursive-include django_admin_log_viewer/templatetags *.py
 
 # Include tests for distribution
 recursive-include tests *.py

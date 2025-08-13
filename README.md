@@ -29,15 +29,33 @@ A powerful Django app that provides a comprehensive web interface to view and mo
 
 ## 📦 Installation
 
-### 1. Install the Package
+### Production Installation
 
 ```bash
 pip install django-admin-log-viewer
 ```
 
+### Development Installation (Editable Mode)
+
+For development or contributing:
+
+```bash
+# Clone the repository
+git clone https://github.com/ammahmoudi/django-admin-log-viewer.git
+cd django-admin-log-viewer
+
+# Install in editable mode
+pip install -e .
+
+# Or with development dependencies
+pip install -e .[dev]
+```
+
+The editable install (`-e` flag) allows you to modify the source code and see changes immediately without reinstalling.
+
 ### 2. Add to Django Settings
 
-Add `log_viewer` to your `INSTALLED_APPS`:
+Add `django_admin_log_viewer` to your `INSTALLED_APPS`:
 
 ```python
 INSTALLED_APPS = [
@@ -45,7 +63,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',  # Required
     'django.contrib.auth',   # Required  
     'django.contrib.contenttypes',  # Required
-    'log_viewer',
+    'django_admin_log_viewer',
 ]
 ```
 

@@ -5,28 +5,7 @@ Summary: A powerful Django app for viewing and monitoring log files in the admin
 Home-page: https://github.com/ammahmoudi/django-admin-log-viewer
 Author: Amirhossein Mahmoudi
 Author-email: Amirhossein Mahmoudi <am.mahmoudi@outlook.com>
-License: MIT License
-        
-        Copyright (c) 2025 Django Admin Log Viewer
-        
-        Permission is hereby granted, free of charge, to any person obtaining a copy
-        of this software and associated documentation files (the "Software"), to deal
-        in the Software without restriction, including without limitation the rights
-        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-        copies of the Software, and to permit persons to whom the Software is
-        furnished to do so, subject to the following conditions:
-        
-        The above copyright notice and this permission notice shall be included in all
-        copies or substantial portions of the Software.
-        
-        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-        SOFTWARE.
-        
+License: MIT
 Project-URL: Homepage, https://github.com/ammahmoudi/django-admin-log-viewer
 Project-URL: Repository, https://github.com/ammahmoudi/django-admin-log-viewer
 Project-URL: Issues, https://github.com/ammahmoudi/django-admin-log-viewer/issues
@@ -104,15 +83,33 @@ A powerful Django app that provides a comprehensive web interface to view and mo
 
 ## 📦 Installation
 
-### 1. Install the Package
+### Production Installation
 
 ```bash
 pip install django-admin-log-viewer
 ```
 
+### Development Installation (Editable Mode)
+
+For development or contributing:
+
+```bash
+# Clone the repository
+git clone https://github.com/ammahmoudi/django-admin-log-viewer.git
+cd django-admin-log-viewer
+
+# Install in editable mode
+pip install -e .
+
+# Or with development dependencies
+pip install -e .[dev]
+```
+
+The editable install (`-e` flag) allows you to modify the source code and see changes immediately without reinstalling.
+
 ### 2. Add to Django Settings
 
-Add `log_viewer` to your `INSTALLED_APPS`:
+Add `django_admin_log_viewer` to your `INSTALLED_APPS`:
 
 ```python
 INSTALLED_APPS = [
@@ -120,7 +117,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',  # Required
     'django.contrib.auth',   # Required  
     'django.contrib.contenttypes',  # Required
-    'log_viewer',
+    'django_admin_log_viewer',
 ]
 ```
 

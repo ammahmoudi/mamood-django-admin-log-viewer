@@ -69,10 +69,10 @@ setup(
     include_package_data=True,
     zip_safe=False,
     package_data={
-        "log_viewer": [
-            "static/log_viewer/css/*.css",
-            "static/log_viewer/js/*.js", 
-            "templates/log_viewer/*.html",
+        "django_admin_log_viewer": [
+            "static/django_admin_log_viewer/css/*.css",
+            "static/django_admin_log_viewer/js/*.js", 
+            "templates/django_admin_log_viewer/*.html",
             "templatetags/*.py",
         ],
     },

@@ -15,7 +15,7 @@ def log_list_view(request):
         'log_files': log_files,
     }
     
-    return render(request, 'log_viewer/log_list.html', context)
+    return render(request, 'django_admin_log_viewer/log_list.html', context)
 
 
 @staff_member_required
@@ -63,7 +63,7 @@ def log_detail_view(request, filename):
         'refresh_interval': getattr(settings, 'LOGVIEWER_REFRESH_INTERVAL', 1000),
     }
     
-    return render(request, 'log_viewer/log_detail.html', context)
+    return render(request, 'django_admin_log_viewer/log_detail.html', context)
 
 
 @staff_member_required

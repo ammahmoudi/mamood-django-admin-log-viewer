@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 
-app_name = 'log_viewer'
+app_name = 'django_admin_log_viewer'
 
 urlpatterns = [
     path('', views.log_list_view, name='log_list'),

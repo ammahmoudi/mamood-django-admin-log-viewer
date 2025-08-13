@@ -1,5 +1,5 @@
 """
-Django tests for log_viewer app.
+Django tests for django_admin_log_viewer app.
 These tests use Django's TestCase for proper Django testing.
 """
 
@@ -9,7 +9,7 @@ from django.test import TestCase, RequestFactory, override_settings
 from django.contrib.auth.models import User
 from pathlib import Path
 
-from log_viewer.utils import (
+from django_admin_log_viewer.utils import (
     get_log_files, 
     read_log_file, 
     format_log_line, 
@@ -161,7 +161,7 @@ class LogViewerViewsTestCase(TestCase):
     def test_log_views_require_staff(self):
         """Test that log views require staff permissions."""
         with self.settings(LOG_VIEWER_FILES_DIR=self.temp_dir):
-            from log_viewer.views import log_list_view, log_detail_view
+            from django_admin_log_viewer.views import log_list_view, log_detail_view
             
             # Test with non-staff user
             regular_user = User.objects.create_user('regular', 'regular@test.com', 'pass')

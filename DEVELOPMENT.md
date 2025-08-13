@@ -2,6 +2,8 @@
 
 ## Development Setup
 
+### Option 1: Editable Install (Recommended for Development)
+
 1. **Clone the repository:**
 ```bash
 git clone <repository-url>
@@ -14,14 +16,49 @@ python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-3. **Install development dependencies:**
+3. **Install in editable mode:**
+```bash
+pip install -e .
+```
+
+This installs the package in "editable" mode, meaning changes to the source code are immediately reflected without reinstalling.
+
+4. **Install development dependencies:**
 ```bash
 pip install -r requirements.txt
 ```
 
-4. **Run tests:**
+### Option 2: Direct Development Setup
+
+1. **Clone and setup:**
 ```bash
-python -m pytest log_viewer/tests.py -v
+git clone <repository-url>
+cd django-admin-log-viewer
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+2. **Add to Python path (for testing):**
+Add the project root directory to your Python path when testing.
+
+## Running Tests
+
+### Unit Tests
+```bash
+# Run basic app tests
+cd myproject
+python manage.py test django_admin_log_viewer
+
+# Run comprehensive test suite
+python -m pytest tests/ -v
+```
+
+### Integration Tests
+```bash
+# Run all Django integration tests
+cd myproject  
+python manage.py test
 ```
 
 ## Testing the App
