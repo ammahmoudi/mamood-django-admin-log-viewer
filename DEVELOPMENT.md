@@ -25,7 +25,7 @@ This installs the package in "editable" mode, meaning changes to the source code
 
 4. **Install development dependencies:**
 ```bash
-pip install -r requirements.txt
+pip install -r myproject/requirements.txt
 ```
 
 ### Option 2: Direct Development Setup
@@ -36,7 +36,7 @@ git clone <repository-url>
 cd django-admin-log-viewer
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
-pip install -r requirements.txt
+pip install -r myproject/requirements.txt
 ```
 
 2. **Add to Python path (for testing):**

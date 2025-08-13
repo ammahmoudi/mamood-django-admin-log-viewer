@@ -1,3 +1,0 @@
-dist
-django_admin_log_viewer
-venv

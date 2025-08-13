@@ -1,8 +1,0 @@
-Django>=3.2
-
-[dev]
-pytest>=6.0
-pytest-django>=4.0
-black>=21.0
-flake8>=3.8
-isort>=5.0

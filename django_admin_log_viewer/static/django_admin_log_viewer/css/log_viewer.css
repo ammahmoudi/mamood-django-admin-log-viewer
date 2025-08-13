@@ -188,6 +188,7 @@
     color: #6c757d;
     font-weight: 500;
     text-align: right;
+    -webkit-user-select: none;
     user-select: none;
     border-right: 1px solid #e9ecef;
 }
