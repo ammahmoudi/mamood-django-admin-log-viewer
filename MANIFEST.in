@@ -4,11 +4,11 @@ include CHANGELOG.md
 include DEVELOPMENT.md
 include example_settings.py
 
-# Include django_admin_log_viewer package files
-recursive-include django_admin_log_viewer *.py
-recursive-include django_admin_log_viewer/static *
-recursive-include django_admin_log_viewer/templates *
-recursive-include django_admin_log_viewer/templatetags *.py
+# Include mamood_django_admin_log_viewer package files
+recursive-include mamood_django_admin_log_viewer *.py
+recursive-include mamood_django_admin_log_viewer/static *
+recursive-include mamood_django_admin_log_viewer/templates *
+recursive-include mamood_django_admin_log_viewer/templatetags *.py
 
 # Include tests for distribution
 recursive-include tests *.py
@@ -18,7 +18,7 @@ prune myproject
 prune .vscode
 prune .git
 prune venv
-prune django_admin_log_viewer.egg-info
+prune mamood_django_admin_log_viewer.egg-info
 prune build
 prune dist
 exclude .gitignore

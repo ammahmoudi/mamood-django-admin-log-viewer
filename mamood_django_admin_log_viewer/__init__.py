@@ -7,4 +7,4 @@ multi-line log support, and configurable log format parsing.
 
 __version__ = '2.0.0'
 
-default_app_config = 'django_admin_log_viewer.apps.DjangoAdminLogViewerConfig'
+default_app_config = 'mamood_django_admin_log_viewer.apps.MamoodDjangoAdminLogViewerConfig'

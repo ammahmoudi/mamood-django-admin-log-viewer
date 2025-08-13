@@ -3201,3 +3201,7 @@ INFO 2025-08-13 17:32:30,867 basehttp: "GET /static/admin/css/responsive.css HTT
 INFO 2025-08-13 17:32:30,872 basehttp: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
 INFO 2025-08-13 17:51:53,843 autoreload: D:\projects\django-admin-log-viewer\django_admin_log_viewer\__init__.py changed, reloading.
 INFO 2025-08-13 17:51:54,947 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 23:51:08,125 autoreload: D:\projects\django-admin-log-viewer\myproject\myproject\settings.py changed, reloading.
+INFO 2025-08-13 23:51:08,772 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 23:59:06,904 autoreload: D:\projects\django-admin-log-viewer\myproject\myproject\settings.py changed, reloading.
+INFO 2025-08-13 23:59:07,353 autoreload: Watching for file changes with StatReloader

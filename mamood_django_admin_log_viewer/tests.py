@@ -1,5 +1,5 @@
 """
-Basic tests for django_admin_log_viewer app.
+Basic tests for mamood_django_admin_log_viewer app.
 For comprehensive tests, see the tests/ directory.
 """
 

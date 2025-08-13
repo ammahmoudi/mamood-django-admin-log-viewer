@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 
 
-class LogViewerConfig(AppConfig):
+class MamoodDjangoAdminLogViewerConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'django_admin_log_viewer'
+    name = 'mamood_django_admin_log_viewer'
     verbose_name = 'Log Viewer'

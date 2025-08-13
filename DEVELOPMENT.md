@@ -7,7 +7,7 @@
 1. **Clone the repository:**
 ```bash
 git clone <repository-url>
-cd django-admin-log-viewer
+cd mamood-django-admin-log-viewer
 ```
 
 2. **Create a virtual environment:**
@@ -33,7 +33,7 @@ pip install -r myproject/requirements.txt
 1. **Clone and setup:**
 ```bash
 git clone <repository-url>
-cd django-admin-log-viewer
+cd mamood-django-admin-log-viewer
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r myproject/requirements.txt
@@ -48,7 +48,7 @@ Add the project root directory to your Python path when testing.
 ```bash
 # Run basic app tests
 cd myproject
-python manage.py test django_admin_log_viewer
+python manage.py test mamood_django_admin_log_viewer
 
 # Run comprehensive test suite
 python -m pytest tests/ -v
@@ -88,8 +88,8 @@ python manage.py createsuperuser
 ## Project Structure
 
 ```
-django-admin-log-viewer/
-├── django_admin_log_viewer/           # Main app (renamed for consistency)
+mamood-django-admin-log-viewer/
+├── mamood_django_admin_log_viewer/           # Main app (renamed for consistency)
 │   ├── __init__.py
 │   ├── apps.py                       # Django app configuration
 │   ├── admin.py                      # Admin integration with multi-line support
@@ -98,13 +98,13 @@ django-admin-log-viewer/
 │   ├── urls.py                       # URL patterns
 │   ├── utils.py                      # Core utilities with format parsing
 │   ├── tests.py                      # Test cases
-│   ├── static/django_admin_log_viewer/
+│   ├── static/mamood_django_admin_log_viewer/
 │   │   ├── css/
 │   │   │   ├── log_viewer.css        # Main styles
 │   │   │   └── live_mode.css         # Real-time mode styles
 │   │   └── js/
 │   │       └── log_viewer.js         # AJAX and interactivity
-│   ├── templates/django_admin_log_viewer/
+│   ├── templates/mamood_django_admin_log_viewer/
 │   │   ├── log_list.html             # File list with sidebar
 │   │   └── log_detail.html           # Log content viewer
 │   └── templatetags/
@@ -225,7 +225,7 @@ python test_pagination_multiline.py
 
 ## Development Workflow
 
-1. **Make changes** to django_admin_log_viewer app
+1. **Make changes** to mamood_django_admin_log_viewer app
 2. **Test locally** using myproject test environment
 3. **Run tests** to verify functionality
 4. **Test multi-line parsing** with included sample logs
@@ -241,8 +241,8 @@ python test_pagination_multiline.py
 4. Test multi-line detection with new format
 
 ### **UI Improvements:**
-1. Modify CSS in `static/django_admin_log_viewer/css/`
-2. Update JavaScript in `static/django_admin_log_viewer/js/`
+1. Modify CSS in `static/mamood_django_admin_log_viewer/css/`
+2. Update JavaScript in `static/mamood_django_admin_log_viewer/js/`
 3. Test responsive design on different devices
 4. Verify dark mode compatibility
 

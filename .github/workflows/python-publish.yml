@@ -53,7 +53,7 @@ jobs:
           # Add current directory to Python path for imports
           export PYTHONPATH="${PYTHONPATH}:$(pwd)/.."
           # Run Django tests
-          python manage.py test django_admin_log_viewer --verbosity=2
+          python manage.py test mamood_django_admin_log_viewer --verbosity=2
 
   # Build release distributions
   release-build:
@@ -97,7 +97,7 @@ jobs:
 
     environment:
       name: pypi
-      url: https://pypi.org/project/django-admin-log-viewer/
+      url: https://pypi.org/project/mamood-django-admin-log-viewer/
 
     steps:
       - name: Retrieve release distributions

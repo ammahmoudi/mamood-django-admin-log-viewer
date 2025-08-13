@@ -16,7 +16,7 @@ def log_list_view(request):
         'log_files': log_files,
     }
     
-    return render(request, 'django_admin_log_viewer/log_list.html', context)
+    return render(request, 'mamood_django_admin_log_viewer/log_list.html', context)
 
 
 @staff_member_required
@@ -64,7 +64,7 @@ def log_detail_view(request, filename):
         'refresh_interval': get_refresh_interval(),
     }
     
-    return render(request, 'django_admin_log_viewer/log_detail.html', context)
+    return render(request, 'mamood_django_admin_log_viewer/log_detail.html', context)
 
 
 @staff_member_required

@@ -17,7 +17,7 @@ if not django.conf.settings.configured:
         DEBUG=True,
         SECRET_KEY='test-key-for-pagination-testing',
         INSTALLED_APPS=[
-            'django_admin_log_viewer',
+            'mamood_django_admin_log_viewer',
         ],
         LOG_VIEWER_FILES=['celery_beat.log'],
         LOG_VIEWER_FILES_DIR=PROJECT_ROOT / 'myproject' / 'logs',
@@ -37,7 +37,7 @@ if not django.conf.settings.configured:
 django.setup()
 
 # Import after Django is configured
-from django_admin_log_viewer.utils import read_log_file_multiline_aware
+from mamood_django_admin_log_viewer.utils import read_log_file_multiline_aware
 
 def test_pagination():
     """Test multi-line aware pagination."""

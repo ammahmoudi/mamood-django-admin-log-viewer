@@ -33,14 +33,14 @@ class LogViewerAdminMixin:
             'log_files': log_files,
             'has_permission': True,
             'opts': {
-                'app_label': 'django_admin_log_viewer',
+                'app_label': 'mamood_django_admin_log_viewer',
                 'model_name': 'logfile',
                 'verbose_name': 'Log File',
                 'verbose_name_plural': 'Log Files',
             }
         }
         
-        return TemplateResponse(request, 'django_admin_log_viewer/log_list.html', context)
+        return render(request, 'mamood_django_admin_log_viewer/log_list.html', context)
     
     def log_detail_view(self, request, filename):
         """View to display log file content."""
@@ -134,14 +134,14 @@ class LogViewerAdminMixin:
             'auto_scroll_to_bottom': get_auto_scroll_to_bottom(),
             'has_permission': True,
             'opts': {
-                'app_label': 'django_admin_log_viewer',
+                'app_label': 'mamood_django_admin_log_viewer',
                 'model_name': 'logfile',
                 'verbose_name': 'Log File',
                 'verbose_name_plural': 'Log Files',
             }
         }
         
-        return TemplateResponse(request, 'django_admin_log_viewer/log_detail.html', context)
+        return TemplateResponse(request, 'mamood_django_admin_log_viewer/log_detail.html', context)
     
     def log_ajax_view(self, request, filename):
         """AJAX endpoint for refreshing log content."""

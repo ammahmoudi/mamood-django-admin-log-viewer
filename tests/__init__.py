@@ -1,1 +1,1 @@
-# Test package for django-admin-log-viewer
+# Test package for mamood-django-admin-log-viewer

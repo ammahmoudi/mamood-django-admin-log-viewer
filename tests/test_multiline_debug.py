@@ -18,7 +18,7 @@ if not django.conf.settings.configured:
         DEBUG=True,
         SECRET_KEY='test-key-for-debugging',
         INSTALLED_APPS=[
-            'django_admin_log_viewer',
+            'mamood_django_admin_log_viewer',
         ],
         LOG_VIEWER_FILES=['celery_beat.log'],
         LOG_VIEWER_FILES_DIR=PROJECT_ROOT / 'myproject' / 'logs',
@@ -37,7 +37,7 @@ if not django.conf.settings.configured:
 django.setup()
 
 # Import after Django is configured
-from django_admin_log_viewer.utils import process_log_lines_with_multiline, read_log_file
+from mamood_django_admin_log_viewer.utils import process_log_lines_with_multiline, read_log_file
 
 def test_multiline_processing():
     """Test the multi-line processing with the celery_beat.log file."""

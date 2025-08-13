@@ -32,7 +32,7 @@ A powerful Django app that provides a comprehensive web interface to view and mo
 ### Production Installation
 
 ```bash
-pip install django-admin-log-viewer
+pip install mamood-django-admin-log-viewer
 ```
 
 ### Development Installation (Editable Mode)
@@ -41,8 +41,8 @@ For development or contributing:
 
 ```bash
 # Clone the repository
-git clone https://github.com/ammahmoudi/django-admin-log-viewer.git
-cd django-admin-log-viewer
+git clone https://github.com/ammahmoudi/mamood-django-admin-log-viewer.git
+cd mamood-django-admin-log-viewer
 
 # Install in editable mode
 pip install -e .
@@ -55,7 +55,7 @@ The editable install (`-e` flag) allows you to modify the source code and see ch
 
 ### 2. Add to Django Settings
 
-Add `django_admin_log_viewer` to your `INSTALLED_APPS`:
+Add `mamood_django_admin_log_viewer` to your `INSTALLED_APPS`:
 
 ```python
 INSTALLED_APPS = [
@@ -63,7 +63,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',  # Required
     'django.contrib.auth',   # Required  
     'django.contrib.contenttypes',  # Required
-    'django_admin_log_viewer',
+    'mamood_django_admin_log_viewer',
 ]
 ```
 
