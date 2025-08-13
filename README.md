@@ -138,6 +138,7 @@ LOG_VIEWER_FILES_DIR = BASE_DIR / 'logs'
 # ✅ Real-time monitoring with 10-second refresh
 # ✅ 25 entries per page with smart multi-line pagination
 # ✅ Performance optimizations enabled by default
+```
 
 ### Advanced Log Format Configuration
 
@@ -248,6 +249,7 @@ LOG_VIEWER_FORMATS = {
 ### Log Rotation Support
 
 The viewer automatically detects rotated log files:
+
 - `application.log` (current)
 - `application.log.1` (yesterday)
 - `application.log.2.gz` (compressed older logs)
@@ -256,6 +258,7 @@ The viewer automatically detects rotated log files:
 ### Multi-line Processing
 
 Perfect handling of:
+
 - Python stack traces
 - Java exceptions  
 - SQL query logs
@@ -271,7 +274,7 @@ Perfect handling of:
 
 ## 📋 Requirements
 
-- **Python**: 3.8+ 
+- **Python**: 3.8+
 - **Django**: 3.2+
 - **Permissions**: Staff access to Django admin
 
@@ -286,16 +289,19 @@ MIT License - see LICENSE file for details.
 ## 🐛 Troubleshooting
 
 ### Log Files Not Showing
+
 - Check `LOG_VIEWER_FILES_DIR` path exists
 - Verify file permissions
 - Ensure files are listed in `LOG_VIEWER_FILES`
 
 ### Performance Issues
+
 - Reduce `LOG_VIEWER_PAGE_LENGTH` for large files
-- Increase `LOGVIEWER_REFRESH_INTERVAL` 
+- Increase `LOGVIEWER_REFRESH_INTERVAL`
 - Set `LOGVIEWER_DISABLE_ACCESS_LOGS = True`
 
 ### Multi-line Logs Not Grouping
+
 - Check your log format regex pattern
 - Ensure the pattern matches the first line of log entries
 - Verify timestamp format matches your logs
@@ -303,9 +309,10 @@ MIT License - see LICENSE file for details.
 ## 🎯 Changelog
 
 ### v2.0.0 (Latest)
+
 - ✅ Multi-line log processing with smart pagination
 - ✅ Configurable log format parsing
-- ✅ Log rotation support 
+- ✅ Log rotation support
 - ✅ Dark mode theme
 - ✅ Real-time monitoring with live mode
 - ✅ Module/logger name display
