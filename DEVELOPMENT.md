@@ -261,7 +261,7 @@ python test_pagination_multiline.py
 - [ ] Run all tests successfully
 - [ ] Verify README.md has all features documented
 - [ ] Check for any security vulnerabilities
-- [ ] Test with different Django versions (3.2+)
+- [ ] Test with different Django versions (4.2+)
 
 ## Debugging Tips
 

@@ -15,7 +15,7 @@ This is a Django app that provides a web interface to view log files directly in
 ## Development Guidelines
 
 - Follow Django best practices and conventions
-- Ensure all code is compatible with Django 3.2+
+- Ensure all code is compatible with Django 4.2+
 - Use semantic HTML and accessible design patterns
 - Implement proper error handling for file operations
 - Make the interface responsive and user-friendly

@@ -10,7 +10,7 @@ authors = [
     {name = "A. Mahmoudi", email = "a.mahmoudi@example.com"},
 ]
 readme = "README.md"
-license = {file = "LICENSE"}
+license = "MIT"
 keywords = ["django", "admin", "log", "viewer", "monitoring", "tail", "real-time"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
@@ -23,7 +23,6 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Framework :: Django",
-    "Framework :: Django :: 3.2",
     "Framework :: Django :: 4.0",
     "Framework :: Django :: 4.1",
     "Framework :: Django :: 4.2",
@@ -37,7 +36,7 @@ classifiers = [
 ]
 requires-python = ">=3.8"
 dependencies = [
-    "Django>=3.2",
+    "Django>=4.2",
 ]
 
 [project.optional-dependencies]
