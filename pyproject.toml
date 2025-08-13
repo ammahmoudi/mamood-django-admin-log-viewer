@@ -7,7 +7,7 @@ name = "mamood-django-admin-log-viewer"
 version = "2.0.0"
 description = "A Django app for viewing log files in the admin interface"
 authors = [
-    {name = "A. Mahmoudi", email = "a.mahmoudi@example.com"},
+    {name = "Amirhossein Mahmoudi", email = "am.mahmoudi@outlook.com"},
 ]
 readme = "README.md"
 license = "MIT"
