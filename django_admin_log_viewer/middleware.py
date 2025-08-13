@@ -4,6 +4,7 @@ This prevents the log spam caused by auto-refresh requests.
 """
 import logging
 from django.conf import settings
+from .conf import get_disable_access_logs
 
 
 class LogViewerLoggingFilter(logging.Filter):
@@ -31,7 +32,7 @@ class LogViewerLoggingMiddleware:
     
     def __init__(self, get_response):
         self.get_response = get_response
-        self.disable_access_logs = getattr(settings, 'LOGVIEWER_DISABLE_ACCESS_LOGS', True)
+        self.disable_access_logs = get_disable_access_logs()
         self.filter_installed = False
         
         # Install the filter on relevant loggers

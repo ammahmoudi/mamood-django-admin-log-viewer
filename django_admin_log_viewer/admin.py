@@ -4,6 +4,8 @@ from django.http import JsonResponse
 from django.template.response import TemplateResponse
 from django.contrib.admin import AdminSite
 from .utils import get_log_files, read_log_file_multiline_aware
+from .conf import (get_file_list_title, get_page_length, get_refresh_interval, 
+                   get_auto_refresh_default, get_auto_scroll_to_bottom, get_only_refresh_when_active)
 
 
 class LogViewerAdminMixin:
@@ -22,13 +24,12 @@ class LogViewerAdminMixin:
     
     def log_list_view(self, request):
         """View to list all available log files."""
-        from django.conf import settings
         
         log_files = get_log_files()
         
         context = {
             **self.each_context(request),
-            'title': getattr(settings, 'LOG_VIEWER_FILE_LIST_TITLE', 'Log Files'),
+            'title': get_file_list_title(),
             'log_files': log_files,
             'has_permission': True,
             'opts': {
@@ -86,7 +87,7 @@ class LogViewerAdminMixin:
         if selected_file.get('is_rotational'):
             live_mode = False
         
-        page_length = getattr(settings, 'LOG_VIEWER_PAGE_LENGTH', 25)
+        page_length = get_page_length()
         
         if live_mode and not selected_file.get('is_rotational'):
             # In live mode, always show the latest entries (last page)
@@ -127,10 +128,10 @@ class LogViewerAdminMixin:
             'page_length': page_length,
             'live_mode': live_mode,
             'is_rotational': selected_file.get('is_rotational', False),
-            'refresh_interval': getattr(settings, 'LOGVIEWER_REFRESH_INTERVAL', 10000),
-            'only_refresh_when_active': getattr(settings, 'LOGVIEWER_ONLY_REFRESH_WHEN_ACTIVE', True),
-            'auto_refresh_default': getattr(settings, 'LOGVIEWER_AUTO_REFRESH_DEFAULT', True),
-            'auto_scroll_to_bottom': getattr(settings, 'LOGVIEWER_AUTO_SCROLL_TO_BOTTOM', True),
+            'refresh_interval': get_refresh_interval(),
+            'only_refresh_when_active': get_only_refresh_when_active(),
+            'auto_refresh_default': get_auto_refresh_default(),
+            'auto_scroll_to_bottom': get_auto_scroll_to_bottom(),
             'has_permission': True,
             'opts': {
                 'app_label': 'django_admin_log_viewer',
@@ -173,7 +174,7 @@ class LogViewerAdminMixin:
         if not selected_file:
             return JsonResponse({'error': 'Log file not found'}, status=404)
         
-        page_length = getattr(settings, 'LOG_VIEWER_PAGE_LENGTH', 25)
+        page_length = get_page_length()
         
         # Check if we're in live mode or specific page mode
         # If page parameter exists, it should override live mode to false

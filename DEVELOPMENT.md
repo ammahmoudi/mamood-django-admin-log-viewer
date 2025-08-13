@@ -89,41 +89,42 @@ python manage.py createsuperuser
 
 ```
 django-admin-log-viewer/
-├── log_viewer/                    # Main app
+├── django_admin_log_viewer/           # Main app (renamed for consistency)
 │   ├── __init__.py
-│   ├── apps.py                   # Django app configuration
-│   ├── admin.py                  # Admin integration with multi-line support
-│   ├── models.py                 # No models (file-based)
-│   ├── views.py                  # Django views
-│   ├── urls.py                   # URL patterns
-│   ├── utils.py                  # Core utilities with format parsing
-│   ├── tests.py                  # Test cases
-│   ├── static/log_viewer/
+│   ├── apps.py                       # Django app configuration
+│   ├── admin.py                      # Admin integration with multi-line support
+│   ├── models.py                     # No models (file-based)
+│   ├── views.py                      # Django views
+│   ├── urls.py                       # URL patterns
+│   ├── utils.py                      # Core utilities with format parsing
+│   ├── tests.py                      # Test cases
+│   ├── static/django_admin_log_viewer/
 │   │   ├── css/
-│   │   │   ├── log_viewer.css    # Main styles
-│   │   │   └── live_mode.css     # Real-time mode styles
+│   │   │   ├── log_viewer.css        # Main styles
+│   │   │   └── live_mode.css         # Real-time mode styles
 │   │   └── js/
-│   │       └── log_viewer.js     # AJAX and interactivity
-│   ├── templates/log_viewer/
-│   │   ├── log_list.html         # File list with sidebar
-│   │   └── log_detail.html       # Log content viewer
+│   │       └── log_viewer.js         # AJAX and interactivity
+│   ├── templates/django_admin_log_viewer/
+│   │   ├── log_list.html             # File list with sidebar
+│   │   └── log_detail.html           # Log content viewer
 │   └── templatetags/
-│       └── log_extras.py         # Custom template tags
-├── myproject/                     # Test Django project
+│       └── log_extras.py             # Custom template tags
+├── myproject/                         # Test Django project
 │   ├── manage.py
+│   ├── requirements.txt              # Development dependencies
 │   ├── myproject/
-│   │   └── settings.py           # Complete example settings
-│   └── logs/                     # Sample log files
+│   │   └── settings.py               # Complete example settings
+│   └── logs/                         # Sample log files
 │       ├── django.log
 │       ├── application.log
-│       ├── celery_beat.log       # With multi-line stack traces
-│       └── *.log.*               # Rotated log files
-├── README.md                      # Complete documentation
-├── example_settings.py           # All configuration options
-├── DEVELOPMENT.md                 # This file
-├── setup.py                      # Package configuration
-├── requirements.txt              # Dependencies
-└── test_*.py                     # Debug and test scripts
+│       ├── celery_beat.log           # With multi-line stack traces
+│       └── *.log.*                   # Rotated log files
+├── tests/                            # Test suite
+├── README.md                         # Complete documentation
+├── CHANGELOG.md                      # Version history
+├── example_settings.py               # All configuration options
+├── DEVELOPMENT.md                    # This file
+└── setup.py                         # Package configuration
 ```
 
 ## Key Features Implemented
@@ -224,7 +225,7 @@ python test_pagination_multiline.py
 
 ## Development Workflow
 
-1. **Make changes** to log_viewer app
+1. **Make changes** to django_admin_log_viewer app
 2. **Test locally** using myproject test environment
 3. **Run tests** to verify functionality
 4. **Test multi-line parsing** with included sample logs
@@ -240,8 +241,8 @@ python test_pagination_multiline.py
 4. Test multi-line detection with new format
 
 ### **UI Improvements:**
-1. Modify CSS in `static/log_viewer/css/`
-2. Update JavaScript in `static/log_viewer/js/`
+1. Modify CSS in `static/django_admin_log_viewer/css/`
+2. Update JavaScript in `static/django_admin_log_viewer/js/`
 3. Test responsive design on different devices
 4. Verify dark mode compatibility
 

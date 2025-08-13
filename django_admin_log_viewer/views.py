@@ -3,6 +3,7 @@ from django.http import JsonResponse, Http404
 from django.contrib.admin.views.decorators import staff_member_required
 from django.conf import settings
 from .utils import get_log_files, read_log_file, format_log_line
+from .conf import get_file_list_title, get_page_length, get_refresh_interval
 
 
 @staff_member_required
@@ -11,7 +12,7 @@ def log_list_view(request):
     log_files = get_log_files()
     
     context = {
-        'title': getattr(settings, 'LOG_VIEWER_FILE_LIST_TITLE', 'Log Files'),
+        'title': get_file_list_title(),
         'log_files': log_files,
     }
     
@@ -34,7 +35,7 @@ def log_detail_view(request, filename):
     
     # Get pagination parameters
     page = int(request.GET.get('page', 1))
-    page_length = getattr(settings, 'LOG_VIEWER_PAGE_LENGTH', 25)
+    page_length = get_page_length()
     start_line = (page - 1) * page_length
     
     # Read log content
@@ -60,7 +61,7 @@ def log_detail_view(request, filename):
         'start_line': log_data['start_line'] + 1,
         'end_line': log_data['end_line'],
         'page_length': page_length,
-        'refresh_interval': getattr(settings, 'LOGVIEWER_REFRESH_INTERVAL', 1000),
+        'refresh_interval': get_refresh_interval(),
     }
     
     return render(request, 'django_admin_log_viewer/log_detail.html', context)
@@ -82,7 +83,7 @@ def log_ajax_view(request, filename):
     
     # Get pagination parameters
     page = int(request.GET.get('page', 1))
-    page_length = getattr(settings, 'LOG_VIEWER_PAGE_LENGTH', 25)
+    page_length = get_page_length()
     start_line = (page - 1) * page_length
     
     # Read log content

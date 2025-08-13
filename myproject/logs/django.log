@@ -3145,3 +3145,49 @@ INFO 2025-08-13 15:02:35,715 basehttp: "GET /static/admin/js/theme.js HTTP/1.1" 
 INFO 2025-08-13 15:02:35,716 basehttp: "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
 INFO 2025-08-13 15:02:35,717 basehttp: "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
 INFO 2025-08-13 15:02:35,719 basehttp: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2025-08-13 16:24:05,174 basehttp: "GET /admin/ HTTP/1.1" 200 4556
+INFO 2025-08-13 16:24:05,230 basehttp: "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-08-13 16:24:05,230 basehttp: "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-08-13 16:24:05,232 basehttp: "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2025-08-13 16:24:05,235 basehttp: "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-08-13 16:24:05,235 basehttp: "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-08-13 16:24:05,238 basehttp: "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-08-13 16:24:05,244 basehttp: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2025-08-13 16:46:57,875 autoreload: D:\projects\django-admin-log-viewer\venv\Lib\site-packages\sqlparse\exceptions.py changed, reloading.
+INFO 2025-08-13 16:46:58,528 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 16:47:09,837 autoreload: D:\projects\django-admin-log-viewer\venv\Lib\site-packages\__editable___django_admin_log_viewer_2_0_0_finder.py changed, reloading.
+INFO 2025-08-13 16:47:10,390 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 16:57:23,537 autoreload: D:\projects\django-admin-log-viewer\django_admin_log_viewer\utils.py changed, reloading.
+INFO 2025-08-13 16:57:24,279 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 16:57:37,685 autoreload: D:\projects\django-admin-log-viewer\django_admin_log_viewer\utils.py changed, reloading.
+INFO 2025-08-13 16:57:38,291 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 16:58:13,895 autoreload: D:\projects\django-admin-log-viewer\django_admin_log_viewer\utils.py changed, reloading.
+INFO 2025-08-13 16:58:14,535 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 16:58:53,160 autoreload: D:\projects\django-admin-log-viewer\django_admin_log_viewer\admin.py changed, reloading.
+INFO 2025-08-13 16:58:53,771 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 16:59:33,403 autoreload: D:\projects\django-admin-log-viewer\django_admin_log_viewer\admin.py changed, reloading.
+INFO 2025-08-13 16:59:34,013 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 17:00:15,679 autoreload: D:\projects\django-admin-log-viewer\django_admin_log_viewer\admin.py changed, reloading.
+INFO 2025-08-13 17:00:16,296 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 17:00:43,829 autoreload: D:\projects\django-admin-log-viewer\django_admin_log_viewer\admin.py changed, reloading.
+INFO 2025-08-13 17:00:44,461 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 17:02:16,578 autoreload: D:\projects\django-admin-log-viewer\django_admin_log_viewer\admin.py changed, reloading.
+INFO 2025-08-13 17:02:17,196 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 17:04:24,802 autoreload: D:\projects\django-admin-log-viewer\django_admin_log_viewer\conf.py changed, reloading.
+INFO 2025-08-13 17:04:25,416 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 17:04:36,831 autoreload: D:\projects\django-admin-log-viewer\django_admin_log_viewer\middleware.py changed, reloading.
+INFO 2025-08-13 17:04:37,444 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 17:04:53,891 autoreload: D:\projects\django-admin-log-viewer\django_admin_log_viewer\middleware.py changed, reloading.
+INFO 2025-08-13 17:04:54,494 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-13 17:15:55,733 basehttp: "GET /admin/ HTTP/1.1" 200 4556
+INFO 2025-08-13 17:15:55,922 basehttp: "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-08-13 17:15:55,923 basehttp: "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-08-13 17:15:55,925 basehttp: "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-08-13 17:15:55,926 basehttp: "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-08-13 17:15:55,928 basehttp: "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-08-13 17:15:55,933 basehttp: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-08-13 17:15:56,007 basehttp: "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-08-13 17:16:00,364 basehttp: "GET /admin/logs/django.log HTTP/1.1" 301 0
+INFO 2025-08-13 17:16:00,502 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 38603
+INFO 2025-08-13 17:16:00,545 basehttp: "GET /static/django_admin_log_viewer/js/log_viewer.js HTTP/1.1" 304 0
+INFO 2025-08-13 17:16:00,545 basehttp: "GET /static/django_admin_log_viewer/css/log_viewer.css HTTP/1.1" 200 35905

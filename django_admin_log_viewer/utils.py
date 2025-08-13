@@ -3,12 +3,15 @@ import re
 import glob
 from datetime import datetime
 from django.conf import settings
+from .conf import get_log_files, get_log_files_dir, get_log_formats, get_default_format, get_file_formats
 
 
 def get_log_files():
     """Get list of log files from settings, including rotational files."""
-    log_files = getattr(settings, 'LOG_VIEWER_FILES', [])
-    log_dir = getattr(settings, 'LOG_VIEWER_FILES_DIR', '')
+    from .conf import get_log_files as get_configured_files, get_log_files_dir
+    
+    log_files = get_configured_files()
+    log_dir = get_log_files_dir()
     
     available_files = []
     processed_base_names = set()
@@ -283,18 +286,17 @@ def read_log_file(file_path, lines_per_page=25, start_line=0):
 
 def get_log_format_for_file(filename):
     """Get the log format configuration for a specific file."""
-    from django.conf import settings
     
     # Get file-specific format if configured
-    file_formats = getattr(settings, 'LOG_VIEWER_FILE_FORMATS', {})
+    file_formats = get_file_formats()
     format_name = file_formats.get(filename)
     
     # Fall back to default format
     if not format_name:
-        format_name = getattr(settings, 'LOG_VIEWER_DEFAULT_FORMAT', 'django_default')
+        format_name = get_default_format()
     
     # Get format configuration
-    formats = getattr(settings, 'LOG_VIEWER_FORMATS', {})
+    formats = get_log_formats()
     format_config = formats.get(format_name, {
         'pattern': r'(?P<level>\w+)\s+(?P<timestamp>\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}:\d{2},\d+)\s+(?P<module>[\w\.]+):\s*(?P<message>.*)',
         'timestamp_format': '%Y-%m-%d %H:%M:%S,%f',
