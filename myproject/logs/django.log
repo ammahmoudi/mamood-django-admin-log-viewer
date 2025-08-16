@@ -3465,3 +3465,84 @@ INFO 2025-08-16 16:48:46,787 basehttp: "GET /static/mamood_django_admin_log_view
 INFO 2025-08-16 16:48:46,789 basehttp: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
 WARNING 2025-08-16 16:48:47,002 log: Not Found: /favicon.ico
 WARNING 2025-08-16 16:48:47,003 basehttp: "GET /favicon.ico HTTP/1.1" 404 2211
+INFO 2025-08-16 16:50:04,092 basehttp: "GET /admin/logs/ HTTP/1.1" 200 16471
+INFO 2025-08-16 16:50:04,140 basehttp: "GET /static/mamood_django_admin_log_viewer/css/log_viewer.css HTTP/1.1" 304 0
+INFO 2025-08-16 16:50:07,854 basehttp: "GET /admin/ HTTP/1.1" 200 4556
+INFO 2025-08-16 16:50:07,898 basehttp: "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+INFO 2025-08-16 16:50:10,121 basehttp: "GET /admin/logs/ HTTP/1.1" 200 16471
+INFO 2025-08-16 16:50:14,343 basehttp: "GET /admin/ HTTP/1.1" 200 4556
+INFO 2025-08-16 16:50:15,861 basehttp: "GET /admin/logs/ HTTP/1.1" 200 16471
+INFO 2025-08-16 16:50:17,752 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 26709
+INFO 2025-08-16 16:50:17,801 basehttp: "GET /static/mamood_django_admin_log_viewer/css/log_viewer.css HTTP/1.1" 304 0
+INFO 2025-08-16 16:50:19,601 basehttp: "GET /admin/logs/django.log.2/ HTTP/1.1" 200 18678
+INFO 2025-08-16 16:50:24,479 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 29667
+INFO 2025-08-16 16:50:27,033 basehttp: "GET /admin/logs/django.log.2/ HTTP/1.1" 200 18678
+INFO 2025-08-16 16:50:27,086 basehttp: "GET /static/mamood_django_admin_log_viewer/css/log_viewer.css HTTP/1.1" 304 0
+INFO 2025-08-16 16:51:31,173 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 32624
+INFO 2025-08-16 16:51:31,219 basehttp: "GET /static/mamood_django_admin_log_viewer/css/log_viewer.css HTTP/1.1" 304 0
+INFO 2025-08-16 16:51:31,234 basehttp: "GET /static/mamood_django_admin_log_viewer/js/log_viewer.js HTTP/1.1" 304 0
+INFO 2025-08-16 16:51:33,234 autoreload: D:\projects\django-admin-log-viewer\mamood_django_admin_log_viewer\utils.py changed, reloading.
+INFO 2025-08-16 16:51:33,867 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-16 16:51:37,453 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 37587
+INFO 2025-08-16 16:51:37,579 basehttp: "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-08-16 16:51:37,581 basehttp: "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-08-16 16:51:37,581 basehttp: "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-08-16 16:51:37,583 basehttp: "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-08-16 16:51:37,584 basehttp: "GET /static/mamood_django_admin_log_viewer/css/log_viewer.css HTTP/1.1" 200 42823
+INFO 2025-08-16 16:51:37,587 basehttp: "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-08-16 16:51:37,588 basehttp: "GET /static/mamood_django_admin_log_viewer/js/log_viewer.js HTTP/1.1" 200 42907
+INFO 2025-08-16 16:51:37,591 basehttp: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+WARNING 2025-08-16 16:51:37,652 log: Not Found: /favicon.ico
+WARNING 2025-08-16 16:51:37,652 basehttp: "GET /favicon.ico HTTP/1.1" 404 2211
+INFO 2025-08-16 16:51:54,471 autoreload: D:\projects\django-admin-log-viewer\mamood_django_admin_log_viewer\utils.py changed, reloading.
+INFO 2025-08-16 16:51:55,063 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-16 16:52:09,102 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 25871
+INFO 2025-08-16 16:52:09,270 basehttp: "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-08-16 16:52:09,272 basehttp: "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-08-16 16:52:09,274 basehttp: "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-08-16 16:52:09,275 basehttp: "GET /static/mamood_django_admin_log_viewer/css/log_viewer.css HTTP/1.1" 200 42823
+INFO 2025-08-16 16:52:09,277 basehttp: "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-08-16 16:52:09,278 basehttp: "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-08-16 16:52:09,280 basehttp: "GET /static/mamood_django_admin_log_viewer/js/log_viewer.js HTTP/1.1" 200 42907
+INFO 2025-08-16 16:52:09,283 basehttp: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+WARNING 2025-08-16 16:52:09,342 log: Not Found: /favicon.ico
+WARNING 2025-08-16 16:52:09,343 basehttp: "GET /favicon.ico HTTP/1.1" 404 2211
+INFO 2025-08-16 16:52:53,678 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 36672
+INFO 2025-08-16 16:52:53,727 basehttp: "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-08-16 16:52:53,727 basehttp: "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-08-16 16:52:53,727 basehttp: "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-08-16 16:52:53,728 basehttp: "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-08-16 16:52:53,729 basehttp: "GET /static/mamood_django_admin_log_viewer/js/log_viewer.js HTTP/1.1" 200 42907
+INFO 2025-08-16 16:52:53,730 basehttp: "GET /static/mamood_django_admin_log_viewer/css/log_viewer.css HTTP/1.1" 200 42823
+INFO 2025-08-16 16:52:53,731 basehttp: "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-08-16 16:52:53,766 basehttp: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+WARNING 2025-08-16 16:52:53,830 log: Not Found: /favicon.ico
+WARNING 2025-08-16 16:52:53,830 basehttp: "GET /favicon.ico HTTP/1.1" 404 2211
+INFO 2025-08-16 16:53:00,212 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 22892
+INFO 2025-08-16 16:53:00,258 basehttp: "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-08-16 16:53:00,258 basehttp: "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-08-16 16:53:00,258 basehttp: "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-08-16 16:53:00,260 basehttp: "GET /static/mamood_django_admin_log_viewer/css/log_viewer.css HTTP/1.1" 200 42823
+INFO 2025-08-16 16:53:00,261 basehttp: "GET /static/mamood_django_admin_log_viewer/js/log_viewer.js HTTP/1.1" 200 42907
+INFO 2025-08-16 16:53:00,261 basehttp: "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-08-16 16:53:00,267 basehttp: "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-08-16 16:53:00,269 basehttp: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+WARNING 2025-08-16 16:53:00,344 log: Not Found: /favicon.ico
+WARNING 2025-08-16 16:53:00,345 basehttp: "GET /favicon.ico HTTP/1.1" 404 2211
+INFO 2025-08-16 16:53:38,570 autoreload: D:\projects\django-admin-log-viewer\mamood_django_admin_log_viewer\utils.py changed, reloading.
+INFO 2025-08-16 16:53:39,170 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-16 16:54:08,840 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 34965
+INFO 2025-08-16 16:54:08,978 basehttp: "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-08-16 16:54:08,979 basehttp: "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-08-16 16:54:08,980 basehttp: "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-08-16 16:54:08,980 basehttp: "GET /static/mamood_django_admin_log_viewer/css/log_viewer.css HTTP/1.1" 200 42823
+INFO 2025-08-16 16:54:08,987 basehttp: "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-08-16 16:54:08,987 basehttp: "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-08-16 16:54:08,989 basehttp: "GET /static/mamood_django_admin_log_viewer/js/log_viewer.js HTTP/1.1" 200 42907
+INFO 2025-08-16 16:54:08,990 basehttp: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+WARNING 2025-08-16 16:54:09,046 log: Not Found: /favicon.ico
+WARNING 2025-08-16 16:54:09,046 basehttp: "GET /favicon.ico HTTP/1.1" 404 2211
+INFO 2025-08-16 16:54:17,777 basehttp: "GET /admin/logs/celery_beat.log/ HTTP/1.1" 200 29001
+INFO 2025-08-16 16:54:57,450 basehttp: "GET /static/mamood_django_admin_log_viewer/css/log_viewer.css HTTP/1.1" 304 0
+WARNING 2025-08-16 16:54:57,476 log: Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-16 16:54:57,477 basehttp: "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2322

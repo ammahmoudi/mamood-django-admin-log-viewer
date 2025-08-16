@@ -382,7 +382,12 @@ def format_log_line(line, line_number, filename=None):
         timestamp = parsed['timestamp'] or ''
         raw_module = parsed['module'] or ''  # Keep original module name
         logger_name = raw_module  # Start with raw module name
-        message = parsed['message'] or line
+        
+        # Get the message - ensure we use parsed message if available
+        message = parsed.get('message', '').strip()
+        if not message:
+            # If message is empty, use the full line as fallback
+            message = line
         
         # Handle special log formats for logger display
         if parsed.get('method') and parsed.get('url'):
@@ -515,9 +520,27 @@ def format_multiline_log_entry(content, start_line_number, line_count, filename=
     first_line = content.split('\n')[0] if '\n' in content else content
     parsed = format_log_line(first_line, start_line_number, filename)
     
+    # For multiline entries, we want to show the parsed message from the first line
+    # plus the continuation lines, but NOT the timestamp/level/module from first line
+    if line_count > 1 and '\n' in content:
+        lines = content.split('\n')
+        # Keep the parsed message from first line + all continuation lines
+        continuation_lines = lines[1:]  # Skip first line since we already parsed it
+        
+        # Combine parsed message from first line with continuation lines
+        if parsed.get('content'):
+            # Use the already parsed message from first line + continuation
+            full_message_content = parsed['content'] + '\n' + '\n'.join(continuation_lines)
+        else:
+            # Fallback to full content if parsing failed
+            full_message_content = content.strip()
+    else:
+        # Single line - use the parsed content as-is
+        full_message_content = parsed.get('content', content.strip())
+    
     # Update the content and multi-line info
-    parsed['full_content'] = content.strip()
-    parsed['content'] = content.strip()
+    parsed['full_content'] = full_message_content
+    parsed['content'] = full_message_content
     parsed['is_multiline'] = line_count > 1
     parsed['line_count'] = line_count
     
