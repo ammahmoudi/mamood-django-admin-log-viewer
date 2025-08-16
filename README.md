@@ -291,6 +291,36 @@ Perfect handling of:
 - **Django**: 4.2+
 - **Permissions**: Staff access to Django admin
 
+## 🚀 Future Features
+
+We're continuously working to enhance the Django Admin Log Viewer. Here are some exciting features planned for future releases:
+
+### Cloud Storage Integration
+- **Amazon S3**: Read logs directly from S3 buckets with configurable credentials and path patterns
+- **Google Cloud Storage**: Support for GCS log files with service account authentication
+- **Azure Blob Storage**: Integration with Azure storage accounts for enterprise scenarios
+
+### Advanced Log Sources
+- **Remote Servers**: SSH/SFTP integration to read logs from remote servers
+- **Docker Containers**: Direct container log streaming and monitoring
+- **Kubernetes Pods**: Native K8s log aggregation and viewing
+- **Database Logs**: Read logs stored in database tables or collections
+
+### Enhanced Features
+- **Log Streaming**: Real-time log tailing with WebSocket connections
+- **Advanced Search**: Full-text search with regex support and saved searches
+- **Log Analytics**: Basic statistics, error rate monitoring, and trend analysis
+- **Alert System**: Configurable alerts for error patterns or log volume spikes
+- **Export Options**: Export filtered logs to CSV, JSON, or PDF formats
+
+### Integrations
+- **Elasticsearch**: Integration with ELK stack for advanced searching
+- **Prometheus**: Metrics export for monitoring and alerting
+- **Slack/Teams**: Notification integrations for critical log events
+- **API Access**: REST API for programmatic log access and automation
+
+Have ideas for other features? Feel free to open an issue or contribute to the project!
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.

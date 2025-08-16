@@ -3590,3 +3590,7 @@ WARNING 2025-08-16 17:02:02,923 basehttp: "GET /favicon.ico HTTP/1.1" 404 2211
 INFO 2025-08-16 17:02:13,550 basehttp: "GET /admin/logs/django.log.1/ HTTP/1.1" 200 19120
 INFO 2025-08-16 17:02:18,195 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 42069
 INFO 2025-08-16 17:02:21,382 basehttp: "GET /admin/logs/ HTTP/1.1" 200 16471
+INFO 2025-08-16 17:03:27,491 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 20312
+INFO 2025-08-16 17:03:27,572 basehttp: "GET /static/mamood_django_admin_log_viewer/css/log_viewer.css HTTP/1.1" 304 0
+INFO 2025-08-16 17:03:37,707 autoreload: D:\projects\django-admin-log-viewer\mamood_django_admin_log_viewer\__init__.py changed, reloading.
+INFO 2025-08-16 17:03:38,636 autoreload: Watching for file changes with StatReloader
