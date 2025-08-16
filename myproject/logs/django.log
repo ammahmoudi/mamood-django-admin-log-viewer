@@ -3229,3 +3229,9 @@ INFO 2025-08-16 15:45:59,866 basehttp: "GET /static/admin/css/nav_sidebar.css HT
 INFO 2025-08-16 15:45:59,866 basehttp: "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
 INFO 2025-08-16 15:45:59,868 basehttp: "GET /static/mamood_django_admin_log_viewer/js/log_viewer.js HTTP/1.1" 200 42462
 INFO 2025-08-16 15:45:59,873 basehttp: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2025-08-16 15:56:23,966 autoreload: D:\projects\django-admin-log-viewer\myproject\myproject\settings.py changed, reloading.
+INFO 2025-08-16 15:56:24,540 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-16 15:56:26,823 autoreload: D:\projects\django-admin-log-viewer\mamood_django_admin_log_viewer\apps.py changed, reloading.
+INFO 2025-08-16 15:56:27,406 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-16 15:56:50,872 autoreload: D:\projects\django-admin-log-viewer\mamood_django_admin_log_viewer\__init__.py changed, reloading.
+INFO 2025-08-16 15:56:51,494 autoreload: Watching for file changes with StatReloader

@@ -5,6 +5,6 @@ A Django app for viewing log files in the admin interface with real-time monitor
 multi-line log support, and configurable log format parsing.
 """
 
-__version__ = '2.0.0'
+__version__ = '2.0.1'
 
 default_app_config = 'mamood_django_admin_log_viewer.apps.MamoodDjangoAdminLogViewerConfig'
