@@ -285,8 +285,27 @@ class LogViewerAdminSite(LogViewerAdminMixin, AdminSite):
     index_title = 'Welcome to Django Administration'
 
 
-# Create an instance of the custom admin site
-admin_site = LogViewerAdminSite(name='admin')
+# Monkey patch the default admin site to add log viewer functionality
+# This preserves all existing registrations while adding our functionality
+def _original_get_urls():
+    return AdminSite.get_urls(admin.site)
 
-# Replace the default admin site
-admin.site = admin_site
+def _log_viewer_get_urls():
+    """Enhanced get_urls method that includes log viewer URLs."""
+    urls = _original_get_urls()
+    log_urls = [
+        path('logs/', admin.site.admin_view(admin.site.log_list_view), name='log_viewer_list'),
+        path('logs/<str:filename>/', admin.site.admin_view(admin.site.log_detail_view), name='log_viewer_detail'),
+        path('logs/<str:filename>/ajax/', admin.site.admin_view(admin.site.log_ajax_view), name='log_viewer_ajax'),
+        path('logs/<str:filename>/download/', admin.site.admin_view(admin.site.log_download_view), name='log_viewer_download'),
+    ]
+    return log_urls + urls
+
+# Add the log viewer methods to the default admin site
+admin.site.log_list_view = LogViewerAdminMixin.log_list_view.__get__(admin.site, type(admin.site))
+admin.site.log_detail_view = LogViewerAdminMixin.log_detail_view.__get__(admin.site, type(admin.site))
+admin.site.log_ajax_view = LogViewerAdminMixin.log_ajax_view.__get__(admin.site, type(admin.site))
+admin.site.log_download_view = LogViewerAdminMixin.log_download_view.__get__(admin.site, type(admin.site))
+
+# Replace the get_urls method
+admin.site.get_urls = _log_viewer_get_urls

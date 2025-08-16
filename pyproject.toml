@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mamood-django-admin-log-viewer"
-version = "2.0.2"
+version = "2.0.3"
 description = "A Django app for viewing log files in the admin interface"
 authors = [
     {name = "Amirhossein Mahmoudi", email = "am.mahmoudi@outlook.com"},

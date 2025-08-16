@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.3] - 2025-01-16
+
+### Fixed
+- **CRITICAL**: Fixed admin site replacement issue that was hiding all other Django models from admin interface
+- Changed admin integration to extend existing admin site instead of replacing it entirely
+
+### Technical Details
+- Replaced `admin.site = admin_site` with dynamic class extension approach
+- Now uses `DefaultAdminSiteWithLogViewer` mixin to add log viewer functionality without disrupting existing admin registrations
+- Ensures compatibility with other Django apps and their admin registrations
+
 ## [2.0.2] - 2025-01-16
 
 ### Fixed

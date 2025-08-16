@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mamood_django_admin_log_viewer',  # Add the log viewer app
+    'testapp',  # Add our test app
 ]
 
 MIDDLEWARE = [
