@@ -3205,3 +3205,27 @@ INFO 2025-08-13 23:51:08,125 autoreload: D:\projects\django-admin-log-viewer\myp
 INFO 2025-08-13 23:51:08,772 autoreload: Watching for file changes with StatReloader
 INFO 2025-08-13 23:59:06,904 autoreload: D:\projects\django-admin-log-viewer\myproject\myproject\settings.py changed, reloading.
 INFO 2025-08-13 23:59:07,353 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-16 15:37:00,649 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-16 15:37:46,121 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-16 15:45:38,738 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-16 15:45:48,232 basehttp: "GET /admin/ HTTP/1.1" 200 4556
+INFO 2025-08-16 15:45:48,452 basehttp: "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-08-16 15:45:48,455 basehttp: "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-08-16 15:45:48,456 basehttp: "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-08-16 15:45:48,458 basehttp: "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-08-16 15:45:48,473 basehttp: "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-08-16 15:45:48,493 basehttp: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-08-16 15:45:48,496 basehttp: "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+WARNING 2025-08-16 15:45:48,675 log: Not Found: /favicon.ico
+WARNING 2025-08-16 15:45:48,675 basehttp: "GET /favicon.ico HTTP/1.1" 404 2211
+INFO 2025-08-16 15:45:56,197 basehttp: "GET /admin/logs HTTP/1.1" 301 0
+INFO 2025-08-16 15:45:56,241 basehttp: "GET /admin/logs/ HTTP/1.1" 200 15227
+INFO 2025-08-16 15:45:56,278 basehttp: "GET /static/mamood_django_admin_log_viewer/css/log_viewer.css HTTP/1.1" 200 35905
+INFO 2025-08-16 15:45:59,823 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 21825
+INFO 2025-08-16 15:45:59,865 basehttp: "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-08-16 15:45:59,866 basehttp: "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-08-16 15:45:59,866 basehttp: "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-08-16 15:45:59,866 basehttp: "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2025-08-16 15:45:59,866 basehttp: "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-08-16 15:45:59,868 basehttp: "GET /static/mamood_django_admin_log_viewer/js/log_viewer.js HTTP/1.1" 200 42462
+INFO 2025-08-16 15:45:59,873 basehttp: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0

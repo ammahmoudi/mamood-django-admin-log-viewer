@@ -17,7 +17,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_admin_log_viewer',  # Add the log viewer app
+    'mamood_django_admin_log_viewer',  # Add the log viewer app
 ]
 
 # ... your other Django settings (SECRET_KEY, DATABASES, etc.) ...
