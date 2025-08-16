@@ -3546,3 +3546,22 @@ INFO 2025-08-16 16:54:17,777 basehttp: "GET /admin/logs/celery_beat.log/ HTTP/1.
 INFO 2025-08-16 16:54:57,450 basehttp: "GET /static/mamood_django_admin_log_viewer/css/log_viewer.css HTTP/1.1" 304 0
 WARNING 2025-08-16 16:54:57,476 log: Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-08-16 16:54:57,477 basehttp: "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2322
+INFO 2025-08-16 16:57:05,848 autoreload: D:\projects\django-admin-log-viewer\mamood_django_admin_log_viewer\utils.py changed, reloading.
+INFO 2025-08-16 16:57:06,443 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-16 16:58:11,373 basehttp: "GET /admin/logs/celery_beat.log/?page=3 HTTP/1.1" 200 128432
+INFO 2025-08-16 16:58:11,538 basehttp: "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-08-16 16:58:11,540 basehttp: "GET /static/mamood_django_admin_log_viewer/css/log_viewer.css HTTP/1.1" 200 42823
+INFO 2025-08-16 16:58:11,542 basehttp: "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-08-16 16:58:11,545 basehttp: "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-08-16 16:58:11,545 basehttp: "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-08-16 16:58:11,551 basehttp: "GET /static/mamood_django_admin_log_viewer/js/log_viewer.js HTTP/1.1" 200 42907
+WARNING 2025-08-16 16:58:11,551 log: Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-16 16:58:11,552 basehttp: "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2322
+INFO 2025-08-16 16:58:11,554 basehttp: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-08-16 16:58:11,590 basehttp: "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+WARNING 2025-08-16 16:58:11,805 log: Not Found: /favicon.ico
+WARNING 2025-08-16 16:58:11,806 basehttp: "GET /favicon.ico HTTP/1.1" 404 2211
+INFO 2025-08-16 16:58:18,522 basehttp: "GET /admin/logs/ HTTP/1.1" 200 16471
+WARNING 2025-08-16 16:58:18,561 log: Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-16 16:58:18,561 basehttp: "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2322
+INFO 2025-08-16 16:58:30,170 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 19424

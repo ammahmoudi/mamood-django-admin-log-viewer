@@ -203,7 +203,12 @@
                     </td>
                     <td class="action">
                         {% if line.is_long or line.is_multiline %}
-                            <button class="view-full-btn" onclick="showLogModal('{{ line.full_content|escapejs }}', '{{ line.level }}', '{{ line.timestamp }}', '{{ line.line_range }}')">View Full</button>
+                            <button class="view-full-btn" 
+                                    data-content="{{ line.full_content|escapejs }}" 
+                                    data-level="{{ line.level }}" 
+                                    data-timestamp="{{ line.timestamp }}" 
+                                    data-line-range="{{ line.line_range }}"
+                                    onclick="showLogModalFromData(this)">View Full</button>
                         {% endif %}
                     </td>
                 </tr>
@@ -278,6 +283,17 @@ function showLogModal(content, level, timestamp, lineRange) {
     
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
+}
+
+function showLogModalFromData(button) {
+    // Get data from the button attributes - this prevents JavaScript injection
+    const content = button.getAttribute('data-content');
+    const level = button.getAttribute('data-level');
+    const timestamp = button.getAttribute('data-timestamp');
+    const lineRange = button.getAttribute('data-line-range');
+    
+    // Call the existing modal function
+    showLogModal(content, level, timestamp, lineRange);
 }
 
 function closeLogModal() {

@@ -538,6 +538,10 @@ def format_multiline_log_entry(content, start_line_number, line_count, filename=
         # Single line - use the parsed content as-is
         full_message_content = parsed.get('content', content.strip())
     
+    # Clean the content to avoid JavaScript issues
+    # Remove any problematic characters and normalize whitespace
+    full_message_content = full_message_content.strip()
+    
     # Update the content and multi-line info
     parsed['full_content'] = full_message_content
     parsed['content'] = full_message_content
