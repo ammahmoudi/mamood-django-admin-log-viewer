@@ -2,9 +2,20 @@
 
 A powerful Django app that provides a comprehensive web interface to view and monitor log files directly in the Django admin panel.
 
+## 📸 Screenshots
+
+### Log File Listing
+
+![Log Files Interface](images/logs.jpeg)
+
+### Log Viewer Interface
+
+![Log Viewer Details](images/logs%20(2).jpeg)
+
 ## 🌟 Features
 
 ### Core Features
+
 - **Multi-Log File Support**: View multiple log files with automatic detection and grouping
 - **Configurable Log Formats**: Support for Django, Celery, Nginx, and custom log formats
 - **Multi-line Log Processing**: Properly handles stack traces and multi-line log entries
@@ -13,6 +24,7 @@ A powerful Django app that provides a comprehensive web interface to view and mo
 - **Log Rotation Support**: Automatic detection and handling of rotated log files (.1, .2, .gz, etc.)
 
 ### User Experience
+
 - **Responsive Design**: Works perfectly on desktop, tablet, and mobile devices
 - **Dark Mode Support**: Built-in dark theme for comfortable viewing
 - **Advanced Filtering**: Filter by log levels (DEBUG, INFO, WARNING, ERROR, CRITICAL)
@@ -21,6 +33,7 @@ A powerful Django app that provides a comprehensive web interface to view and mo
 - **Search & Filtering**: Quick search through log content
 
 ### Technical Features
+
 - **Memory Efficient**: Streaming file reading for large log files
 - **Security Focused**: Staff-only access with proper file path validation
 - **Performance Optimized**: AJAX-based updates for smooth user experience

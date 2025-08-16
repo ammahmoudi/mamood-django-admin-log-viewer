@@ -3235,3 +3235,27 @@ INFO 2025-08-16 15:56:26,823 autoreload: D:\projects\django-admin-log-viewer\mam
 INFO 2025-08-16 15:56:27,406 autoreload: Watching for file changes with StatReloader
 INFO 2025-08-16 15:56:50,872 autoreload: D:\projects\django-admin-log-viewer\mamood_django_admin_log_viewer\__init__.py changed, reloading.
 INFO 2025-08-16 15:56:51,494 autoreload: Watching for file changes with StatReloader
+INFO 2025-08-16 16:05:35,847 basehttp: "GET /admin/logs/ HTTP/1.1" 200 15227
+INFO 2025-08-16 16:05:35,886 basehttp: "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-08-16 16:05:35,888 basehttp: "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-08-16 16:05:35,889 basehttp: "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-08-16 16:05:35,891 basehttp: "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2025-08-16 16:05:35,891 basehttp: "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-08-16 16:05:35,894 basehttp: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2025-08-16 16:08:14,997 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 17941
+INFO 2025-08-16 16:08:15,059 basehttp: "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-08-16 16:08:15,059 basehttp: "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-08-16 16:08:15,062 basehttp: "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-08-16 16:08:15,063 basehttp: "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2025-08-16 16:08:15,064 basehttp: "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-08-16 16:08:15,066 basehttp: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2025-08-16 16:08:18,558 basehttp: "GET /admin/logs/ HTTP/1.1" 200 15227
+INFO 2025-08-16 16:08:25,404 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 25747
+INFO 2025-08-16 16:11:09,231 basehttp: "GET /admin/logs/ HTTP/1.1" 200 15227
+INFO 2025-08-16 16:11:09,261 basehttp: "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-08-16 16:11:09,266 basehttp: "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-08-16 16:11:09,266 basehttp: "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-08-16 16:11:09,269 basehttp: "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-08-16 16:11:09,269 basehttp: "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2025-08-16 16:11:09,273 basehttp: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2025-08-16 16:11:14,208 basehttp: "GET /admin/logs/ HTTP/1.1" 200 15227
