@@ -961,6 +961,12 @@ window.LogViewer = LogViewer;
  * Utility functions for log list management
  */
 function expandAllGroups() {
+    // For details-based rotational files
+    document.querySelectorAll('.rotational-files details').forEach(details => {
+        details.open = true;
+    });
+    
+    // Legacy support for .rotational-group classes
     document.querySelectorAll('.rotational-group').forEach(group => {
         group.classList.add('expanded');
         const groupName = group.dataset.groupName;
@@ -974,6 +980,12 @@ function expandAllGroups() {
 }
 
 function collapseAllGroups() {
+    // For details-based rotational files
+    document.querySelectorAll('.rotational-files details').forEach(details => {
+        details.open = false;
+    });
+    
+    // Legacy support for .rotational-group classes
     document.querySelectorAll('.rotational-group').forEach(group => {
         group.classList.remove('expanded');
         const groupName = group.dataset.groupName;

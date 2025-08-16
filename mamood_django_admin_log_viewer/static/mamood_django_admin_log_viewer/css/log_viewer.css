@@ -1,5 +1,41 @@
 /* Log Viewer CSS */
 
+/* Global select element fix for text visibility */
+select {
+    line-height: 1.4 !important;
+    height: auto !important;
+    min-height: 36px !important;
+    padding: 8px 12px !important;
+    font-size: 14px !important;
+    box-sizing: border-box !important;
+}
+
+/* Fix for dropdown options text visibility */
+select option {
+    padding: 6px 12px !important;
+    line-height: 1.4 !important;
+    min-height: 28px !important;
+}
+
+select optgroup {
+    padding: 6px 12px !important;
+    line-height: 1.4 !important;
+    font-weight: bold !important;
+}
+
+/* Specific fixes for log viewer selects */
+.log-viewer-container select,
+.log-viewer-header select,
+.filters-panel select {
+    line-height: 1.4 !important;
+    height: auto !important;
+    min-height: 36px !important;
+    padding: 8px 12px !important;
+    font-size: 14px !important;
+    box-sizing: border-box !important;
+    vertical-align: middle !important;
+}
+
 .log-viewer-container {
     margin: 20px;
     max-width: 100%;
@@ -33,6 +69,52 @@
     align-items: center;
 }
 
+/* Log File Navigation Dropdown */
+.log-navigation-dropdown {
+    display: inline-flex;
+    align-items: center;
+}
+
+.button-styled-select {
+    background: #013e77;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1.4;
+    height: auto;
+    min-height: 36px;
+    transition: background 0.2s;
+    white-space: nowrap;
+    min-width: 180px;
+    max-width: 280px;
+}
+
+.button-styled-select:hover {
+    background: #5a6268;
+}
+
+.button-styled-select:focus {
+    outline: none;
+    background: #5a6268;
+    box-shadow: 0 0 0 2px rgba(108, 117, 125, 0.3);
+}
+
+.button-styled-select option {
+    background: white;
+    color: #333;
+    padding: 6px 12px;
+}
+
+.button-styled-select optgroup {
+    background: #f8f9fa;
+    color: #333;
+    font-weight: bold;
+    font-style: normal;
+}
+
 .log-viewer-controls {
     display: flex;
     gap: 10px;
@@ -41,10 +123,14 @@
 }
 
 .log-viewer-controls select {
-    padding: 5px 10px;
+    padding: 8px 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     background: white;
+    font-size: 14px;
+    line-height: 1.4;
+    height: auto;
+    min-height: 36px;
 }
 
 /* Live Mode Indicator */
@@ -469,6 +555,9 @@
     border-radius: 4px;
     background: white;
     font-size: 14px;
+    line-height: 1.4;
+    height: auto;
+    min-height: 36px;
 }
 
 .filter-group .form-control:focus {
@@ -613,6 +702,16 @@
     .navigation-buttons {
         justify-content: center;
         margin-bottom: 10px;
+        flex-wrap: wrap;
+    }
+    
+    .log-navigation-dropdown {
+        margin-top: 5px;
+    }
+    
+    .button-styled-select {
+        min-width: 100%;
+        max-width: 100%;
     }
     
     .log-viewer-controls {
@@ -943,8 +1042,68 @@
 }
 
 .rotational-files {
-    display: none;
+    display: block;
     background-color: white;
+    margin-top: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.rotational-files details {
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 0;
+    background-color: #fafbfc;
+    margin-top: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.rotational-files summary {
+    cursor: pointer;
+    padding: 12px 16px;
+    background-color: #f8f9fa;
+    border: none;
+    border-radius: 6px 6px 0 0;
+    font-weight: 500;
+    color: #495057;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid #e9ecef;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.rotational-files summary:hover {
+    background-color: #e9ecef;
+    color: #212529;
+}
+
+.rotational-files summary::-webkit-details-marker {
+    display: none;
+}
+
+.rotational-files summary::after {
+    content: '▼';
+    transition: transform 0.3s ease;
+    font-size: 14px;
+    color: #6c757d;
+    font-weight: bold;
+}
+
+.rotational-files details[open] summary {
+    border-radius: 6px 6px 0 0;
+    background-color: #e9ecef;
+}
+
+.rotational-files details[open] summary::after {
+    transform: rotate(180deg);
+    color: #495057;
 }
 
 .rotational-group.expanded .rotational-files {
@@ -958,6 +1117,112 @@
     justify-content: space-between;
     align-items: center;
     transition: background-color 0.2s;
+}
+
+.rotational-file-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: white;
+    border-radius: 0 0 6px 6px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.rotational-file-list li {
+    border-bottom: 1px solid #f1f3f4;
+    list-style: none;
+    list-style-type: none;
+}
+
+.rotational-file-list li:last-child {
+    border-bottom: none;
+}
+
+.rotational-file-list li:before {
+    display: none !important;
+    content: none !important;
+}
+
+.rotational-file-item {
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s;
+    list-style: none;
+    list-style-type: none;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.rotational-file-item:hover {
+    background-color: #f8f9fa;
+}
+
+.rotational-file-link {
+    font-weight: 500;
+    color: #0066cc;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rotational-file-link:hover {
+    text-decoration: underline;
+    color: #004499;
+}
+
+.current-file {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-left: 8px;
+}
+
+.rotational-file-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
+    color: #666;
+    flex-shrink: 0;
+}
+
+.file-size {
+    color: #666;
+    background-color: #f8f9fa;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 11px;
+}
+
+.download-link {
+    text-decoration: none;
+    font-size: 16px;
+    opacity: 0.7;
+    transition: all 0.2s;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+}
+
+.download-link:hover {
+    opacity: 1;
+    background-color: #e9ecef;
+    transform: scale(1.1);
 }
 
 .rotational-file:hover {
@@ -1000,6 +1265,19 @@
     background-color: #fff3cd;
     color: #856404;
     border: 1px solid #ffeaa7;
+}
+
+.rotational-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    background-color: #e3f2fd;
+    color: #1565c0;
+    border: 1px solid #bbdefb;
+    margin-left: 8px;
+    text-transform: lowercase;
 }
 
 .file-meta {
@@ -1098,6 +1376,42 @@
 [data-theme="dark"] .button.secondary:hover,
 .theme-dark .button.secondary:hover {
     background-color: #4b5563;
+}
+
+/* Dark theme support for dropdown */
+[data-theme="dark"] .button-styled-select,
+.theme-dark .button-styled-select {
+    background-color: #013e77;
+    color: white;
+}
+
+[data-theme="dark"] .button-styled-select:hover,
+.theme-dark .button-styled-select:hover {
+    background-color: #4b5563;
+}
+
+[data-theme="dark"] .button-styled-select:focus,
+.theme-dark .button-styled-select:focus {
+    background-color: #4b5563;
+    box-shadow: 0 0 0 2px rgba(107, 114, 128, 0.3);
+}
+
+[data-theme="dark"] .button-styled-select option,
+.theme-dark .button-styled-select option {
+    background-color: #1f2937;
+    color: #f3f4f6;
+    padding: 6px 12px !important;
+    line-height: 1.4 !important;
+    min-height: 28px !important;
+}
+
+[data-theme="dark"] .button-styled-select optgroup,
+.theme-dark .button-styled-select optgroup {
+    background-color: #374151;
+    color: #f3f4f6;
+    padding: 6px 12px !important;
+    line-height: 1.4 !important;
+    font-weight: bold !important;
 }
 
 [data-theme="dark"] .live-indicator,

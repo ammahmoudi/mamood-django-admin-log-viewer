@@ -119,6 +119,7 @@ class LogViewerAdminMixin:
             'title': f'Log Viewer - {filename}',
             'filename': filename,
             'log_file': selected_file,
+            'all_log_files': log_files,  # Add all log files for navigation dropdown
             'log_lines': formatted_lines,
             'current_page': page,
             'total_pages': total_pages,

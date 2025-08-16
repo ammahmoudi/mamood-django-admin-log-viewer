@@ -5,6 +5,7 @@
 
 {% block extrahead %}
 <link rel="stylesheet" type="text/css" href="{% static 'mamood_django_admin_log_viewer/css/log_viewer.css' %}">
+<script src="{% static 'mamood_django_admin_log_viewer/js/log_viewer.js' %}"></script>
 <style>
 /* Completely hide Django admin search/filter components */
 #changelist-search,
@@ -105,4 +106,37 @@
     </div>
     {% endif %}
 </div>
+
+<script>
+// Ensure functions are available globally and after DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Make sure expandAllGroups and collapseAllGroups are available
+    window.expandAllGroups = function() {
+        console.log('Expanding all groups...');
+        // For details-based rotational files
+        document.querySelectorAll('.rotational-files details').forEach(details => {
+            details.open = true;
+        });
+        
+        // Legacy support for .rotational-group classes
+        document.querySelectorAll('.rotational-group').forEach(group => {
+            group.classList.add('expanded');
+        });
+    };
+
+    window.collapseAllGroups = function() {
+        console.log('Collapsing all groups...');
+        // For details-based rotational files
+        document.querySelectorAll('.rotational-files details').forEach(details => {
+            details.open = false;
+        });
+        
+        // Legacy support for .rotational-group classes
+        document.querySelectorAll('.rotational-group').forEach(group => {
+            group.classList.remove('expanded');
+        });
+    };
+});
+</script>
+
 {% endblock %}

@@ -29,6 +29,34 @@
                     View Current Log
                 </a>
                 {% endif %}
+                
+                <!-- Log File Navigation Dropdown -->
+                <div class="log-navigation-dropdown">
+                    <select id="log-file-selector" class="button-styled-select" onchange="navigateToLogFile(this.value)">
+                        <option value="">Switch to Log File...</option>
+                        {% for log_file_item in all_log_files %}
+                            {% if log_file_item.type == 'rotational_group' %}
+                                <optgroup label="{{ log_file_item.name }}">
+                                    <option value="{{ log_file_item.name }}" 
+                                        {% if filename == log_file_item.name %}selected{% endif %}>
+                                        {{ log_file_item.name }} (Current)
+                                    </option>
+                                    {% for rot_file in log_file_item.rotational_files %}
+                                        <option value="{{ rot_file.name }}" 
+                                            {% if filename == rot_file.name %}selected{% endif %}>
+                                            ↳ {{ rot_file.name }} ({{ rot_file.size|filesizeformat }})
+                                        </option>
+                                    {% endfor %}
+                                </optgroup>
+                            {% else %}
+                                <option value="{{ log_file_item.name }}" 
+                                    {% if filename == log_file_item.name %}selected{% endif %}>
+                                    {{ log_file_item.name }} ({{ log_file_item.size|filesizeformat }})
+                                </option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
             </div>
         </div>
         <div class="header-right">
@@ -278,6 +306,13 @@ window.onclick = function(event) {
     const modal = document.getElementById('logModal');
     if (event.target == modal) {
         closeLogModal();
+    }
+}
+
+function navigateToLogFile(filename) {
+    if (filename && filename.trim() !== '') {
+        // Navigate to the selected log file
+        window.location.href = '{% url "admin:log_viewer_detail" "FILENAME_PLACEHOLDER" %}'.replace('FILENAME_PLACEHOLDER', filename);
     }
 }
 
