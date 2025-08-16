@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse, Http404
 from django.contrib.admin.views.decorators import staff_member_required
-from django.conf import settings
-from .utils import get_log_files, read_log_file, format_log_line
+from .utils import get_log_files, read_log_file_multiline_aware
 from .conf import get_file_list_title, get_page_length, get_refresh_interval
 
 
@@ -36,30 +35,28 @@ def log_detail_view(request, filename):
     # Get pagination parameters
     page = int(request.GET.get('page', 1))
     page_length = get_page_length()
-    start_line = (page - 1) * page_length
+    start_entry = (page - 1) * page_length
     
-    # Read log content
-    log_data = read_log_file(selected_file['path'], page_length, start_line)
+    # Read log content with multiline awareness
+    log_data = read_log_file_multiline_aware(selected_file['path'], page_length, start_entry, filename)
     
-    # Format log lines
-    formatted_lines = []
-    for i, line in enumerate(log_data['lines']):
-        formatted_line = format_log_line(line, start_line + i + 1)
-        formatted_lines.append(formatted_line)
+    # The multiline-aware function already returns formatted entries
+    formatted_entries = log_data['entries']
     
-    # Calculate pagination info
-    total_pages = (log_data['total_lines'] + page_length - 1) // page_length
+    # Calculate pagination info based on entries, not lines
+    total_pages = (log_data['total_entries'] + page_length - 1) // page_length
     
     context = {
         'title': f'Log Viewer - {filename}',
         'filename': filename,
         'log_file': selected_file,
-        'log_lines': formatted_lines,
+        'log_lines': formatted_entries,
         'current_page': page,
         'total_pages': total_pages,
+        'total_entries': log_data['total_entries'],
         'total_lines': log_data['total_lines'],
-        'start_line': log_data['start_line'] + 1,
-        'end_line': log_data['end_line'],
+        'start_line': log_data['actual_start_line'],
+        'end_line': log_data['actual_end_line'],
         'page_length': page_length,
         'refresh_interval': get_refresh_interval(),
     }
@@ -84,20 +81,18 @@ def log_ajax_view(request, filename):
     # Get pagination parameters
     page = int(request.GET.get('page', 1))
     page_length = get_page_length()
-    start_line = (page - 1) * page_length
+    start_entry = (page - 1) * page_length
     
-    # Read log content
-    log_data = read_log_file(selected_file['path'], page_length, start_line)
+    # Read log content with multiline awareness
+    log_data = read_log_file_multiline_aware(selected_file['path'], page_length, start_entry, filename)
     
-    # Format log lines
-    formatted_lines = []
-    for i, line in enumerate(log_data['lines']):
-        formatted_line = format_log_line(line, start_line + i + 1)
-        formatted_lines.append(formatted_line)
+    # The multiline-aware function already returns formatted entries
+    formatted_entries = log_data['entries']
     
     return JsonResponse({
-        'log_lines': formatted_lines,
+        'log_lines': formatted_entries,
+        'total_entries': log_data['total_entries'],
         'total_lines': log_data['total_lines'],
-        'start_line': log_data['start_line'] + 1,
-        'end_line': log_data['end_line'],
+        'start_line': log_data['actual_start_line'],
+        'end_line': log_data['actual_end_line'],
     })

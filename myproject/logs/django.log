@@ -3565,3 +3565,28 @@ INFO 2025-08-16 16:58:18,522 basehttp: "GET /admin/logs/ HTTP/1.1" 200 16471
 WARNING 2025-08-16 16:58:18,561 log: Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-08-16 16:58:18,561 basehttp: "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2322
 INFO 2025-08-16 16:58:30,170 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 19424
+INFO 2025-08-16 17:00:32,912 basehttp: "GET /admin/logs/ HTTP/1.1" 200 16471
+INFO 2025-08-16 17:00:32,960 basehttp: "GET /static/mamood_django_admin_log_viewer/css/log_viewer.css HTTP/1.1" 304 0
+INFO 2025-08-16 17:00:52,566 basehttp: "GET /admin/logs/ HTTP/1.1" 200 16471
+INFO 2025-08-16 17:00:53,872 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 23176
+INFO 2025-08-16 17:00:58,594 basehttp: "GET /admin/logs/django.log/?page=1 HTTP/1.1" 200 41923
+INFO 2025-08-16 17:01:40,548 basehttp: "GET /admin/logs/django.log.3.gz/ HTTP/1.1" 200 19147
+INFO 2025-08-16 17:01:40,599 basehttp: "GET /static/mamood_django_admin_log_viewer/js/log_viewer.js HTTP/1.1" 304 0
+INFO 2025-08-16 17:01:44,089 basehttp: "GET /admin/logs/django.log.2/ HTTP/1.1" 200 19135
+INFO 2025-08-16 17:01:44,151 basehttp: "GET /static/mamood_django_admin_log_viewer/css/log_viewer.css HTTP/1.1" 304 0
+INFO 2025-08-16 17:01:45,838 basehttp: "GET /admin/logs/application.log.1/ HTTP/1.1" 200 19173
+INFO 2025-08-16 17:01:47,285 basehttp: "GET /admin/logs/celery_beat.log/ HTTP/1.1" 200 29458
+INFO 2025-08-16 17:02:02,722 basehttp: "GET /admin/logs/celery_beat.log/?page=6 HTTP/1.1" 200 80896
+INFO 2025-08-16 17:02:02,767 basehttp: "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-08-16 17:02:02,772 basehttp: "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-08-16 17:02:02,774 basehttp: "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-08-16 17:02:02,777 basehttp: "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-08-16 17:02:02,781 basehttp: "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-08-16 17:02:02,782 basehttp: "GET /static/mamood_django_admin_log_viewer/css/log_viewer.css HTTP/1.1" 200 42823
+INFO 2025-08-16 17:02:02,783 basehttp: "GET /static/mamood_django_admin_log_viewer/js/log_viewer.js HTTP/1.1" 200 42907
+INFO 2025-08-16 17:02:02,831 basehttp: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+WARNING 2025-08-16 17:02:02,922 log: Not Found: /favicon.ico
+WARNING 2025-08-16 17:02:02,923 basehttp: "GET /favicon.ico HTTP/1.1" 404 2211
+INFO 2025-08-16 17:02:13,550 basehttp: "GET /admin/logs/django.log.1/ HTTP/1.1" 200 19120
+INFO 2025-08-16 17:02:18,195 basehttp: "GET /admin/logs/django.log/ HTTP/1.1" 200 42069
+INFO 2025-08-16 17:02:21,382 basehttp: "GET /admin/logs/ HTTP/1.1" 200 16471
