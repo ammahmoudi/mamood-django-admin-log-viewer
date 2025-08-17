@@ -742,8 +742,8 @@ class LogViewer {
                 <span class="level-badge level-${line.level.toLowerCase()}">${line.level}</span>
             </td>
             <td class="timestamp">${line.timestamp}</td>
-            <td class="module">
-                ${line.logger ? `<span class="module-name">${this.escapeHtml(line.logger)}</span>` : '<span class="no-module">-</span>'}
+            <td class="log-module">
+                ${line.logger ? `<span class="log-module-name">${this.escapeHtml(line.logger)}</span>` : '<span class="no-log-module">-</span>'}
             </td>
             <td class="message">
                 <div class="message-preview">${this.escapeHtml(line.content)}</div>

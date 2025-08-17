@@ -188,11 +188,11 @@
                         <span class="level-badge level-{{ line.level|lower }}">{{ line.level }}</span>
                     </td>
                     <td class="timestamp">{{ line.timestamp }}</td>
-                    <td class="module">
+                    <td class="log-module">
                         {% if line.logger %}
-                            <span class="module-name">{{ line.logger }}</span>
+                            <span class="log-module-name">{{ line.logger }}</span>
                         {% else %}
-                            <span class="no-module">-</span>
+                            <span class="no-log-module">-</span>
                         {% endif %}
                     </td>
                     <td class="message">
